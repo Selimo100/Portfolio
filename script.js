@@ -1,20 +1,79 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Smooth Scrolling für Navigationslinks
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
       });
-    });
   });
+});
 
-  // Formular-Submit (Platzhalter)
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Form submitted! (This is a placeholder action)");
-    });
+// Navbar background change on scroll
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+      navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
+  } else {
+      navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.85)';
   }
 });
+
+// Form submission handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Add your form submission logic here
+      alert('Thank you for your message! I will get back to you soon.');
+      contactForm.reset();
+  });
+}
+
+// Add animation to elements when they come into view
+const observerOptions = {
+  threshold: 0.25
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+      }
+  });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
+
+// Add animation class
+document.addEventListener('DOMContentLoaded', function() {
+  // Add fade-in animation to hero section elements
+  const heroElements = document.querySelectorAll('.hero-section h1, .hero-section h2, .hero-section p, .hero-section .cta-btn');
+  heroElements.forEach((element, index) => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.2}s`;
+  });
+});
+
+// Add this CSS for animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  .fade-in {
+      animation: fadeInUp 0.5s ease forwards;
+  }
+`;
+document.head.appendChild(style);
