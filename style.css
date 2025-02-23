@@ -31,15 +31,19 @@ body {
   font-weight: bold;
 }
 
-.nav-link {
+.nav-link, a {
   color: var(--lightest-slate) !important;
   margin: 0 1rem;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
-.nav-link:hover {
+.nav-link:hover, a:hover {
   color: var(--blue) !important;
+  text-decoration: none;
+
 }
+
 
 /* Hero Section */
 .hero-section {
