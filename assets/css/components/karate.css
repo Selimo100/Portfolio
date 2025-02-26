@@ -2,22 +2,17 @@
 .karate-hero {
     min-height: 60vh;
     padding-top: 120px; /* Increased padding to account for navbar */
-    background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)),
-                url('../images/karate-hero.jpg') center/cover;
     display: flex;
     align-items: center;
     text-align: center;
     position: relative;
   }
-  
-  [data-theme="light"] .karate-hero {
-    background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8)),
-                url('../images/karate-hero.jpg') center/cover;
-  }
-  
+
   .karate-hero h1 {
     color: var(--white);
     margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: bold;
   }
   
   .karate-hero .lead {
