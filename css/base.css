@@ -1,0 +1,40 @@
+@import 'variables.css';
+
+/* Base Styles */
+body {
+  background-color: var(--navy);
+  color: var(--slate);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+a {
+  color: var(--lightest-slate);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+/* Section Styles */
+.section-padding {
+  padding: 100px 0;
+}
+
+.section-title {
+  color: var(--lightest-slate);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}

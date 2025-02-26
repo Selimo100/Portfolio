@@ -1,0 +1,48 @@
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    padding-top: 80px;
+    background-color: var(--navy);
+  }
+  
+  .welcome-text {
+    color: var(--blue);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .name {
+    color: var(--lightest-slate);
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    color: var(--light-slate);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .description {
+    color: var(--slate);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--blue);
+  }

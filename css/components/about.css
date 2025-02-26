@@ -1,0 +1,47 @@
+/* About Section */
+.about-image {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+  }
+  
+  .profile-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .profile-img:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+  
+  .skills-container {
+    margin-top: 2rem;
+  }
+  
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .skill-tag {
+    background-color: var(--light-navy);
+    color: var(--blue);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .image-placeholder {
+    width: 100%;
+    padding-top: 100%;
+    background-color: var(--lightest-navy);
+    border-radius: 10px;
+  }
