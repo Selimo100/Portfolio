@@ -1,0 +1,216 @@
+/* Karate Hero Section */
+.karate-hero {
+    min-height: 60vh;
+    padding-top: 120px; /* Increased padding to account for navbar */
+    background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)),
+                url('../images/karate-hero.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  [data-theme="light"] .karate-hero {
+    background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8)),
+                url('../images/karate-hero.jpg') center/cover;
+  }
+  
+  .karate-hero h1 {
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  
+  .karate-hero .lead {
+    color: var(--light-slate);
+    font-size: 1.5rem;
+  }
+  
+  /* Journey Section */
+  .journey-content h2 {
+    color: var(--lightest-slate);
+    margin-bottom: 2rem;
+  }
+  
+  .journey-content p {
+    color: var(--slate);
+    margin-bottom: 2rem;
+  }
+  
+  .achievements h3 {
+    color: var(--lightest-slate);
+    margin-bottom: 1.5rem;
+  }
+  
+  .achievement-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .achievement-list li {
+    color: var(--slate);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .achievement-year {
+    color: var(--blue);
+    font-weight: bold;
+    margin-right: 1rem;
+    min-width: 60px;
+  }
+  
+  .karate-image img {
+    transition: transform 0.3s ease;
+  }
+  
+  .karate-image img:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Philosophy Section */
+  .philosophy-card {
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  [data-theme="light"] .philosophy-card {
+    background-color: var(--light-navy);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .philosophy-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+  }
+  
+  .philosophy-card i {
+    font-size: 2.5rem;
+    color: var(--blue);
+    margin-bottom: 1.5rem;
+  }
+  
+  .philosophy-card h3 {
+    color: var(--lightest-slate);
+    margin-bottom: 1rem;
+  }
+  
+  .philosophy-card p {
+    color: var(--slate);
+  }
+  
+  /* Training Section */
+  .training-schedule {
+    background-color: var(--light-navy);
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
+  [data-theme="light"] .training-schedule {
+    background-color: var(--light-navy);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .training-schedule h3 {
+    color: var(--lightest-slate);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .schedule-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 1rem;
+    background-color: var(--lightest-navy);
+    border-radius: 5px;
+    align-items: center;
+  }
+  
+  [data-theme="light"] .schedule-item {
+    background-color: var(--lightest-navy);
+  }
+  
+  .schedule-item .day {
+    color: var(--blue);
+    font-weight: bold;
+  }
+  
+  .schedule-item .activity {
+    color: var(--lightest-slate);
+    text-align: center;
+  }
+  
+  .schedule-item .time {
+    color: var(--slate);
+    text-align: right;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .karate-hero {
+      height: 40vh;
+    }
+  
+    .schedule-item {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  
+    .schedule-item .activity,
+    .schedule-item .time {
+      text-align: center;
+    }
+  }
+  
+  /* Add reveal animations classes */
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.6s ease-in;
+  }
+  
+  .reveal-slide-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .reveal-slide-left {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .reveal-slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
+  
+  /* Active classes for animations */
+  .active {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  /* Add parallax effect to hero section */
+  .karate-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-attachment: fixed;
+    z-index: -1;
+  }
