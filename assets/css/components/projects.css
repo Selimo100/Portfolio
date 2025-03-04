@@ -5,7 +5,7 @@
     overflow: hidden;
     transition: transform 0.3s ease;
     min-height: 40rem;
-    max-height: 40rem;
+    max-height: 45rem;
   }
   
   .project-card:hover {
