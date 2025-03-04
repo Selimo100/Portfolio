@@ -1,9 +1,11 @@
 /* Project Section */
 .project-card {
     background-color: var(--light-navy);
-    border-radius: 10px;
+    border-radius: 1rem;
     overflow: hidden;
     transition: transform 0.3s ease;
+    min-height: 40rem;
+    max-height: 40rem;
   }
   
   .project-card:hover {
