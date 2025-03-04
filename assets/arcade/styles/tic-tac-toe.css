@@ -1,0 +1,120 @@
+.game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .instructions {
+    margin: 20px 0;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  #game-status {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  
+  #current-player {
+    color: var(--highlight-dark);
+  }
+  
+  body.light #current-player {
+    color: var(--highlight-light);
+  }
+  
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 8px;
+    margin: 20px 0 30px;
+    background-color: var(--highlight-dark);
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+  }
+  
+  body.light #game-board {
+    background-color: var(--highlight-light);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  
+  .field {
+    background-color: var(--background-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  body.light .field {
+    background-color: var(--background-light);
+    color: var(--text-light);
+  }
+  
+  .field:hover:empty {
+    background-color: var(--card-bg-dark);
+  }
+  
+  body.light .field:hover:empty {
+    background-color: var(--card-bg-light);
+  }
+  
+  .field.winning {
+    background-color: var(--highlight-dark);
+    color: var(--background-dark);
+    animation: pulse 1.5s infinite;
+  }
+  
+  body.light .field.winning {
+    background-color: var(--highlight-light);
+    color: white;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  #reset-button {
+    background-color: var(--highlight-dark);
+    color: var(--background-dark);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  body.light #reset-button {
+    background-color: var(--highlight-light);
+    color: white;
+  }
+  
+  #reset-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+  }
+  
+  body.light #reset-button:hover {
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+  }
+  
+  

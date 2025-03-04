@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selina's Arcade</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🎮 Selina's Arcade</h1>
+            <button id="theme-toggle" aria-label="Toggle dark/light mode">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h2>Welcome to the Arcade!</h2>
+            <p class="intro">Play some classic mini-games right in your browser. No downloads required!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Games</h2>
+            <p>Choose a game and start playing!</p>
+        </div>
+
+        <div id="game-container">
+            <!-- Original Games -->
+            <a href="games/pong.html" class="game-card">
+                <div class="game-icon">🏓</div>
+                <div class="game-info">
+                    <div class="game-title">Pong</div>
+                    <div class="game-description">Classic paddle game. Use W/S keys to move.</div>
+                </div>
+            </a>
+            <a href="games/cookie-clicker.html" class="game-card">
+                <div class="game-icon">🍪</div>
+                <div class="game-info">
+                    <div class="game-title">Cookie Clicker</div>
+                    <div class="game-description">Click cookies and buy upgrades!</div>
+                </div>
+            </a>
+            <a href="games/tic-tac-toe.html" class="game-card">
+                <div class="game-icon">❌⭕</div>
+                <div class="game-info">
+                    <div class="game-title">Tic-Tac-Toe</div>
+                    <div class="game-description">Classic X and O game. First to get 3 in a row wins!</div>
+                </div>
+            </a>
+            <a href="games/rock-paper-scissors.html" class="game-card">
+                <div class="game-icon">✊✋✌️</div>
+                <div class="game-info">
+                    <div class="game-title">Rock Paper Scissors</div>
+                    <div class="game-description">Can you beat the computer?</div>
+                </div>
+            </a>
+            
+            <!-- New Games -->
+            <a href="games/snake.html" class="game-card">
+                <div class="game-icon">🐍</div>
+                <div class="game-info">
+                    <div class="game-title">Snake</div>
+                    <div class="game-description">Eat food, grow longer, don't hit the walls!</div>
+                </div>
+            </a>
+            <a href="games/flappy-bird.html" class="game-card">
+                <div class="game-icon">🐦</div>
+                <div class="game-info">
+                    <div class="game-title">Flappy Bird</div>
+                    <div class="game-description">Navigate through pipes by tapping to flap.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="featured-game">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-info">
+                    <h2>Game of the Week</h2>
+                    <h3>Dev Snake by Mateo Kos</h3>
+                    <p>Neon Snake – Eat, grow, dominate! No mercy, just high scores. Dare to play?</p>
+                    <a href="https://zkosma.bbc-projects.ch/snake.html" target="_blank" class="featured-button">Play Now</a>
+                </div>
+                <div class="featured-image">
+                    <div class="image-placeholder">
+                        <span class="big-emoji">🐍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Selina's Arcade</h3>
+                <p>A collection of fun browser games</p>
+            </div>
+            <div class="footer-copyright">
+                <p>2025 Selina's Arcade</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

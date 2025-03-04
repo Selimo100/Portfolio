@@ -1,0 +1,51 @@
+.game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .instructions {
+    margin: 20px 0;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  canvas {
+    background: var(--card-bg-dark);
+    border: 4px solid var(--highlight-dark);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+    margin: 20px 0;
+  }
+  
+  body.light canvas {
+    background: var(--card-bg-light);
+    border-color: var(--highlight-light);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+  
+  .score-display {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 10px 0 20px;
+  }
+  
+  .score-divider {
+    margin: 0 15px;
+    color: var(--highlight-dark);
+  }
+  
+  body.light .score-divider {
+    color: var(--highlight-light);
+  }
+  
+  #player-score,
+  #ai-score {
+    min-width: 40px;
+    text-align: center;
+  }
+  
+  

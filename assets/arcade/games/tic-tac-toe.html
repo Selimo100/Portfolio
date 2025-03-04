@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/tic-tac-toe.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Tic-Tac-Toe</h1>
+        <p class="instructions">Get three in a row to win! X goes first.</p>
+        
+        <div id="game-status">Next player: <span id="current-player">X</span></div>
+        
+        <div id="game-board">
+            <div class="field" id="11"></div>
+            <div class="field" id="12"></div>
+            <div class="field" id="13"></div>
+            <div class="field" id="21"></div>
+            <div class="field" id="22"></div>
+            <div class="field" id="23"></div>
+            <div class="field" id="31"></div>
+            <div class="field" id="32"></div>
+            <div class="field" id="33"></div>
+        </div>
+        
+        <button id="reset-button">Reset Game</button>
+        
+        <a href="../index.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/tic-tac-toe.js"></script>
+</body>
+</html>
+

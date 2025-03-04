@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/snake.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Snake</h1>
+        <p class="instructions">Use arrow keys or WASD to control the snake. Eat food to grow longer, but don't hit the walls or yourself!</p>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div id="score" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">High Score</div>
+                <div id="high-score" class="stat-value">0</div>
+            </div>
+        </div>
+        
+        <div class="game-wrapper">
+            <canvas id="snake-canvas" width="400" height="400"></canvas>
+            <div id="game-over" class="hidden">
+                <h2>Game Over!</h2>
+                <p>Your score: <span id="final-score">0</span></p>
+                <button id="restart-button">Play Again</button>
+            </div>
+        </div>
+        
+        <div class="mobile-controls">
+            <button id="up-button">↑</button>
+            <div class="horizontal-controls">
+                <button id="left-button">←</button>
+                <button id="right-button">→</button>
+            </div>
+            <button id="down-button">↓</button>
+        </div>
+        
+        <a href="../index.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/snake.js"></script>
+</body>
+</html>

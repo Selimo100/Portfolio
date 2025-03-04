@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/cookie-clicker.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Cookie Clicker</h1>
+        <p class="instructions">Click the cookie to earn points. Buy upgrades to get more cookies per click!</p>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Cookies</div>
+                <div id="score" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Per Click</div>
+                <div id="per-click" class="stat-value">1</div>
+            </div>
+        </div>
+        
+        <div id="cookie-box">
+            <img id="cookie" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Anonymous_emblem.svg" alt="Cookie">
+        </div>
+        
+        <div class="upgrades">
+            <button id="upgrade-click" class="upgrade-button">
+                <span class="upgrade-name">Upgrade Clicks</span>
+                <span class="upgrade-desc">+1 cookie per click</span>
+                <span class="upgrade-cost">Cost: <span id="upgrade-cost">10</span> cookies</span>
+            </button>
+            
+            <button id="upgrade-auto" class="upgrade-button">
+                <span class="upgrade-name">Auto Clicker</span>
+                <span class="upgrade-desc">+1 cookie per second</span>
+                <span class="upgrade-cost">Cost: <span id="auto-cost">100</span> cookies</span>
+            </button>
+        </div>
+        
+        <a href="../index.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/cookie-clicker.js"></script>
+</body>
+</html>
+
