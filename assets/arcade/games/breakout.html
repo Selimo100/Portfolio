@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakout - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/breakout.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Breakout</h1>
+        <p class="instructions">Use left and right arrow keys or touch controls to move the paddle. Break all the bricks to win!</p>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div id="score" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Lives</div>
+                <div id="lives" class="stat-value">3</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Level</div>
+                <div id="level" class="stat-value">1</div>
+            </div>
+        </div>
+        
+        <div class="game-wrapper">
+            <canvas id="breakout-canvas" width="480" height="320"></canvas>
+            <div id="game-start" class="overlay">
+                <h2>Breakout</h2>
+                <p>Press any key or tap to start</p>
+            </div>
+            <div id="game-over" class="overlay hidden">
+                <h2>Game Over!</h2>
+                <p>Your score: <span id="final-score">0</span></p>
+                <button id="restart-button">Play Again</button>
+            </div>
+            <div id="level-complete" class="overlay hidden">
+                <h2>Level Complete!</h2>
+                <p>Press any key or tap to continue to level <span id="next-level">2</span></p>
+            </div>
+        </div>
+        
+        <div class="mobile-controls">
+            <button id="left-button">←</button>
+            <button id="right-button">→</button>
+        </div>
+        
+        <a href="../arcade.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/breakout.js"></script>
+</body>
+</html>

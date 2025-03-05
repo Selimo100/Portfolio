@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/hangman.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Hangman</h1>
+        <p class="instructions">Guess the word one letter at a time. 6 wrong guesses and you lose!</p>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Wrong Guesses</div>
+                <div id="wrong-guesses">0/6</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Category</div>
+                <div id="category">Animals</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Wins</div>
+                <div id="wins">0</div>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div class="hangman-drawing">
+                <svg id="hangman-svg" width="200" height="250" viewBox="0 0 200 250">
+                    <!-- Base -->
+                    <line x1="20" y1="230" x2="180" y2="230" stroke-width="10" stroke="currentColor" />
+                    <!-- Pole -->
+                    <line id="pole" x1="60" y1="230" x2="60" y2="30" stroke-width="8" stroke="currentColor" class="hangman-part" />
+                    <!-- Top -->
+                    <line id="top" x1="60" y1="30" x2="140" y2="30" stroke-width="8" stroke="currentColor" class="hangman-part" />
+                    <!-- Rope -->
+                    <line id="rope" x1="140" y1="30" x2="140" y2="60" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                    <!-- Head -->
+                    <circle id="head" cx="140" cy="80" r="20" stroke-width="4" stroke="currentColor" fill="none" class="hangman-part" />
+                    <!-- Body -->
+                    <line id="body" x1="140" y1="100" x2="140" y2="150" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                    <!-- Left Arm -->
+                    <line id="left-arm" x1="140" y1="120" x2="110" y2="100" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                    <!-- Right Arm -->
+                    <line id="right-arm" x1="140" y1="120" x2="170" y2="100" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                    <!-- Left Leg -->
+                    <line id="left-leg" x1="140" y1="150" x2="120" y2="190" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                    <!-- Right Leg -->
+                    <line id="right-leg" x1="140" y1="150" x2="160" y2="190" stroke-width="4" stroke="currentColor" class="hangman-part" />
+                </svg>
+            </div>
+            
+            <div class="word-container">
+                <div id="word-display"></div>
+                <div id="game-message">Start guessing!</div>
+            </div>
+        </div>
+        
+        <div class="keyboard">
+            <div class="keyboard-row">
+                <button class="key">Q</button>
+                <button class="key">W</button>
+                <button class="key">E</button>
+                <button class="key">R</button>
+                <button class="key">T</button>
+                <button class="key">Y</button>
+                <button class="key">U</button>
+                <button class="key">I</button>
+                <button class="key">O</button>
+                <button class="key">P</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key">A</button>
+                <button class="key">S</button>
+                <button class="key">D</button>
+                <button class="key">F</button>
+                <button class="key">G</button>
+                <button class="key">H</button>
+                <button class="key">J</button>
+                <button class="key">K</button>
+                <button class="key">L</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key">Z</button>
+                <button class="key">X</button>
+                <button class="key">C</button>
+                <button class="key">V</button>
+                <button class="key">B</button>
+                <button class="key">N</button>
+                <button class="key">M</button>
+            </div>
+        </div>
+        
+        <button id="new-game-btn">New Game</button>
+        
+        <div class="category-selector">
+            <button class="category-btn active" data-category="animals">Animals</button>
+            <button class="category-btn" data-category="fruits">Fruits</button>
+            <button class="category-btn" data-category="countries">Countries</button>
+        </div>
+        
+        <a href="../arcade.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/hangman.js"></script>
+</body>
+</html>

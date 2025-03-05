@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Match - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/color-match.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Color Match</h1>
+        <p class="instructions">Click on the circles that match the target color. Be quick!</p>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Time Left</div>
+                <div id="time-left">60</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">High Score</div>
+                <div id="high-score">0</div>
+            </div>
+        </div>
+        
+        <div class="target-color-container">
+            <div class="target-label">Target Color:</div>
+            <div id="target-color" class="target-color-box"></div>
+        </div>
+        
+        <div id="game-board" class="color-grid"></div>
+        
+        <button id="start-button">Start Game</button>
+        
+        <div class="difficulty-controls">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+        
+        <a href="../arcade.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/color-match.js"></script>
+</body>
+</html>
+

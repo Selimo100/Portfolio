@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game - Selina's Arcade</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/typing-game.css">
+</head>
+<body>
+    <div class="container game-page">
+        <h1>Speed Typer</h1>
+        <p class="instructions">Type the words as they appear. Be fast and accurate!</p>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Time Left</div>
+                <div id="time-left">60</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">WPM</div>
+                <div id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Accuracy</div>
+                <div id="accuracy">100%</div>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div id="word-display" class="word-display">
+                <div class="word-prompt">Click Start to begin</div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="word-input" placeholder="Type here..." autocomplete="off" disabled>
+            </div>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <h2>Game Results</h2>
+            <div class="results-stats">
+                <div class="result-item">
+                    <div class="result-label">Final Score</div>
+                    <div id="final-score">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Words Per Minute</div>
+                    <div id="final-wpm">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Accuracy</div>
+                    <div id="final-accuracy">0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="start-button">Start Game</button>
+        
+        <div class="difficulty-controls">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+        
+        <a href="../arcade.html" class="back-button">← Back to Arcade</a>
+    </div>
+
+    <script src="../scripts/theme-check.js"></script>
+    <script src="../scripts/typing-game.js"></script>
+</body>
+</html>
+
