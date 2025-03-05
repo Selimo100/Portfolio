@@ -1,4 +1,3 @@
-// Add animation to elements when they come into view
 const observerOptions = {
     threshold: 0.25
   };
@@ -11,14 +10,11 @@ const observerOptions = {
     });
   }, observerOptions);
   
-  // Observe all sections
   document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
   });
   
-  // Add animation class
   document.addEventListener('DOMContentLoaded', function() {
-    // Add fade-in animation to hero section elements
     const heroElements = document.querySelectorAll('.hero-section h1, .hero-section h2, .hero-section p, .hero-section .cta-btn');
     heroElements.forEach((element, index) => {
       element.style.opacity = '0';
@@ -27,7 +23,6 @@ const observerOptions = {
     });
   });
   
-  // Add animations CSS
   const style = document.createElement('style');
   style.textContent = `
     @keyframes fadeInUp {

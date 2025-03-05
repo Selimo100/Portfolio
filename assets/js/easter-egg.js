@@ -14,9 +14,7 @@ document.addEventListener('keydown', (e) => {
     konamiIndex = 0;
   }
   
-  // Check for "a" key to open arcade directly
   if (e.key === 'a' && !e.ctrlKey && !e.altKey && !e.metaKey) {
-    // Only if user is not typing in an input, textarea, or contenteditable element
     const activeElement = document.activeElement;
     const isTyping = activeElement.tagName === 'INPUT' || 
                      activeElement.tagName === 'TEXTAREA' || 

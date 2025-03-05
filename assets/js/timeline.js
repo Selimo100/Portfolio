@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
   
-    // Initial check
     revealTimeline();
     
-    // Check on scroll
     window.addEventListener('scroll', revealTimeline);
   });

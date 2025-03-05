@@ -1,9 +1,7 @@
-// Theme toggle functionality
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.querySelector('.theme-toggle-btn');
     const themeIcon = themeToggleBtn.querySelector('i');
     
-    // Check for saved theme preference, otherwise use dark theme
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme === 'light');

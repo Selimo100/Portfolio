@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reveal animations on scroll
     const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-right, .reveal-slide-left, .reveal-slide-up');
     
     const revealOnScroll = () => {
@@ -13,13 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
   
-    // Initial check for elements in view
     revealOnScroll();
     
-    // Check on scroll
     window.addEventListener('scroll', revealOnScroll);
   
-    // Parallax effect for hero section
     const heroSection = document.querySelector('.karate-hero');
     let lastScrollY = window.scrollY;
   
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
     window.addEventListener('scroll', updateParallax);
   
-    // Animate achievement list
     const achievements = document.querySelectorAll('.achievement-list li');
     achievements.forEach((achievement, index) => {
       achievement.style.opacity = '0';
@@ -51,9 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300 * (index + 1));
     });
   
-
-  
-    // Smooth reveal for training schedule
     const scheduleItems = document.querySelectorAll('.schedule-item');
     scheduleItems.forEach((item, index) => {
       item.classList.add('reveal-slide-right');
