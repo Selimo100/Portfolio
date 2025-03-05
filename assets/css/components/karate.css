@@ -275,12 +275,6 @@
     flex-wrap: wrap;
 }
 
-.btn-primary {
-    background-color: var(--blue);
-    border-color: var(--blue);
-    color: var(--white);
-}
-
 .btn-outline-primary {
     border-color: var(--blue);
     color: var(--blue);
@@ -288,7 +282,7 @@
 
 .btn-outline-primary:hover {
     background-color: var(--blue);
-    color: var(--white);
+    color: var(--navy);
 }
 
 @media (max-width: 768px) {
