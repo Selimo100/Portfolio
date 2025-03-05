@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pac-Man - Selina's Arcade</title>
+  <link rel="stylesheet" href="../styles/pacman.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+</head>
+<body>
+<header>
+  <div class="header-content">
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+</header>
+
+
+
+  <div class="game-page">
+    <h2>Pac-Man</h2>
+
+    <div class="instructions">
+      <p>Navigate through the maze, eat all the dots, and avoid the ghosts! Use arrow keys to move Pac-Man.</p>
+    </div>
+
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-label">Score</div>
+        <div class="stat-value" id="score">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Lives</div>
+        <div class="stat-value" id="lives">3</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Level</div>
+        <div class="stat-value" id="level">1</div>
+      </div>
+    </div>
+
+    <div class="game-wrapper">
+      <canvas id="pacman-canvas" width="480" height="480"></canvas>
+
+      <div id="game-start" class="overlay">
+        <h2>Pac-Man</h2>
+        <p>Use arrow keys to navigate through the maze and eat all the dots while avoiding the ghosts!</p>
+        <p>Click anywhere to start</p>
+      </div>
+
+      <div id="game-over" class="overlay hidden">
+        <h2>Game Over</h2>
+        <p>Your final score: <span id="final-score">0</span></p>
+        <button id="restart-button">Play Again</button>
+      </div>
+
+      <div id="level-complete" class="overlay hidden">
+        <h2>Level Complete!</h2>
+        <p>Moving to level <span id="next-level">2</span></p>
+        <p>Click to continue</p>
+      </div>
+    </div>
+
+    <div class="mobile-controls">
+      <button id="up-button">↑</button>
+      <div class="horizontal-controls">
+        <button id="left-button">←</button>
+        <button id="right-button">→</button>
+      </div>
+      <button id="down-button">↓</button>
+    </div>
+    <a href="../arcade.html" class="back-button">← Back to Arcade</a>
+
+  </div>
+
+<script src="../scripts/pacman.js"></script>
+</body>
+</html>
+
