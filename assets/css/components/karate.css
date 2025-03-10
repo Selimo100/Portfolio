@@ -1,7 +1,6 @@
-/* Karate Hero Section */
 .karate-hero {
     min-height: 60vh;
-    padding-top: 120px; /* Increased padding to account for navbar */
+    padding-top: 120px; 
     display: flex;
     align-items: center;
     text-align: center;
@@ -9,7 +8,7 @@
   }
 
   .karate-hero h1 {
-    color: var(--white);
+    color: var(--lightest-slate);
     margin-bottom: 1rem;
     font-size: 4rem;
     font-weight: bold;
@@ -20,7 +19,6 @@
     font-size: 1.5rem;
   }
   
-  /* Journey Section */
   .journey-content h2 {
     color: var(--lightest-slate);
     margin-bottom: 2rem;
@@ -63,7 +61,6 @@
     transform: scale(1.02);
   }
   
-  /* Philosophy Section */
   .philosophy-card {
     padding: 2rem;
     border-radius: 10px;
@@ -98,7 +95,6 @@
     color: var(--slate);
   }
   
-  /* Training Section */
   .training-schedule {
     background-color: var(--light-navy);
     padding: 2rem;
@@ -149,7 +145,6 @@
     text-align: right;
   }
   
-  /* Responsive Adjustments */
   @media (max-width: 768px) {
     .karate-hero {
       height: 40vh;
@@ -167,7 +162,6 @@
     }
   }
   
-  /* Add reveal animations classes */
   .reveal-fade {
     opacity: 0;
     transition: opacity 0.6s ease-in;
@@ -191,13 +185,11 @@
     transition: all 0.6s ease-out;
   }
   
-  /* Active classes for animations */
   .active {
     opacity: 1;
     transform: translate(0, 0);
   }
   
-  /* Add parallax effect to hero section */
   .karate-hero::before {
     content: '';
     position: absolute;
