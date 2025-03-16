@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -196,21 +197,60 @@
   <!-- Contact Section -->
   <section id="contact" class="section-padding">
     <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
+      <h2 class="section-title text-center mb-4">Get In Touch</h2>
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <form class="contact-form" action="sendMail.php" method="POST">
-            <div class="mb-3">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+
+          <!-- Display Success Message -->
+          <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi bi-check-circle-fill"></i> <?php echo $_SESSION['success']; ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-              <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+            <?php unset($_SESSION['success']);
+            unset($_SESSION['old_input']); ?>
+          <?php endif; ?>
+
+          <!-- Display Validation Errors -->
+          <?php if (isset($_SESSION['errors'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-triangle-fill"></i> <strong>There were some issues:</strong>
+              <ul class="mb-0">
+                <?php foreach ($_SESSION['errors'] as $error): ?>
+                  <li><?php echo htmlspecialchars($error); ?></li>
+                <?php endforeach; ?>
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            <?php unset($_SESSION['errors']); ?>
+          <?php endif; ?>
+
+          <!-- Contact Form -->
+          <form class="contact-form needs-validation" action="sendMail.php" method="POST" novalidate>
             <div class="mb-3">
-              <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" name="name" id="name" class="form-control"
+                placeholder="Your Name" value="<?php echo htmlspecialchars($_SESSION['old_input']['name'] ?? ''); ?>" required>
+              <div class="invalid-feedback">Please enter your name.</div>
             </div>
-            <button type="submit" class="cta-btn">Send Message</button>
-          </form>          
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" name="email" id="email" class="form-control"
+                placeholder="Your Email" value="<?php echo htmlspecialchars($_SESSION['old_input']['email'] ?? ''); ?>" required>
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea name="message" id="message" class="form-control" rows="5"
+                placeholder="Your Message" required><?php echo htmlspecialchars($_SESSION['old_input']['message'] ?? ''); ?></textarea>
+              <div class="invalid-feedback">Please enter your message.</div>
+            </div>
+
+            <button type="submit" class="cta-btn btn btn-primary">Send Message</button>
+          </form>
+
         </div>
       </div>
     </div>

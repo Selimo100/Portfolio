@@ -1,8 +1,16 @@
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
+(() => {
+  'use strict';
+
+  // Bootstrap validation script
+  const forms = document.querySelectorAll('.needs-validation');
+
+  Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+      }, false);
   });
-}
+})();
