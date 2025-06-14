@@ -88,7 +88,8 @@
             <div class="skill-tags">
               <span class="skill-tag">HTML</span>
               <span class="skill-tag">CSS</span>
-              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">JavaScript</span>           
+              <span class="skill-tag">React js</span>           
               <span class="skill-tag">Bootstrap</span>
               <span class="skill-tag">Java</span>
               <span class="skill-tag">SQL</span>
