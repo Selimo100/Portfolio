@@ -1,285 +1,548 @@
+/* Karate Page Styles */
 .karate-hero {
-    min-height: 60vh;
-    padding-top: 120px; 
-    display: flex;
-    align-items: center;
-    text-align: center;
-    position: relative;
-  }
-
-  .karate-hero h1 {
-    color: var(--lightest-slate);
-    margin-bottom: 1rem;
-    font-size: 4rem;
-    font-weight: bold;
-  }
-  
-  .karate-hero .lead {
-    color: var(--light-slate);
-    font-size: 1.5rem;
-  }
-  
-  .journey-content h2 {
-    color: var(--lightest-slate);
-    margin-bottom: 2rem;
-  }
-  
-  .journey-content p {
-    color: var(--slate);
-    margin-bottom: 2rem;
-  }
-  
-  .achievements h3 {
-    color: var(--lightest-slate);
-    margin-bottom: 1.5rem;
-  }
-  
-  .achievement-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .achievement-list li {
-    color: var(--slate);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .achievement-year {
-    color: var(--blue);
-    font-weight: bold;
-    margin-right: 1rem;
-    min-width: 60px;
-  }
-  
-  .karate-image img {
-    transition: transform 0.3s ease;
-  }
-  
-  .karate-image img:hover {
-    transform: scale(1.02);
-  }
-  
-  .philosophy-card {
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    height: 100%;
-    transition: transform 0.3s ease;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  
-  [data-theme="light"] .philosophy-card {
-    background-color: var(--light-navy);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .philosophy-card:hover {
-    transform: translateY(-10px) rotateX(5deg);
-  }
-  
-  .philosophy-card i {
-    font-size: 2.5rem;
-    color: var(--blue);
-    margin-bottom: 1.5rem;
-  }
-  
-  .philosophy-card h3 {
-    color: var(--lightest-slate);
-    margin-bottom: 1rem;
-  }
-  
-  .philosophy-card p {
-    color: var(--slate);
-  }
-  
-  .training-schedule {
-    background-color: var(--light-navy);
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  
-  [data-theme="light"] .training-schedule {
-    background-color: var(--light-navy);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .training-schedule h3 {
-    color: var(--lightest-slate);
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  .schedule-grid {
-    display: grid;
-    gap: 1rem;
-  }
-  
-  .schedule-item {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    padding: 1rem;
-    background-color: var(--lightest-navy);
-    border-radius: 5px;
-    align-items: center;
-  }
-  
-  [data-theme="light"] .schedule-item {
-    background-color: var(--lightest-navy);
-  }
-  
-  .schedule-item .day {
-    color: var(--blue);
-    font-weight: bold;
-  }
-  
-  .schedule-item .activity {
-    color: var(--lightest-slate);
-    text-align: center;
-  }
-  
-  .schedule-item .time {
-    color: var(--slate);
-    text-align: right;
-  }
-  
-  @media (max-width: 768px) {
-    .karate-hero {
-      height: 40vh;
-    }
-  
-    .schedule-item {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 0.5rem;
-    }
-  
-    .schedule-item .activity,
-    .schedule-item .time {
-      text-align: center;
-    }
-  }
-  
-  .reveal-fade {
-    opacity: 0;
-    transition: opacity 0.6s ease-in;
-  }
-  
-  .reveal-slide-right {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.6s ease-out;
-  }
-  
-  .reveal-slide-left {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.6s ease-out;
-  }
-  
-  .reveal-slide-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
-  }
-  
-  .active {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  
-  .karate-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    background-attachment: fixed;
-    z-index: -1;
-  }
-
-  .club-section {
-    background-color: var(--navy);
+  min-height: 70vh;
+  padding-top: 120px; 
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: var(--background);
+  overflow: hidden;
 }
 
+.karate-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  animation: backgroundFloat 15s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .karate-hero::before {
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(13, 110, 253, 0.08) 0%, transparent 50%);
+}
+
+.karate-hero h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.3s forwards;
+}
+
+.karate-hero .lead {
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.5s forwards;
+}
+
+/* Journey Section */
+.journey-content h2 {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.journey-content p {
+  color: var(--text-tertiary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Achievements */
+.achievements h3 {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.achievements h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+.achievement-list {
+  list-style: none;
+  padding: 0;
+}
+
+.achievement-list li {
+  color: var(--text-tertiary);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+.achievement-list li:hover {
+  transform: translateX(10px);
+  background-color: var(--background-tertiary);
+}
+
+.achievement-year {
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 1.5rem;
+  min-width: 70px;
+  font-size: 1.1rem;
+}
+
+/* Karate Images */
+.karate-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.karate-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+}
+
+.karate-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.karate-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Philosophy Cards */
+.philosophy-card {
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  height: 100%;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+/* Light mode philosophy cards */
+[data-theme="light"] .philosophy-card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.philosophy-card:hover {
+  transform: translateY(-10px) rotateY(5deg);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+  border-color: var(--accent);
+}
+
+/* Light mode philosophy hover */
+[data-theme="light"] .philosophy-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: #0d6efd;
+}
+
+.philosophy-card i {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.philosophy-card:hover i {
+  transform: scale(1.1);
+}
+
+.philosophy-card h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Light mode philosophy titles */
+[data-theme="light"] .philosophy-card h3 {
+  color: #212529;
+}
+
+.philosophy-card p {
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+
+/* Light mode philosophy text */
+[data-theme="light"] .philosophy-card p {
+  color: #495057;
+}
+
+/* Philosophy Section */
+.philosophy-section {
+  background-color: var(--background);
+  padding: 5rem 0;
+}
+
+/* Light mode philosophy section */
+[data-theme="light"] .philosophy-section {
+  background-color: #ffffff;
+}
+
+/* Training Section */
+.training-section {
+  background-color: var(--background);
+  padding: 5rem 0;
+}
+
+/* Light mode training section */
+[data-theme="light"] .training-section {
+  background-color: #ffffff;
+}
+.training-schedule {
+  background-color: var(--background-secondary);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow-light);
+}
+
+/* Light mode training schedule */
+[data-theme="light"] .training-schedule {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.training-schedule h3 {
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* Light mode training title */
+[data-theme="light"] .training-schedule h3 {
+  color: #212529;
+}
+
+.schedule-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 1.5rem;
+  background-color: var(--background-tertiary);
+  border-radius: 10px;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--accent);
+}
+
+/* Light mode schedule items */
+[data-theme="light"] .schedule-item {
+  background-color: #f8f9fa;
+  border-left: 4px solid #0d6efd;
+}
+
+.schedule-item:hover {
+  transform: translateX(5px);
+  background-color: var(--background);
+}
+
+/* Light mode schedule hover */
+[data-theme="light"] .schedule-item:hover {
+  background-color: #ffffff;
+}
+
+.schedule-item .day {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Light mode schedule day */
+[data-theme="light"] .schedule-item .day {
+  color: #0d6efd;
+}
+
+.schedule-item .activity {
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Light mode schedule activity */
+[data-theme="light"] .schedule-item .activity {
+  color: #212529;
+}
+
+.schedule-item .time {
+  color: var(--text-secondary);
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Light mode schedule time */
+[data-theme="light"] .schedule-item .time {
+  color: #343a40;
+}
+
+/* Club Section */
+.club-section {
+  background-color: var(--background);
+  padding: 5rem 0;
+}
+
+/* Light mode club section */
 [data-theme="light"] .club-section {
-    background-color: var(--light-slate);
+  background-color: #f8f9fa;
 }
 
 .club-info,
 .club-news {
-    background-color: var(--light-navy);
-    transition: transform 0.3s ease;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px var(--shadow-light);
+  height: 100%;
 }
 
+/* Light mode club sections */
 [data-theme="light"] .club-info,
 [data-theme="light"] .club-news {
-    background-color: var(--white);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .club-info:hover,
 .club-news:hover {
-    transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+}
+
+/* Light mode hover */
+[data-theme="light"] .club-info:hover,
+[data-theme="light"] .club-news:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .club-logo {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .club-logo img {
-    max-width: 200px;
-    height: auto;
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.club-info h3,
+.club-news h3 {
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Light mode titles */
+[data-theme="light"] .club-info h3,
+[data-theme="light"] .club-news h3 {
+  color: #212529;
+}
+
+.club-info p,
+.club-news p {
+  color: var(--text-tertiary);
+  line-height: 1.7;
+}
+
+/* Light mode text */
+[data-theme="light"] .club-info p,
+[data-theme="light"] .club-news p {
+  color: #495057;
 }
 
 .news-item {
-    background-color: var(--navy);
-    transition: all 0.3s ease;
-    border-left: 3px solid var(--blue);
+  background-color: var(--background-tertiary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent);
+  transition: all 0.3s ease;
 }
 
+/* Light mode news items */
 [data-theme="light"] .news-item {
-    background-color: var(--light-navy);
+  background-color: #f8f9fa;
+  border-left: 4px solid #0d6efd;
 }
 
 .news-item:hover {
-    transform: translateX(10px);
+  transform: translateX(10px);
+  background-color: var(--background);
+}
+
+/* Light mode news item hover */
+[data-theme="light"] .news-item:hover {
+  background-color: #ffffff;
 }
 
 .news-date {
-    font-size: 0.9rem;
-    color: var(--blue);
-    font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Light mode news date */
+[data-theme="light"] .news-date {
+  color: #0d6efd;
 }
 
 .news-title {
-    color: var(--lightest-slate);
-    margin-top: 0.25rem;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+/* Light mode news title */
+[data-theme="light"] .news-title {
+  color: #212529;
 }
 
 .club-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .btn-outline-primary {
-    border-color: var(--blue);
-    color: var(--blue);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .btn-outline-primary:hover {
-    background-color: var(--blue);
-    color: var(--navy);
+  background-color: var(--accent);
+  color: var(--background);
+  transform: translateY(-2px);
 }
 
+/* Animations */
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reveal animations */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .club-info,
-    .club-news {
-        margin-bottom: 2rem;
-    }
+  .karate-hero {
+    min-height: 50vh;
+    padding: 100px 20px 0;
+  }
+
+  .philosophy-card {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .training-schedule {
+    padding: 2rem 1.5rem;
+  }
+
+  .schedule-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1.2rem;
+  }
+
+  .schedule-item .activity,
+  .schedule-item .time {
+    text-align: center;
+  }
+
+  .club-info,
+  .club-news {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .club-links {
+    justify-content: center;
+  }
+
+  .btn-outline-primary {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }

@@ -1,30 +1,236 @@
 /* Utility Classes */
+
+/* Theme-aware utilities */
+.text-primary-theme {
+  color: var(--text-primary) !important;
+}
+
+.text-secondary-theme {
+  color: var(--text-secondary) !important;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.bg-primary-theme {
+  background-color: var(--background) !important;
+}
+
+.bg-secondary-theme {
+  background-color: var(--background-secondary) !important;
+}
+
+.border-accent {
+  border-color: var(--accent) !important;
+}
+
+/* Animation utilities */
 .fade-in {
-    animation: fadeInUp 0.5s ease forwards;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in-delay {
+  animation: fadeInUp 0.6s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease forwards;
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease forwards;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Focus utilities */
+.focus-accent:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-light);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px var(--accent);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive text utilities */
+.responsive-text-lg {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.responsive-text-md {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.responsive-text-sm {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+/* Spacing utilities */
+.section-spacing {
+  padding: clamp(60px, 10vw, 100px) 0;
+}
+
+.content-spacing {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+/* Accessibility utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--accent);
+  color: var(--background);
+  padding: 8px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
   }
   
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .name {
+    font-size: clamp(2rem, 6vw, 3rem);
   }
   
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .name {
-      font-size: 3rem;
-    }
-    
-    .title {
-      font-size: 2rem;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-    }
+  .title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
+  
+  .section-title {
+    font-size: clamp(1.8rem, 5vw, 2rem);
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-spacing {
+    padding: 40px 0;
+  }
+  
+  .content-spacing {
+    margin-bottom: 1.5rem;
+  }
+}

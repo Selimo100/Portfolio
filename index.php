@@ -24,6 +24,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
 
+  <!-- Theme initialization script - must be in head to prevent FOUC -->
+  <script src="assets/js/theme-init.js"></script>
 </head>
 
 <body>
@@ -45,7 +47,7 @@
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item"><a class="nav-link active" href="karate.html">Karate</a></li>
+          <li class="nav-item"><a class="nav-link" href="karate.html">Karate</a></li>
           <li class="nav-item"><a class="nav-link" href="imprint.html">Imprint</a></li>
         </ul>
       </div>
@@ -90,6 +92,7 @@
               <span class="skill-tag">CSS</span>
               <span class="skill-tag">JavaScript</span>           
               <span class="skill-tag">React js</span>           
+              <span class="skill-tag">Expo</span>           
               <span class="skill-tag">Bootstrap</span>
               <span class="skill-tag">Java</span>
               <span class="skill-tag">SQL</span>

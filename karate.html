@@ -20,6 +20,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
      
+    <!-- Theme initialization script - must be in head to prevent FOUC -->
+    <script src="assets/js/theme-init.js"></script>
 </head>
 
 <body>
@@ -28,8 +30,8 @@
         <div class="container">
             <a class="navbar-brand" href="index.php">Selina Mogicato</a>
             <div class="theme-toggle">
-                <button class="theme-toggle-btn" aria-label="Toggle theme">
-                    <i class="bi bi-moon-fill"></i>
+                <button class="theme-toggle-btn" aria-label="Toggle between light and dark theme" title="Toggle theme">
+                    <i class="bi bi-moon-fill" aria-hidden="true"></i>
                 </button>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -106,7 +108,25 @@
         <div class="container">
             <h2 class="section-title text-center mb-5">My Karate Timeline</h2>
             <div class="timeline">
-                <!-- Teaching & Competitions -->
+                <!-- Latest Competitions 2025 -->
+                <div class="timeline-item">
+                    <div class="timeline-content achievement-highlight">
+                        <div class="timeline-date">July 2025</div>
+                        <h3 class="timeline-title">Zürcher Kantonalmeisterschaften</h3>
+                        <p class="timeline-description">Competed at the regional championships with excellent results: 
+                            <strong>2nd place in Kata</strong> and <strong>5th place in Kumite</strong>. A proud moment representing my club at this prestigious regional tournament.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content achievement-highlight">
+                        <div class="timeline-date">May 2025</div>
+                        <h3 class="timeline-title">Nicki Cup - Austria</h3>
+                        <p class="timeline-description">International competition in Austria with athletes from Switzerland, Germany, and Austria. 
+                            Achieved <strong>3rd place in Kumite</strong> and <strong>5th place in Kata</strong>. An incredible international experience showcasing my skills against top European competitors.</p>
+                    </div>
+                </div>
+
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2025</div>
@@ -223,41 +243,39 @@
     </section>
 
     <!-- Philosophy Section -->
-    <div class="philosophy-card reveal-fade">
-        <section class="philosophy-section section-padding">
-            <div class="container">
-                <h2 class="text-center mb-5">Karate Philosophy</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="philosophy-card">
-                            <i class="bi bi-peace"></i>
-                            <h3>Mind</h3>
-                            <p>Developing mental strength and focus through meditation and discipline.</p>
-                        </div>
+    <section class="philosophy-section section-padding">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Karate Philosophy</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="philosophy-card reveal-fade">
+                        <i class="bi bi-peace"></i>
+                        <h3>Mind</h3>
+                        <p>Developing mental strength and focus through meditation and discipline.</p>
                     </div>
-                    <div class="col-md-4">
-                        <div class="philosophy-card">
-                            <i class="bi bi-heart"></i>
-                            <h3>Body</h3>
-                            <p>Building physical strength, flexibility, and precise technique.</p>
-                        </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="philosophy-card reveal-fade">
+                        <i class="bi bi-heart"></i>
+                        <h3>Body</h3>
+                        <p>Building physical strength, flexibility, and precise technique.</p>
                     </div>
-                    <div class="col-md-4">
-                        <div class="philosophy-card">
-                            <i class="bi bi-lightning"></i>
-                            <h3>Spirit</h3>
-                            <p>Cultivating inner peace, respect, and continuous personal growth.</p>
-                        </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="philosophy-card reveal-fade">
+                        <i class="bi bi-lightning"></i>
+                        <h3>Spirit</h3>
+                        <p>Cultivating inner peace, respect, and continuous personal growth.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Training Section -->
     <section class="training-section section-padding">
         <div class="container">
-            <h2 class="text-center mb-5">Training & Practice</h2>
+            <h2 class="section-title text-center mb-5">Training & Practice</h2>
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="training-schedule">
@@ -296,7 +314,7 @@
     <!-- Add this section after the training-section -->
     <section class="club-section section-padding">
         <div class="container">
-            <h2 class="text-center mb-5">My Club - Kaisho Karate Bassersdorf</h2>
+            <h2 class="section-title text-center mb-5">My Club - Kaisho Karate Bassersdorf</h2>
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="club-info p-4 rounded">

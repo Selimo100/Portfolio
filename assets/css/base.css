@@ -1,30 +1,83 @@
 @import 'variables.css';
 
+/* Prevent FOUC (Flash of Unstyled Content) */
+html.theme-loading {
+  visibility: hidden;
+}
+
+html.theme-loaded {
+  visibility: visible;
+}
+
 /* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--navy);
-  color: var(--slate);
+  background-color: var(--background);
+  color: var(--text-tertiary);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
+/* Universal transitions for theme switching */
 * {
   transition: background-color 0.3s ease, 
               color 0.3s ease, 
               border-color 0.3s ease,
-              box-shadow 0.3s ease;
+              box-shadow 0.3s ease,
+              fill 0.3s ease,
+              stroke 0.3s ease;
 }
 
+/* Links */
 a {
-  color: var(--lightest-slate);
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--blue);
+  color: var(--accent);
   text-decoration: none;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+::-moz-selection {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
 }
 
 /* Section Styles */
@@ -33,44 +86,85 @@ a:hover {
 }
 
 .section-title {
-  color: var(--lightest-slate);
+  color: var(--text-primary);
   font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 3rem;
   text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
 /* Footer */
 .footer {
-  background-color: var(--navy);
-  padding: 2rem 0;
+  background-color: var(--background-secondary);
+  padding: 3rem 0 2rem;
   margin-top: 4rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .social-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .social-link {
-  color: var(--light-slate);
+  color: var(--text-secondary);
   font-size: 1.5rem;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--background-tertiary);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-link:hover {
-  color: var(--blue);
-  transform: translateY(-2px);
+  color: var(--accent);
+  transform: translateY(-3px);
+  background-color: var(--background);
+  box-shadow: 0 5px 15px var(--shadow-light);
 }
 
 .copyright {
-  color: var(--light-slate);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin: 0;
+  text-align: center;
 }
 
-[data-theme="light"] .footer {
-  background-color: var(--navy);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .social-links {
+    gap: 1.5rem;
+  }
+
+  .social-link {
+    font-size: 1.3rem;
+    width: 45px;
+    height: 45px;
+  }
 }

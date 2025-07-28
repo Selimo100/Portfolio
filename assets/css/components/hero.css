@@ -1,48 +1,160 @@
 /* Hero Section */
 .hero-section {
-    height: 100vh;
-    padding-top: 80px;
-    background-color: var(--navy);
+  height: 100vh;
+  min-height: 600px;
+  padding-top: 80px;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background elements */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+[data-theme="light"] .hero-section::before {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(13, 110, 253, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(13, 110, 253, 0.08) 0%, transparent 50%);
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+.welcome-text {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.2s forwards;
+}
+
+.name {
+  color: var(--text-primary);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.4s forwards;
+}
+
+.title {
+  color: var(--text-secondary);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.6s forwards;
+}
+
+.description {
+  color: var(--text-tertiary);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 0.8s forwards;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out 1s forwards;
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+[data-theme="light"] .cta-btn::before {
+  background: linear-gradient(90deg, transparent, rgba(13, 110, 253, 0.2), transparent);
+}
+
+.cta-btn:hover::before {
+  left: 100%;
+}
+
+.cta-btn:hover {
+  background-color: var(--accent);
+  color: var(--background);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+}
+
+[data-theme="light"] .cta-btn:hover {
+  box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 500px;
+    padding: 100px 0 50px;
+  }
+
   .welcome-text {
-    color: var(--blue);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1rem;
   }
-  
-  .name {
-    color: var(--lightest-slate);
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .title {
-    color: var(--light-slate);
-    font-size: 3rem;
+
+  .description {
+    font-size: 1.1rem;
     margin-bottom: 2rem;
   }
-  
-  .description {
-    color: var(--slate);
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin-bottom: 3rem;
-  }
-  
+
   .cta-btn {
-    display: inline-block;
-    background-color: transparent;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
   }
-  
-  .cta-btn:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    color: var(--blue);
-  }
+}
