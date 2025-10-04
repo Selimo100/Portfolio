@@ -90,12 +90,15 @@
             <div class="skill-tags">
               <span class="skill-tag">HTML</span>
               <span class="skill-tag">CSS</span>
-              <span class="skill-tag">JavaScript</span>           
-              <span class="skill-tag">React js</span>           
-              <span class="skill-tag">Expo</span>           
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React js</span>
+              <span class="skill-tag">Vue js</span>
+              <span class="skill-tag">Expo</span>
               <span class="skill-tag">Bootstrap</span>
               <span class="skill-tag">Java</span>
               <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Firebase&Supabase</span>
+              <span class="skill-tag">Flask</span>
             </div>
           </div>
         </div>
@@ -114,6 +117,30 @@
       <h2 class="section-title">My Projects</h2>
       <div class="row g-4">
         <!-- Project Card 1 -->
+        <div class="col-md-6">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/yumigo_app_project.jpg" alt="Yumigo App Screenshot" class="project-img">
+            </div>
+            <div class="project-content">
+              <h3>Yumigo App</h3>
+              <p>
+                Yumigo is a mobile app that turns spontaneous food cravings into delicious recipe suggestions. Users can enter what they're craving, browse curated recipes, and filter them based on seasonality and location. The goal is to promote mindful, inspiring, and seasonal eating in a fun and intuitive way. It has been developed as part of my apprenticeship at the BBC Basislehrjahr.
+              </p>
+              <div class="project-tags">
+                <span>React-Native</span>
+                <span>JavaScript</span>
+                <span>Expo Go</span>
+                <span>Firebase</span>
+              </div>
+              <div class="project-links">
+                <a href="https://yumigoapp.netlify.app/" class="project-link" target="_blank">View Project</a>
+                <a href="assets/images/yumigo_app_video.mp4" class="project-link" target="_blank">Demo Video</a>
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+        </div><!-- Project Card 2 -->
         <div class="col-md-6">
           <div class="project-card">
             <div class="project-image">

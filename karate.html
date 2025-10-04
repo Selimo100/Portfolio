@@ -1,387 +1,515 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Karate Journey - Selina Mogicato</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/utilities.css">
-    <link rel="stylesheet" href="assets/css/components/navbar.css">
-    <link rel="stylesheet" href="assets/css/components/karate.css">
-    <link rel="stylesheet" href="assets/css/components/timeline.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/components/navbar.css" />
+    <link rel="stylesheet" href="assets/css/components/karate.css" />
+    <link rel="stylesheet" href="assets/css/components/timeline.css" />
 
-    <link rel="icon" type="image/png" href="assets/images/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/images/favicon/favicon.svg"
+    />
     <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicon/apple-touch-icon.png"
+    />
     <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
-     
+
     <!-- Theme initialization script - must be in head to prevent FOUC -->
     <script src="assets/js/theme-init.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">Selina Mogicato</a>
-            <div class="theme-toggle">
-                <button class="theme-toggle-btn" aria-label="Toggle between light and dark theme" title="Toggle theme">
-                    <i class="bi bi-moon-fill" aria-hidden="true"></i>
-                </button>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="karate.html">Karate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="imprint.html">Imprint</a></li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="index.php">Selina Mogicato</a>
+        <div class="theme-toggle">
+          <button
+            class="theme-toggle-btn"
+            aria-label="Toggle between light and dark theme"
+            title="Toggle theme"
+          >
+            <i class="bi bi-moon-fill" aria-hidden="true"></i>
+          </button>
         </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="karate.html">Karate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="imprint.html">Imprint</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="karate-hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 text-center">
-                    <h1 class="display-2">My Karate Journey</h1>
-                    <p class="lead">Discovering strength, discipline, and inner peace through martial arts</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            <h1 class="display-2">My Karate Journey</h1>
+            <p class="lead">
+              Discovering strength, discipline, and inner peace through martial
+              arts
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Journey Section -->
     <div class="journey-content reveal-slide-right">
-        <section class="journey-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="journey-content">
-                            <h2>My Path in Karate</h2>
-                            <p>
-                                I embarked on my karate journey in 2016, shortly after I decided to step away from
-                                ballet. A close friend of mine was already practicing karate, and out of curiosity, I
-                                joined her for a trial session. From the very first moment, I was captivated. When I
-                                became a member of Kaisho Karate Bassersdorf, it was a small, close-knit group, all
-                                around my age. The friendships I formed there have lasted a lifetime. Though many of the
-                                original members have since moved on, they were the ones who helped me discover my true
-                                passion.
-                            </p>
-                            <p>
-                                As time passed, my love for karate only deepened. In 2025, I made the decision to start
-                                training children, an experience that has been incredibly rewarding. Seeing their
-                                progress and knowing that they enjoy my training brings me immense joy and fulfillment.
-                            </p>
-                            <p>
-                                I practice Shotokan Karate, one of the oldest and most traditional styles, which
-                                resonates deeply with me. As someone who values tradition, it feels like a perfect fit.
-                                Additionally, since I train at two different dojos, I have also been influenced by the
-                                Shorin-Ryu style. Today, I can't imagine my life without karate. It is more than just a
-                                sport—it is a way of life. As cliché as that may sound, it is absolutely true.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="karate-image">
-                            <img src="assets/images/Karate.png" alt="Karate Training" class="img-fluid rounded shadow">
-                        </div>
-                    </div>
-                </div>
+      <section class="journey-section section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="journey-content">
+                <h2>My Path in Karate</h2>
+                <p>
+                  I embarked on my karate journey in 2016, shortly after I
+                  decided to step away from ballet. A close friend of mine was
+                  already practicing karate, and out of curiosity, I joined her
+                  for a trial session. From the very first moment, I was
+                  captivated. When I became a member of Kaisho Karate
+                  Bassersdorf, it was a small, close-knit group, all around my
+                  age. The friendships I formed there have lasted a lifetime.
+                  Though many of the original members have since moved on, they
+                  were the ones who helped me discover my true passion.
+                </p>
+                <p>
+                  As time passed, my love for karate only deepened. In 2025, I
+                  made the decision to start training children, an experience
+                  that has been incredibly rewarding. Seeing their progress and
+                  knowing that they enjoy my training brings me immense joy and
+                  fulfillment.
+                </p>
+                <p>
+                  I practice Shotokan Karate, one of the oldest and most
+                  traditional styles, which resonates deeply with me. As someone
+                  who values tradition, it feels like a perfect fit.
+                  Additionally, since I train at two different dojos, I have
+                  also been influenced by the Shorin-Ryu style. Today, I can't
+                  imagine my life without karate. It is more than just a
+                  sport—it is a way of life. As cliché as that may sound, it is
+                  absolutely true.
+                </p>
+              </div>
             </div>
-        </section>
+            <div class="col-md-6">
+              <div class="karate-image">
+                <img
+                  src="assets/images/Karate.png"
+                  alt="Karate Training"
+                  class="img-fluid rounded shadow"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- Timeline Section -->
     <section class="timeline-section section-padding">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">My Karate Timeline</h2>
-            <div class="timeline">
-                <!-- Latest Competitions 2025 -->
-                <div class="timeline-item">
-                    <div class="timeline-content achievement-highlight">
-                        <div class="timeline-date">July 2025</div>
-                        <h3 class="timeline-title">Zürcher Kantonalmeisterschaften</h3>
-                        <p class="timeline-description">Competed at the regional championships with excellent results: 
-                            <strong>2nd place in Kata</strong> and <strong>5th place in Kumite</strong>. A proud moment representing my club at this prestigious regional tournament.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content achievement-highlight">
-                        <div class="timeline-date">May 2025</div>
-                        <h3 class="timeline-title">Nicki Cup - Austria</h3>
-                        <p class="timeline-description">International competition in Austria with athletes from Switzerland, Germany, and Austria. 
-                            Achieved <strong>3rd place in Kumite</strong> and <strong>5th place in Kata</strong>. An incredible international experience showcasing my skills against top European competitors.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025</div>
-                        <h3 class="timeline-title">Teaching Children</h3>
-                        <p class="timeline-description">Started training children, sharing my passion and knowledge of
-                            karate with the next generation.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">November 2024</div>
-                        <h3 class="timeline-title">Competition Success</h3>
-                        <p class="timeline-description">2nd Place in Kata Friendship Tournament</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">July 2024</div>
-                        <h3 class="timeline-title">Regional Achievement</h3>
-                        <p class="timeline-description">3rd Place in Regional Tournament Canton Zurich</p>
-                    </div>
-                </div>
-
-                <!-- Belt Progression -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024</div>
-                        <h3 class="timeline-title">Violet Belt</h3>
-                        <p class="timeline-description">Achieved Violet Belt, demonstrating advanced technical
-                            proficiency and dedication.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023</div>
-                        <h3 class="timeline-title">Half Violet Belt</h3>
-                        <p class="timeline-description">Progressed to Half Violet Belt, marking significant advancement
-                            in my journey.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022</div>
-                        <h3 class="timeline-title">Blue Belt Achievement</h3>
-                        <p class="timeline-description">Earned Blue Belt and completed Half Blue 2 Belt requirements.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022</div>
-                        <h3 class="timeline-title">KAISHO on SPORTDATE.TV</h3>
-                        <p class="timeline-description">
-                            Television appearance on Swiss TV with 15 karatekas.
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021</div>
-                        <h3 class="timeline-title">Green to Half Blue</h3>
-                        <p class="timeline-description">Achieved Green Belt and progressed to Half Blue 1 Belt.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2020</div>
-                        <h3 class="timeline-title">Half Green Belts</h3>
-                        <p class="timeline-description">Earned both Half Green 1 and Half Green 2 Belts.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2019</div>
-                        <h3 class="timeline-title">Orange Belt Journey</h3>
-                        <p class="timeline-description">Completed Half Orange 2 and achieved full Orange Belt.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2018</div>
-                        <h3 class="timeline-title">Yellow to Orange</h3>
-                        <p class="timeline-description">Earned Yellow Belt and progressed to Half Orange 1 Belt.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2017</div>
-                        <h3 class="timeline-title">First Advancements</h3>
-                        <p class="timeline-description">Achieved Half Yellow 1 and Half Yellow 2 Belts.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2016</div>
-                        <h3 class="timeline-title">Beginning of the Journey</h3>
-                        <p class="timeline-description">Started karate at Kaisho Karate Bassersdorf with White Belt.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title text-center mb-5">My Karate Timeline</h2>
+        <div class="timeline">
+          <!-- Latest Brown Belt 2025 -->
+          <div class="timeline-item">
+            <div class="timeline-content achievement-highlight">
+              <div class="timeline-date">18 September 2025</div>
+              <h3 class="timeline-title">Brown Belt</h3>
+              <p class="timeline-description">
+                Achieved Brown Belt after a rigorous examination process,
+                demonstrating advanced skills and deep understanding of karate
+                techniques and philosophy. This milestone reflects my dedication
+                and growth in the martial art.
+              </p>
             </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content achievement-highlight">
+              <div class="timeline-date">July 2025</div>
+              <h3 class="timeline-title">Zürcher Kantonalmeisterschaften</h3>
+              <p class="timeline-description">
+                Competed at the regional championships with excellent results:
+                <strong>2nd place in Kata</strong> and
+                <strong>5th place in Kumite</strong>. A proud moment
+                representing my club at this prestigious regional tournament.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content achievement-highlight">
+              <div class="timeline-date">May 2025</div>
+              <h3 class="timeline-title">Nicki Cup - Austria</h3>
+              <p class="timeline-description">
+                International competition in Austria with athletes from
+                Switzerland, Germany, and Austria. Achieved
+                <strong>3rd place in Kumite</strong> and
+                <strong>5th place in Kata</strong>. An incredible international
+                experience showcasing my skills against top European
+                competitors.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2025</div>
+              <h3 class="timeline-title">Teaching Children</h3>
+              <p class="timeline-description">
+                Started training children, sharing my passion and knowledge of
+                karate with the next generation.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">November 2024</div>
+              <h3 class="timeline-title">Competition Success</h3>
+              <p class="timeline-description">
+                2nd Place in Kata Friendship Tournament
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">July 2024</div>
+              <h3 class="timeline-title">Regional Achievement</h3>
+              <p class="timeline-description">
+                3rd Place in Regional Tournament Canton Zurich
+              </p>
+            </div>
+          </div>
+
+          <!-- Belt Progression -->
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2024</div>
+              <h3 class="timeline-title">Violet Belt</h3>
+              <p class="timeline-description">
+                Achieved Violet Belt, demonstrating advanced technical
+                proficiency and dedication.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2023</div>
+              <h3 class="timeline-title">Half Violet Belt</h3>
+              <p class="timeline-description">
+                Progressed to Half Violet Belt, marking significant advancement
+                in my journey.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2022</div>
+              <h3 class="timeline-title">Blue Belt Achievement</h3>
+              <p class="timeline-description">
+                Earned Blue Belt and completed Half Blue 2 Belt requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2022</div>
+              <h3 class="timeline-title">KAISHO on SPORTDATE.TV</h3>
+              <p class="timeline-description">
+                Television appearance on Swiss TV with 15 karatekas.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2021</div>
+              <h3 class="timeline-title">Green to Half Blue</h3>
+              <p class="timeline-description">
+                Achieved Green Belt and progressed to Half Blue 1 Belt.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2020</div>
+              <h3 class="timeline-title">Half Green Belts</h3>
+              <p class="timeline-description">
+                Earned both Half Green 1 and Half Green 2 Belts.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2019</div>
+              <h3 class="timeline-title">Orange Belt Journey</h3>
+              <p class="timeline-description">
+                Completed Half Orange 2 and achieved full Orange Belt.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2018</div>
+              <h3 class="timeline-title">Yellow to Orange</h3>
+              <p class="timeline-description">
+                Earned Yellow Belt and progressed to Half Orange 1 Belt.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2017</div>
+              <h3 class="timeline-title">First Advancements</h3>
+              <p class="timeline-description">
+                Achieved Half Yellow 1 and Half Yellow 2 Belts.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2016</div>
+              <h3 class="timeline-title">Beginning of the Journey</h3>
+              <p class="timeline-description">
+                Started karate at Kaisho Karate Bassersdorf with White Belt.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Philosophy Section -->
     <section class="philosophy-section section-padding">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Karate Philosophy</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="philosophy-card reveal-fade">
-                        <i class="bi bi-peace"></i>
-                        <h3>Mind</h3>
-                        <p>Developing mental strength and focus through meditation and discipline.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="philosophy-card reveal-fade">
-                        <i class="bi bi-heart"></i>
-                        <h3>Body</h3>
-                        <p>Building physical strength, flexibility, and precise technique.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="philosophy-card reveal-fade">
-                        <i class="bi bi-lightning"></i>
-                        <h3>Spirit</h3>
-                        <p>Cultivating inner peace, respect, and continuous personal growth.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Karate Philosophy</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="philosophy-card reveal-fade">
+              <i class="bi bi-peace"></i>
+              <h3>Mind</h3>
+              <p>
+                Developing mental strength and focus through meditation and
+                discipline.
+              </p>
             </div>
+          </div>
+          <div class="col-md-4">
+            <div class="philosophy-card reveal-fade">
+              <i class="bi bi-heart"></i>
+              <h3>Body</h3>
+              <p>
+                Building physical strength, flexibility, and precise technique.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="philosophy-card reveal-fade">
+              <i class="bi bi-lightning"></i>
+              <h3>Spirit</h3>
+              <p>
+                Cultivating inner peace, respect, and continuous personal
+                growth.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Training Section -->
     <section class="training-section section-padding">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Training & Practice</h2>
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="training-schedule">
-                        <h3>Weekly Schedule</h3>
-                        <div class="schedule-grid">
-                            <div class="schedule-item">
-                                <span class="day">Monday</span>
-                                <span class="activity">Competition Training</span>
-                                <span class="time">18:30 - 19:30</span>
-                            </div>
-                            <div class="schedule-item">
-                                <span class="day">Tuesday</span>
-                                <span class="activity">Training the kids</span>
-                                <span class="time">17:40 - 19:15</span>
-                                <span class="day"></span>
-                                <span class="activity">Kata / Kihon / Sparring</span>
-                                <span class="time">19:30 - 21:00</span>
-                            </div>
-                            <div class="schedule-item">
-                                <span class="day">Thursday</span>
-                                <span class="activity">Kata / Kihon / Sparring</span>
-                                <span class="time">19:30 - 21:00</span>
-                            </div>
-                            <div class="schedule-item">
-                                <span class="day">Saturday</span>
-                                <span class="activity">Youth Training</span>
-                                <span class="time">10:00 - 12:00</span>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Training & Practice</h2>
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="training-schedule">
+              <h3>Weekly Schedule</h3>
+              <div class="schedule-grid">
+                <div class="schedule-item">
+                  <span class="day">Monday</span>
+                  <span class="activity">Competition Training</span>
+                  <span class="time">18:30 - 19:30</span>
                 </div>
+                <div class="schedule-item">
+                  <span class="day">Tuesday</span>
+                  <span class="activity">Training the kids</span>
+                  <span class="time">17:40 - 19:15</span>
+                  <span class="day"></span>
+                  <span class="activity">Kata / Kihon / Sparring</span>
+                  <span class="time">19:30 - 21:00</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="day">Thursday</span>
+                  <span class="activity">Kata / Kihon / Sparring</span>
+                  <span class="time">19:30 - 21:00</span>
+                </div>
+                <div class="schedule-item">
+                  <span class="day">Saturday</span>
+                  <span class="activity">Youth Training</span>
+                  <span class="time">10:00 - 12:00</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Add this section after the training-section -->
     <section class="club-section section-padding">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">My Club - Kaisho Karate Bassersdorf</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="club-info p-4 rounded">
-                        <div class="club-logo mb-4">
-                            <img src="assets/images/Kaisho_logo.png" alt="Kaisho Karate Bassersdorf Logo AI generated"
-                                class="img-fluid" style="max-width: 200px;">
-                        </div>
-                        <h3 class="mb-3">About Kaisho Karate</h3>
-                        <p class="mb-4">
-                            Kaisho Karate Bassersdorf is where my karate journey began and continues to flourish. The
-                            club offers
-                            comprehensive training in Shotokan Karate, welcoming practitioners of all ages and skill
-                            levels.
-                        </p>
-                        <div class="club-links mb-4">
-                            <a href="https://www.kaisho-bassersdorf.ch/willkommen_kkb" target="_blank"
-                                class="btn btn-outline-primary">
-                                Visit Club Website
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="club-news p-4 rounded">
-                        <h3 class="mb-4">Latest Club News</h3>
-                        <div class="news-items">
-                            <div class="news-item mb-3 p-3 rounded">
-                                <div class="news-date text-primary">07.01.2025</div>
-                                <div class="news-title">Changes in Club Management</div>
-                            </div>
-                            <div class="news-item mb-3 p-3 rounded">
-                                <div class="news-date text-primary">12.11.2024</div>
-                                <div class="news-title">KYU Examinations December 2024</div>
-                            </div>
-                            <div class="news-item mb-3 p-3 rounded">
-                                <div class="news-date text-primary">29.10.2024</div>
-                                <div class="news-title">No Children's Training on Halloween - 31.10.24</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title text-center mb-5">
+          My Club - Kaisho Karate Bassersdorf
+        </h2>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="club-info p-4 rounded">
+              <div class="club-logo mb-4">
+                <img
+                  src="assets/images/Kaisho_logo.png"
+                  alt="Kaisho Karate Bassersdorf Logo AI generated"
+                  class="img-fluid"
+                  style="max-width: 200px"
+                />
+              </div>
+              <h3 class="mb-3">About Kaisho Karate</h3>
+              <p class="mb-4">
+                Kaisho Karate Bassersdorf is where my karate journey began and
+                continues to flourish. The club offers comprehensive training in
+                Shotokan Karate, welcoming practitioners of all ages and skill
+                levels.
+              </p>
+              <div class="club-links mb-4">
+                <a
+                  href="https://www.kaisho-bassersdorf.ch/willkommen_kkb"
+                  target="_blank"
+                  class="btn btn-outline-primary"
+                >
+                  Visit Club Website
+                </a>
+              </div>
             </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="club-news p-4 rounded">
+              <h3 class="mb-4">Latest Club News</h3>
+              <div class="news-items">
+                <div class="news-item mb-3 p-3 rounded">
+                  <div class="news-date text-primary">07.01.2025</div>
+                  <div class="news-title">Changes in Club Management</div>
+                </div>
+                <div class="news-item mb-3 p-3 rounded">
+                  <div class="news-date text-primary">12.11.2024</div>
+                  <div class="news-title">KYU Examinations December 2024</div>
+                </div>
+                <div class="news-item mb-3 p-3 rounded">
+                  <div class="news-date text-primary">29.10.2024</div>
+                  <div class="news-title">
+                    No Children's Training on Halloween - 31.10.24
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="social-links">
-                        <a href="https://github.com/Selimo100" class="social-link" target="_blank">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="https://x.com/selimo_100" class="social-link" target="_blank">
-                            <i class="bi bi-twitter-x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/selimo_100" class="social-link" target="_blank">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                    <div class="container text-center">
-                        <p>Designed &amp; Built by Selina Mogicato</p>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div class="social-links">
+              <a
+                href="https://github.com/Selimo100"
+                class="social-link"
+                target="_blank"
+              >
+                <i class="bi bi-github"></i>
+              </a>
+              <a
+                href="https://x.com/selimo_100"
+                class="social-link"
+                target="_blank"
+              >
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/selimo_100"
+                class="social-link"
+                target="_blank"
+              >
+                <i class="bi bi-instagram"></i>
+              </a>
             </div>
+            <div class="container text-center">
+              <p>Designed &amp; Built by Selina Mogicato</p>
+            </div>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -392,6 +520,5 @@
     <script src="assets/js/karate-animations.js"></script>
     <script src="assets/js/timeline.js"></script>
     <script src="assets/js/easter-egg.js"></script>
-</body>
-
+  </body>
 </html>
