@@ -36,6 +36,30 @@
   transform: scale(1.05);
 }
 
+/* Special styling for logo-type images (like DojoTime) */
+.project-image.logo-image {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+[data-theme="dark"] .project-image.logo-image {
+  background-color: #1a1a2e;
+}
+
+.project-image.logo-image .project-img {
+  object-fit: contain;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+.project-card:hover .project-image.logo-image .project-img {
+  transform: scale(1.02);
+}
+
 .project-content {
   padding: 2rem;
   display: flex;

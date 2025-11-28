@@ -233,7 +233,7 @@
         <!-- Kaisho DojoTime Project -->
         <div class="col-md-6">
           <div class="project-card">
-            <div class="project-image">
+            <div class="project-image logo-image">
               <img src="assets/images/Kaisho-DojoTime.png" alt="Kaisho DojoTime App Screenshot" class="project-img">
             </div>
             <div class="project-content">
@@ -246,6 +246,11 @@
               <div class="project-tags">
                 <span>TypeScript</span>
                 <span>Supabase</span>
+              </div>
+              <div class="project-links">
+                <a href="https://kaisho-dojotime.netlify.app/" class="project-link" target="_blank">
+                  <i class="bi bi-eye me-1"></i>View Project
+                </a>
               </div>
             </div>
           </div>

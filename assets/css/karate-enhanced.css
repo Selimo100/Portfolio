@@ -55,114 +55,10 @@
     line-height: 1.6;
 }
 
-/* Enhanced timeline styling */
+/* Enhanced timeline styling - visual enhancements only */
 .timeline {
     position: relative;
     padding: 2rem 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--accent), var(--accent-hover));
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin: 3rem 0;
-    padding: 0 2rem;
-}
-
-.timeline-item:nth-child(odd) {
-    text-align: right;
-    padding-right: calc(50% + 2rem);
-}
-
-.timeline-item:nth-child(even) {
-    text-align: left;
-    padding-left: calc(50% + 2rem);
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 16px;
-    height: 16px;
-    background: var(--accent);
-    border: 3px solid var(--background);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-}
-
-.timeline-item:nth-child(odd)::before {
-    right: calc(50% - 8px);
-}
-
-.timeline-item:nth-child(even)::before {
-    left: calc(50% - 8px);
-}
-
-.timeline-content {
-    background: var(--background-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.timeline-content::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 0;
-    height: 0;
-    transform: translateY(-50%);
-}
-
-.timeline-item:nth-child(odd) .timeline-content::after {
-    right: -10px;
-    border-left: 10px solid var(--background-secondary);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
-.timeline-item:nth-child(even) .timeline-content::after {
-    left: -10px;
-    border-right: 10px solid var(--background-secondary);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
-.timeline-date {
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-title {
-    color: var(--text-primary);
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.timeline-description {
-    color: var(--text-tertiary);
-    line-height: 1.6;
 }
 
 /* Karate stats/achievements cards */
@@ -201,30 +97,8 @@
     font-weight: 500;
 }
 
-/* Responsive timeline */
+/* Responsive enhancements */
 @media (max-width: 768px) {
-    .timeline::before {
-        left: 30px;
-    }
-    
-    .timeline-item {
-        text-align: left !important;
-        padding-left: 70px !important;
-        padding-right: 1rem !important;
-    }
-    
-    .timeline-item::before {
-        left: 22px !important;
-        right: auto !important;
-    }
-    
-    .timeline-content::after {
-        left: -10px !important;
-        right: auto !important;
-        border-right: 10px solid var(--background-secondary) !important;
-        border-left: none !important;
-    }
-    
     .karate-hero h1 {
         font-size: 2.5rem;
     }
