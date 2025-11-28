@@ -457,6 +457,96 @@
   transform: translateY(-2px);
 }
 
+/* DojoTime Project Card in Karate Page */
+.dojotime-card {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px var(--shadow-light);
+  height: 100%;
+}
+
+[data-theme="light"] .dojotime-card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dojotime-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--shadow-medium);
+  border-color: var(--accent);
+}
+
+[data-theme="light"] .dojotime-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: #0d6efd;
+}
+
+.dojotime-card .project-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.dojotime-card .project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.dojotime-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.dojotime-card .project-content {
+  padding: 1.5rem;
+}
+
+.dojotime-card .project-content h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+[data-theme="light"] .dojotime-card .project-content h3 {
+  color: #212529;
+}
+
+.dojotime-card .project-content p {
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+[data-theme="light"] .dojotime-card .project-content p {
+  color: #495057;
+}
+
+.dojotime-card .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dojotime-card .project-tags span {
+  background-color: var(--background-tertiary);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--accent);
+}
+
+[data-theme="light"] .dojotime-card .project-tags span {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+
 /* Animations */
 @keyframes backgroundFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }

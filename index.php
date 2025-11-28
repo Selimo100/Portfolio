@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="assets/css/components/about.css">
   <link rel="stylesheet" href="assets/css/components/projects.css">
   <link rel="stylesheet" href="assets/css/components/contact.css">
+  <link rel="stylesheet" href="assets/css/enhanced-effects.css">
+  <link rel="stylesheet" href="assets/css/professional-effects.css">
 
   <link rel="icon" type="image/png" href="assets/images/favicon/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon/favicon.svg" />
@@ -29,6 +31,9 @@
 </head>
 
 <body>
+  <!-- Skip to content link for accessibility -->
+  <a href="#home" class="skip-link">Skip to main content</a>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
@@ -61,7 +66,7 @@
         <div class="col-12">
           <p class="welcome-text">Hi, my name is Selina</p>
           <h1 class="name">Selina Mogicato</h1>
-          <h2 class="title">I'm a student and web developer.</h2>
+          <h2 class="title typing-cursor">I'm a student and web developer.</h2>
           <p class="description">
             I'm Selina - a creative and technically skilled web developer who
             creates unique digital experiences. Whether front-end or back-end,
@@ -97,7 +102,7 @@
               <span class="skill-tag">Bootstrap</span>
               <span class="skill-tag">Java</span>
               <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Firebase&Supabase</span>
+              <span class="skill-tag">Firebase & Supabase</span>
               <span class="skill-tag">Flask</span>
             </div>
           </div>
@@ -125,18 +130,21 @@
             <div class="project-content">
               <h3>Yumigo App</h3>
               <p>
-                Yumigo is a mobile app that turns spontaneous food cravings into delicious recipe suggestions. Users can enter what they're craving, browse curated recipes, and filter them based on seasonality and location. The goal is to promote mindful, inspiring, and seasonal eating in a fun and intuitive way. It has been developed as part of my apprenticeship at the BBC Basislehrjahr.
+                A mobile recipe app that transforms food cravings into personalized recipe suggestions. Built with React Native, it features seasonal filtering, location-based recommendations, and an intuitive interface for mindful eating. Developed during my apprenticeship at BBC Basislehrjahr.
               </p>
               <div class="project-tags">
-                <span>React-Native</span>
+                <span>React Native</span>
                 <span>JavaScript</span>
-                <span>Expo Go</span>
+                <span>Expo</span>
                 <span>Firebase</span>
               </div>
               <div class="project-links">
-                <a href="https://yumigoapp.netlify.app/" class="project-link" target="_blank">View Project</a>
-                <a href="assets/images/yumigo_app_video.mp4" class="project-link" target="_blank">Demo Video</a>
-                <!-- <a href="#" class="project-link">GitHub</a> -->
+                <a href="https://yumigoapp.netlify.app/" class="project-link" target="_blank">
+                  <i class="bi bi-eye me-1"></i>View Project
+                </a>
+                <a href="assets/images/yumigo_app_video.mp4" class="project-link" target="_blank">
+                  <i class="bi bi-play-circle me-1"></i>Demo Video
+                </a>
               </div>
             </div>
           </div>
@@ -160,8 +168,9 @@
                 <span>SQL</span>
               </div>
               <div class="project-links">
-                <a href="https://rummy.mogicato.ch/" class="project-link" target="_blank">View Project</a>
-                <!-- <a href="#" class="project-link">GitHub</a> -->
+                <a href="https://rummy.mogicato.ch/" class="project-link" target="_blank">
+                  <i class="bi bi-eye me-1"></i>View Project
+                </a>
               </div>
             </div>
           </div>
@@ -186,9 +195,9 @@
                 <span>JavaScript</span>
               </div>
               <div class="project-links">
-                <a href="https://selina.mogicato.ch/Portfolio_bbc/" class="project-link" target="_blank">View
-                  Project</a>
-                <!-- <a href="#" class="project-link">GitHub</a> -->
+                <a href="https://selina.mogicato.ch/Portfolio_bbc/" class="project-link" target="_blank">
+                  <i class="bi bi-eye me-1"></i>View Project
+                </a>
               </div>
             </div>
           </div>
@@ -213,14 +222,34 @@
                 <span>JavaScript</span>
               </div>
               <div class="project-links">
-                <a href="https://selina.mogicato.ch/assets/arcade/arcade.html" class="project-link" target="_blank">View
-                  Project</a>
-                <!-- <a href="#" class="project-link">GitHub</a> -->
+                <a href="assets/arcade/arcade.html" class="project-link" target="_blank">
+                  <i class="bi bi-controller me-1"></i>Play Games
+                </a>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Kaisho DojoTime Project -->
+        <div class="col-md-6">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/Kaisho-DojoTime.png" alt="Kaisho DojoTime App Screenshot" class="project-img">
+            </div>
+            <div class="project-content">
+              <h3>Kaisho DojoTime</h3>
+              <p>
+                An organisation tool developed for my Karate club, Kaisho Karate Bassersdorf. It helps manage
+                training schedules, who are the trainers, and club events efficiently. Built with modern
+                technologies to streamline club administration and improve communication.
+              </p>
+              <div class="project-tags">
+                <span>TypeScript</span>
+                <span>Supabase</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
   </section>
@@ -296,6 +325,9 @@
             <a href="https://github.com/Selimo100" class="social-link" target="_blank">
               <i class="bi bi-github"></i>
             </a>
+            <a href="https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" class="social-link" target="_blank">
+              <i class="bi bi-linkedin"></i>
+            </a>
             <a href="https://x.com/selimo_100" class="social-link" target="_blank">
               <i class="bi bi-twitter-x"></i>
             </a>
@@ -312,6 +344,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/error-handler.js"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/animations.js"></script>

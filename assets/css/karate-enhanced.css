@@ -1,0 +1,282 @@
+/* Enhanced Karate Page Styling */
+
+/* Professional hero section for karate page */
+.karate-hero {
+    background: linear-gradient(135deg, 
+        rgba(10, 25, 47, 0.9), 
+        rgba(17, 34, 64, 0.9)), 
+        url('../images/karate-hero.png') center/cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.karate-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+    animation: heroFloat 8s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.karate-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.karate-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.karate-hero p {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* Enhanced timeline styling */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-hover));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin: 3rem 0;
+    padding: 0 2rem;
+}
+
+.timeline-item:nth-child(odd) {
+    text-align: right;
+    padding-right: calc(50% + 2rem);
+}
+
+.timeline-item:nth-child(even) {
+    text-align: left;
+    padding-left: calc(50% + 2rem);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border: 3px solid var(--background);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: calc(50% - 8px);
+}
+
+.timeline-item:nth-child(even)::before {
+    left: calc(50% - 8px);
+}
+
+.timeline-content {
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform: translateY(-50%);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::after {
+    right: -10px;
+    border-left: 10px solid var(--background-secondary);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    left: -10px;
+    border-right: 10px solid var(--background-secondary);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.timeline-date {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.timeline-description {
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
+
+/* Karate stats/achievements cards */
+.achievement-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.achievement-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.achievement-label {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Responsive timeline */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        text-align: left !important;
+        padding-left: 70px !important;
+        padding-right: 1rem !important;
+    }
+    
+    .timeline-item::before {
+        left: 22px !important;
+        right: auto !important;
+    }
+    
+    .timeline-content::after {
+        left: -10px !important;
+        right: auto !important;
+        border-right: 10px solid var(--background-secondary) !important;
+        border-left: none !important;
+    }
+    
+    .karate-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .karate-hero p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Professional karate image styling */
+.karate-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.karate-image:hover {
+    transform: scale(1.02);
+}
+
+.karate-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Enhanced section spacing */
+.karate-section {
+    padding: 4rem 0;
+}
+
+.karate-section:nth-child(even) {
+    background: var(--background-secondary);
+}
+
+/* Professional button styling for karate page */
+.karate-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.karate-btn:hover {
+    background: var(--accent);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}

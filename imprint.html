@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/components/about.css" />
     <link rel="stylesheet" href="assets/css/components/projects.css" />
     <link rel="stylesheet" href="assets/css/components/contact.css" />
+    <link rel="stylesheet" href="assets/css/imprint-enhanced.css" />
 
     <link
       rel="icon"
@@ -40,6 +41,9 @@
       href="assets/images/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
+    
+    <!-- Theme initialization script - must be in head to prevent FOUC -->
+    <script src="assets/js/theme-init.js"></script>
   </head>
 
   <body>
@@ -86,30 +90,62 @@
       </div>
     </nav>
 
-    <main class="container" style="padding-top: 100px; padding-bottom: 50px">
-      <h1 class="section-title">Imprint</h1>
-      <section>
-        <h2>Legal Notice</h2>
-        <p>Selina Mogicato<br /></p>
-        <h2>Contact</h2>
-        <p><strong>Website Operator:</strong> Selina Mogicato</p>
-        <p>
-          <strong>Location:</strong> <br />
-          Zurich,<br />
-          Switzerland
-        </p>
-        <p>
-          <strong>Email:</strong>
-          <a href="mailto:selimo.contact@gmail.com">selimo.contact@gmail.com</a>
-        </p>
-        <h2>Disclaimer</h2>
-        <p>
-          This website contains links to external third-party websites, over
-          whose content I have no influence. Therefore, I cannot assume any
-          liability for these external contents. The respective provider or
-          operator of the linked pages is always responsible for their content.
-        </p>
-        <h2>License</h2>
+    <!-- Hero Section -->
+    <section class="imprint-hero">
+      <div class="container">
+        <h1>Legal Information</h1>
+        <p>Transparency and legal compliance for my professional portfolio</p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="imprint-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            
+            <!-- Contact Information -->
+            <div class="imprint-section">
+              <h2>Website Owner & Contact</h2>
+              <div class="contact-info">
+                <h4>Selina Mogicato</h4>
+                <p><i class="bi bi-geo-alt me-2"></i>Zurich, Switzerland</p>
+                <p><i class="bi bi-envelope me-2"></i><a href="mailto:selimo.contact@gmail.com">selimo.contact@gmail.com</a></p>
+                <p><i class="bi bi-linkedin me-2"></i><a href="https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" target="_blank">LinkedIn Profile</a></p>
+              </div>
+            </div>
+
+            <!-- Legal Notice -->
+            <div class="imprint-section">
+              <h2>Legal Notice</h2>
+              <p>
+                This website serves as a professional portfolio showcasing my work, skills, and experience 
+                as a web developer and student. All content is provided for informational purposes only.
+              </p>
+              <h3>Professional Background</h3>
+              <p>
+                Currently pursuing my apprenticeship in application development at BBC Basislehrjahr, 
+                with a focus on modern web technologies and software development practices.
+              </p>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="imprint-section">
+              <h2>Disclaimer & Liability</h2>
+              <p>
+                This website contains links to external third-party websites over whose content I have no influence. 
+                Therefore, I cannot assume any liability for these external contents. The respective provider or 
+                operator of the linked pages is always responsible for their content.
+              </p>
+              <p>
+                All project descriptions and achievements mentioned are accurate to the best of my knowledge. 
+                External links are provided for reference and may change without notice.
+              </p>
+            </div>
+
+            <!-- Copyright & License -->
+            <div class="imprint-section">
+              <h2>Copyright & License</h2>
         <p
           xmlns:cc="http://creativecommons.org/ns#"
           xmlns:dct="http://purl.org/dc/terms/"
@@ -157,57 +193,91 @@
               alt=""
           /></a>
         </p>
-        <h2>Copyright &amp; Image Credits</h2>
-        <p>
-          The images on this website were generated using
-          <a href="https://openai.com/dall-e" target="_blank">DALL·E</a>, an AI
-          image generation model by OpenAI. The prompts used for generating
-          these images were created by <strong>Selina Mogicato</strong>.
-        </p>
-        <p>
-          Where images are published under Creative Commons licenses, the
-          respective license terms apply. Any further use requires explicit
-          permission.
-        </p>
-        <h2>Privacy</h2>
-        <p>
-          Use of this website generally occurs without providing personal data.
-          In cases where personal data is collected, this is done solely on a
-          voluntary basis.
-        </p>
-      </section>
+              <p>
+                All original content, including text, images, and code examples, is the intellectual property 
+                of Selina Mogicato unless otherwise noted. Third-party assets and libraries maintain their 
+                respective licenses.
+              </p>
+            </div>
+
+            <!-- Image Credits -->
+            <div class="imprint-section">
+              <h2>Copyright & Image Credits</h2>
+              <p>
+                The images on this website were generated using
+                <a href="https://openai.com/dall-e" target="_blank">DALL·E</a>, an AI
+                image generation model by OpenAI. The prompts used for generating
+                these images were created by <strong>Selina Mogicato</strong>.
+              </p>
+              <p>
+                Where images are published under Creative Commons licenses, the
+                respective license terms apply. Any further use requires explicit
+                permission.
+              </p>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div class="imprint-section">
+              <h2>Privacy Policy</h2>
+              <h3>Data Collection</h3>
+              <p>
+                This website respects your privacy and follows best practices for data protection:
+              </p>
+              <ul>
+                <li>No personal data is collected from visitors without explicit consent</li>
+                <li>Contact form submissions are used solely for responding to inquiries</li>
+                <li>No tracking cookies are used for analytics or advertising purposes</li>
+                <li>Server logs may temporarily store IP addresses for security purposes</li>
+              </ul>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="imprint-section">
+              <h2>Technical Implementation</h2>
+              <p>
+                This portfolio website showcases modern web development practices and technologies:
+              </p>
+              <ul>
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), Bootstrap 5</li>
+                <li><strong>Backend:</strong> PHP for form processing</li>
+                <li><strong>Design:</strong> Responsive design, accessibility features, dark/light theme</li>
+                <li><strong>Performance:</strong> Optimized images, efficient CSS, minimal JavaScript</li>
+              </ul>
+            </div>
+
+            <!-- Back to Portfolio -->
+            <div class="text-center">
+              <a href="index.php" class="back-home-btn">
+                <i class="bi bi-arrow-left"></i>
+                Back to Portfolio
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </main>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer class="imprint-footer">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
             <div class="social-links">
-              <a
-                href="https://github.com/Selimo100"
-                class="social-link"
-                target="_blank"
-              >
+              <a href="https://github.com/Selimo100" class="social-link" target="_blank">
                 <i class="bi bi-github"></i>
               </a>
-              <a
-                href="https://x.com/selimo_100"
-                class="social-link"
-                target="_blank"
-              >
+              <a href="https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" class="social-link" target="_blank">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="https://x.com/selimo_100" class="social-link" target="_blank">
                 <i class="bi bi-twitter-x"></i>
               </a>
-              <a
-                href="https://www.instagram.com/selimo_100"
-                class="social-link"
-                target="_blank"
-              >
+              <a href="https://www.instagram.com/selimo_100" class="social-link" target="_blank">
                 <i class="bi bi-instagram"></i>
               </a>
             </div>
-            <div class="container text-center">
-              <p>Designed &amp; Built by Selina Mogicato</p>
-            </div>
+            <p><em>Last updated: October 2024 | Selina Mogicato - Professional Portfolio</em></p>
           </div>
         </div>
       </div>
