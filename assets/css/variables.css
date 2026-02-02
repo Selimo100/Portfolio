@@ -1,55 +1,62 @@
 :root {
-    /* Dark theme (default) */
-    --navy: #0A192F;
-    --light-navy: #112240;
-    --lightest-navy: #233554;
-    --blue: #64FFDA;
-    --light-blue: #73E7FF;
-    --slate: #8892B0;
-    --light-slate: #A8B2D1;
-    --lightest-slate: #CCD6F6;
-    --white: #E6F1FF;
-    
-    /* Additional semantic colors */
-    --background: var(--navy);
-    --background-secondary: var(--light-navy);
-    --background-tertiary: var(--lightest-navy);
-    --text-primary: var(--lightest-slate);
-    --text-secondary: var(--light-slate);
-    --text-tertiary: var(--slate);
-    --accent: var(--blue);
-    --accent-hover: var(--light-blue);
-    
-    /* Shadows and borders */
-    --shadow-light: rgba(2, 12, 27, 0.7);
-    --shadow-medium: rgba(2, 12, 27, 0.9);
-    --border-color: var(--lightest-navy);
-  }
+  /* Brand Palette - Dark Mode (Primary) */
+  --brand-dark-bg-primary: #0E1418;
+  --brand-dark-bg-secondary: #1A2228;
+  --brand-dark-accent-primary: #99D5E8;
+  --brand-dark-accent-secondary: #84BBD3;
+  --brand-dark-accent-muted: #57859F;
+  --brand-dark-text-primary: #FFFFFF;
+  --brand-dark-text-secondary: #C7D3DA;
+
+  /* Brand Palette - Light Mode (Secondary) */
+  --brand-light-bg-primary: #FFFFFF;
+  --brand-light-bg-secondary: #F4F7F9;
+  --brand-light-accent-primary: #57859F;
+  --brand-light-accent-secondary: #84BBD3;
+  --brand-light-accent-muted: #99D5E8;
+  --brand-light-text-primary: #0E1418;
+  --brand-light-text-secondary: #4A5A66;
+
+  /* Semantic Variables - Default (Dark Mode) */
+  --background: var(--brand-dark-bg-primary);
+  --background-secondary: var(--brand-dark-bg-secondary);
+  --background-tertiary: var(--brand-dark-bg-secondary);
   
-  /* Light theme variables */
-  [data-theme="light"] {
-    --navy: #ffffff;
-    --light-navy: #f8f9fa;
-    --lightest-navy: #e9ecef;
-    --blue: #0d6efd;
-    --light-blue: #0a58ca;
-    --slate: #495057;
-    --light-slate: #343a40;
-    --lightest-slate: #212529;
-    --white: #000000;
-    
-    /* Light theme semantic colors */
-    --background: #ffffff;
-    --background-secondary: #f8f9fa;
-    --background-tertiary: #e9ecef;
-    --text-primary: #212529;
-    --text-secondary: #343a40;
-    --text-tertiary: #495057;
-    --accent: #0d6efd;
-    --accent-hover: #0a58ca;
-    
-    /* Light theme shadows and borders */
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-medium: rgba(0, 0, 0, 0.15);
-    --border-color: #dee2e6;
-  }
+  --text-primary: var(--brand-dark-text-primary);
+  --text-secondary: var(--brand-dark-text-secondary);
+  --text-tertiary: var(--brand-dark-accent-muted);
+  
+  --accent: var(--brand-dark-accent-primary);
+  --accent-hover: var(--brand-dark-accent-secondary);
+  --accent-muted: var(--brand-dark-accent-muted);
+  
+  /* Shadows and borders */
+  --shadow-light: rgba(14, 20, 24, 0.7);
+  --shadow-medium: rgba(14, 20, 24, 0.9);
+  --border-color: var(--brand-dark-accent-muted);
+  
+  /* Font Families */
+  --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Light theme variables */
+[data-theme="light"] {
+  /* Semantic Variables - Light Mode */
+  --background: var(--brand-light-bg-primary);
+  --background-secondary: var(--brand-light-bg-secondary);
+  --background-tertiary: var(--brand-light-bg-secondary);
+  
+  --text-primary: var(--brand-light-text-primary);
+  --text-secondary: var(--brand-light-text-secondary);
+  --text-tertiary: var(--brand-light-text-secondary);
+  
+  --accent: var(--brand-light-accent-primary);
+  --accent-hover: var(--brand-light-accent-secondary);
+  --accent-muted: var(--brand-light-accent-muted);
+  
+  /* Shadows and borders */
+  --shadow-light: rgba(14, 20, 24, 0.1);
+  --shadow-medium: rgba(14, 20, 24, 0.15);
+  --border-color: #E1E8ED;
+}

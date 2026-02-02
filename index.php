@@ -37,7 +37,10 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Selina Mogicato</a>
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/Logo.png" alt="SM Logo" height="30" class="d-inline-block align-text-top me-2">
+        Selina Mogicato
+      </a>
       <div class="theme-toggle">
         <button class="theme-toggle-btn" aria-label="Toggle theme">
           <i class="bi bi-moon-fill"></i>
@@ -63,17 +66,23 @@
   <section id="home" class="hero-section">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
-        <div class="col-12">
-          <p class="welcome-text">Hi, my name is Selina</p>
+        <div class="col-lg-8">
+          <p class="welcome-text">Hi</p>
           <h1 class="name">Selina Mogicato</h1>
-          <h2 class="title typing-cursor">I'm a student and web developer.</h2>
+          <h2 class="title typing-cursor">Apprentice Application Developer · Full-Stack Web Developer</h2>
           <p class="description">
-            I'm Selina - a creative and technically skilled web developer who
-            creates unique digital experiences. Whether front-end or back-end,
-            my aim is to develop modern and functional solutions that inspire
-            .
+            I'm a creative developer who loves building
+            modern, functional, and user-focused digital experiences —
+            from clean frontends to robust backend systems.
+          </p>
+          <p class="mb-4 text-secondary">
+            <i class="bi bi-geo-alt-fill me-2"></i>Switzerland ·
+            <i class="bi bi-mortarboard-fill me-2 ms-3"></i>Apprentice Application Developer · BMS
           </p>
           <a href="#projects" class="cta-btn">View My Work</a>
+        </div>
+        <div class="col-lg-4 d-none d-lg-block text-center">
+          <img src="assets/images/Logo.png" alt="Selina Mogicato Logo" class="hero-logo-large img-fluid">
         </div>
       </div>
     </div>
@@ -86,30 +95,133 @@
       <div class="row align-items-center">
         <div class="col-md-6">
           <p>
-            Hello! I'm a passionate web developer who loves to create
-            beautiful and functional websites. I focus on writing clean,
-            elegant and efficient code.
+            I am currently completing my apprenticeship as an <strong>application developer</strong> while attending the <strong>Vocational Baccalaureate School (BMS-W)</strong>.
+            My focus lies in building <strong>clean, scalable, and well-structured web applications</strong> that are both technically solid and pleasant to use.
           </p>
+          <p>
+            I enjoy working across the full stack and care deeply about:
+          </p>
+          <ul class="mb-4 text-secondary">
+            <li>Clear architecture</li>
+            <li>Maintainable code</li>
+            <li>Thoughtful user experience</li>
+            <li>Real-world usability</li>
+          </ul>
+
           <div class="skills-container">
-            <h3>Skills</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">React js</span>
-              <span class="skill-tag">Vue js</span>
-              <span class="skill-tag">Expo</span>
-              <span class="skill-tag">Bootstrap</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Firebase & Supabase</span>
-              <span class="skill-tag">Flask</span>
+            <h3>Tech Stack</h3>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Languages</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Markdown</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Frontend</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Next.js</span>
+                <span class="skill-tag">Vite</span>
+                <span class="skill-tag">Tailwind</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">React Router</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Mobile</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">React Native</span>
+                <span class="skill-tag">Expo</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Backend & Frameworks</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Flask</span>
+                <span class="skill-tag">NPM</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Databases & Backend Services</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">Redis</span>
+                <span class="skill-tag">SQLite</span>
+                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag">Supabase</span>
+                <span class="skill-tag">MariaDB</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Hosting & Deployment</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Vercel</span>
+                <span class="skill-tag">Netlify</span>
+                <span class="skill-tag">Nginx</span>
+                <span class="skill-tag">Docker</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">CI/CD & Version Control</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">GitLab</span>
+                <span class="skill-tag">GitLab CI</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Testing & Code Quality</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Vitest</span>
+                <span class="skill-tag">Jest</span>
+                <span class="skill-tag">Prettier</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Monitoring & Tooling</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Grafana</span>
+                <span class="skill-tag">Gradle</span>
+                <span class="skill-tag">Prometheus</span>
+                <span class="skill-tag">Swagger</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="skill-category-title">Design & Presentation</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Canva</span>
+                <span class="skill-tag">Prezi</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="about-image">
-            <img src="assets/images/Profilepicture.png" alt="Profilepicture Selina Mogicato" class="profile-img">
+            <img src="assets/images/Portrait.png" alt="Profilepicture Selina Mogicato" class="profile-img">
           </div>
         </div>
       </div>
@@ -130,11 +242,10 @@
             <div class="project-content">
               <h3>Yumigo App</h3>
               <p>
-                A mobile recipe app that transforms food cravings into personalized recipe suggestions. Built with React Native, it features seasonal filtering, location-based recommendations, and an intuitive interface for mindful eating. Developed during my apprenticeship at BBC Basislehrjahr.
+                A mobile app that turns spontaneous food cravings into seasonal recipe suggestions.
               </p>
               <div class="project-tags">
                 <span>React Native</span>
-                <span>JavaScript</span>
                 <span>Expo</span>
                 <span>Firebase</span>
               </div>
@@ -157,8 +268,8 @@
             <div class="project-content">
               <h3>Rummy Websites</h3>
               <p>
-                A modern tool for managing rummy games with innovative functions and an intuitive user interface.
-                Created for my family as a project at the end of high school. Created with Bootstrap.
+                A modern web tool for managing Rummy games with innovative features and an intuitive UI.
+                Originally built as my final secondary school project for family use.
               </p>
               <div class="project-tags">
                 <span>HTML</span>
@@ -166,6 +277,7 @@
                 <span>JavaScript</span>
                 <span>PHP</span>
                 <span>SQL</span>
+                <span>Bootstrap</span>
               </div>
               <div class="project-links">
                 <a href="https://rummy.mogicato.ch/" class="project-link" target="_blank">
@@ -185,9 +297,8 @@
             <div class="project-content">
               <h3>Portfolio Berufbildungscenter</h3>
               <p>
-                A personal portfolio showcasing my journey as an apprentice application developer. Features my projects,
-                skills, and experiences with an elegant and user-friendly design. A platform to explore my progress and
-                creativity in web development. Created from scratch without any framework.
+                A personal portfolio showcasing my journey as an apprentice application developer.
+                Built completely from scratch without any framework.
               </p>
               <div class="project-tags">
                 <span>HTML</span>
@@ -203,33 +314,26 @@
           </div>
         </div>
 
+        <!-- Work Portfolio -->
         <div class="col-md-6">
           <div class="project-card">
             <div class="project-image">
-              <img src="assets/images/arcade.png" alt="Selina's Arcade Websites Screenshot" class="project-img">
+              <img src="assets/images/selina-working.png" alt="Work Portfolio Screenshot" class="project-img">
             </div>
             <div class="project-content">
-              <h3>Selina's Arcade</h3>
+              <h3>Work Portfolio</h3>
               <p>
-                An interactive arcade section within my personal portfolio, showcasing web-based games and projects.
-                Features engaging gameplay, dynamic visuals, and smooth user experience. A creative space to explore my
-                skills in front-end development and interactive design. Built with custom code and animations.
-                Or you can press at any spot on this website the key "a" to open the arcade.
+                A dedicated portfolio developed for my professional environment, showcasing projects,
+                achievements, and technical growth within my apprenticeship.
               </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
               <div class="project-links">
-                <a href="assets/arcade/arcade.html" class="project-link" target="_blank">
-                  <i class="bi bi-controller me-1"></i>Play Games
+                <a href="https://selina.sunrise-avengers.ch" class="project-link" target="_blank">
+                  <i class="bi bi-eye me-1"></i>View Project
                 </a>
               </div>
             </div>
           </div>
         </div>
-
         <!-- Kaisho DojoTime Project -->
         <div class="col-md-6">
           <div class="project-card">
@@ -327,17 +431,26 @@
       <div class="row">
         <div class="col-12 text-center">
           <div class="social-links">
-            <a href="https://github.com/Selimo100" class="social-link" target="_blank">
-              <i class="bi bi-github"></i>
+            <a href="https://www.instagram.com/selina.mogi" class="social-link" target="_blank" title="Instagram">
+              <i class="bi bi-instagram"></i>
             </a>
-            <a href="https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" class="social-link" target="_blank">
+            <a href="https://snapchat.com/t/hR0kXwyE" class="social-link" target="_blank" title="Snapchat">
+              <i class="bi bi-snapchat"></i>
+            </a>
+            <a href="https://www.facebook.com/selina.mogicato" class="social-link" target="_blank" title="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/selina-mogicato-a48166316" class="social-link" target="_blank" title="LinkedIn">
               <i class="bi bi-linkedin"></i>
             </a>
-            <a href="https://x.com/selimo_100" class="social-link" target="_blank">
+            <a href="https://x.com/SMogicat" class="social-link" target="_blank" title="X (Twitter)">
               <i class="bi bi-twitter-x"></i>
             </a>
-            <a href="https://www.instagram.com/selimo_100" class="social-link" target="_blank">
-              <i class="bi bi-instagram"></i>
+            <a href="https://www.youtube.com/@SelinaMogicato" class="social-link" target="_blank" title="YouTube">
+              <i class="bi bi-youtube"></i>
+            </a>
+            <a href="https://github.com/Selimo100" class="social-link" target="_blank" title="GitHub">
+              <i class="bi bi-github"></i>
             </a>
           </div>
           <div class="container text-center">

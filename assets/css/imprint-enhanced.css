@@ -17,8 +17,8 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(100, 255, 218, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(153, 213, 232, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(153, 213, 232, 0.03) 0%, transparent 50%);
     animation: float 10s ease-in-out infinite;
 }
 
@@ -155,9 +155,9 @@
 
 .back-home-btn:hover {
     background: var(--accent);
-    color: var(--navy);
+    color: var(--background);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+    box-shadow: 0 5px 15px rgba(153, 213, 232, 0.3);
 }
 
 /* Professional footer for imprint */

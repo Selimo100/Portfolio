@@ -18,16 +18,16 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 30% 40%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 30% 40%, rgba(153, 213, 232, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(153, 213, 232, 0.08) 0%, transparent 50%);
   pointer-events: none;
   animation: backgroundFloat 15s ease-in-out infinite alternate;
 }
 
 [data-theme="light"] .karate-hero::before {
   background: 
-    radial-gradient(circle at 30% 40%, rgba(13, 110, 253, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(13, 110, 253, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 30% 40%, rgba(87, 133, 159, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(87, 133, 159, 0.08) 0%, transparent 50%);
 }
 
 .karate-hero h1 {
@@ -124,7 +124,9 @@
 
 .karate-image img {
   width: 100%;
-  height: auto;
+  max-height: 400px; /* Restrict height so it's not huge */
+  object-fit: cover; /* Maintain aspect ratio */
+  display: block;
   transition: transform 0.3s ease;
 }
 

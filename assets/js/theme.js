@@ -48,7 +48,7 @@ class ThemeManager {
       themeColorMeta.name = 'theme-color';
       document.head.appendChild(themeColorMeta);
     }
-    themeColorMeta.content = theme === 'light' ? '#ffffff' : '#0A192F';
+    themeColorMeta.content = theme === 'light' ? '#ffffff' : '#0E1418';
   }
 
   setupEventListeners() {

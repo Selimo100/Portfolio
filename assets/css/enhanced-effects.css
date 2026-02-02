@@ -164,7 +164,7 @@
 
 .skill-tag:hover {
     background: var(--accent);
-    color: var(--navy);
+    color: var(--background);
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -196,7 +196,7 @@
 }
 
 .cta-btn:hover, .project-link:hover {
-    color: var(--navy);
+    color: var(--background);
     border-color: var(--accent);
     box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.2),
@@ -293,7 +293,7 @@
 }
 
 .social-link:hover {
-    color: var(--navy);
+    color: var(--background);
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
@@ -311,7 +311,7 @@
 .contact-form .form-control:focus {
     background: var(--background-tertiary);
     border-color: var(--accent);
-    box-shadow: 0 0 0 0.2rem rgba(100, 255, 218, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(153, 213, 232, 0.25);
     transform: translateY(-2px);
 }
 
