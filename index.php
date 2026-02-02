@@ -67,7 +67,7 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-lg-8">
-          <p class="welcome-text">Hi</p>
+          <p class="welcome-text">Hi, I'm</p>
           <h1 class="name">Selina Mogicato</h1>
           <h2 class="title typing-cursor">Apprentice Application Developer · Full-Stack Web Developer</h2>
           <p class="description">

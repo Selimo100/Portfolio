@@ -18,14 +18,14 @@
   position: relative;
   border-radius: 50%; /* Circular */
   overflow: hidden;
-  border: 4px solid var(--accent); /* Brand border */
-  box-shadow: 0 0 30px rgba(153, 213, 232, 0.2); /* Glow effect */
-  transition: all 0.3s ease;
+  border: 2px solid var(--accent); /* Thinner, more elegant border */
+  box-shadow: 0 0 40px rgba(153, 213, 232, 0.15); /* Soft, pro glow */
+  transition: all 0.4s ease;
 }
 
 .about-image:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 50px rgba(153, 213, 232, 0.4);
+  box-shadow: 0 0 60px rgba(153, 213, 232, 0.25);
   border-color: var(--accent-hover);
 }
 
@@ -41,15 +41,16 @@
 }
 
 .skills-container {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
 
 .skills-container h3 {
   color: var(--text-primary);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
   position: relative;
+  letter-spacing: -0.01em;
 }
 
 .skills-container h3::after {
@@ -58,7 +59,8 @@
   width: 40px;
   height: 2px;
   background-color: var(--accent);
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  opacity: 0.8;
 }
 
 /* Categorized Skills */
@@ -91,20 +93,23 @@
 
 .skill-tag {
   background-color: var(--background-secondary);
-  color: var(--accent);
-  padding: 0.7rem 1.2rem;
-  border-radius: 25px;
+  color: var(--text-secondary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 500;
-  border: 2px solid var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Very subtle neutral border */
   transition: all 0.3s ease;
   cursor: default;
+  letter-spacing: 0.02em;
 }
 
 .skill-tag:hover {
-  background-color: var(--accent);
-  color: var(--background);
-  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: rgba(153, 213, 232, 0.05); /* Very subtle tint */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .image-placeholder {
