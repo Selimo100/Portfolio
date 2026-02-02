@@ -11,9 +11,9 @@
   /* Brand Palette - Light Mode (Secondary) */
   --brand-light-bg-primary: #FFFFFF;
   --brand-light-bg-secondary: #F4F7F9;
-  --brand-light-accent-primary: #57859F;
+  --brand-light-accent-primary: #2C8BB9; /* Adjusted to match dark mode cyan tone */
   --brand-light-accent-secondary: #84BBD3;
-  --brand-light-accent-muted: #99D5E8;
+  --brand-light-accent-muted: #57859F;
   --brand-light-text-primary: #0E1418;
   --brand-light-text-secondary: #4A5A66;
 

@@ -186,6 +186,12 @@
     background-clip: text;
 }
 
+[data-theme="light"] .navbar-brand {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--accent) !important;
+}
+
 /* Glassmorphism Effect for Cards */
 .project-card::after {
     content: '';

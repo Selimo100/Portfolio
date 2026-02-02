@@ -13,11 +13,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     
     if (window.scrollY > 50) {
       navbar.style.backgroundColor = currentTheme === 'light' 
-        ? 'rgba(0, 123, 255, 0.95)'
+        ? 'rgba(255, 255, 255, 0.85)'
         : 'rgba(10, 25, 47, 0.95)';
     } else {
       navbar.style.backgroundColor = currentTheme === 'light'
-        ? 'rgba(0, 123, 255, 0.85)'
+        ? 'rgba(255, 255, 255, 0.85)'
         : 'rgba(10, 25, 47, 0.85)';
     }
   });

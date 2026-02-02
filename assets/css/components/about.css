@@ -15,12 +15,14 @@
   max-width: 350px; /* Restrict width */
   aspect-ratio: 1 / 1;
   margin: 0 auto; /* Center in column */
-  position: relative;
+  position: sticky;
+  top: 100px; /* Stick to viewport top with some clearance */
   border-radius: 50%; /* Circular */
   overflow: hidden;
   border: 2px solid var(--accent); /* Thinner, more elegant border */
   box-shadow: 0 0 40px rgba(153, 213, 232, 0.15); /* Soft, pro glow */
   transition: all 0.4s ease;
+  z-index: 10;
 }
 
 .about-image:hover {
@@ -74,7 +76,8 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
 }

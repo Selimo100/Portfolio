@@ -69,7 +69,7 @@
         <div class="col-lg-8">
           <p class="welcome-text">Hi, I'm</p>
           <h1 class="name">Selina Mogicato</h1>
-          <h2 class="title typing-cursor">Apprentice Application Developer · Full-Stack Web Developer</h2>
+          <h2 class="title typing-cursor">Apprentice Application Developer</h2>
           <p class="description">
             I'm a creative developer who loves building
             modern, functional, and user-focused digital experiences —
@@ -92,7 +92,7 @@
   <section id="about" class="section-padding">
     <div class="container">
       <h2 class="section-title">About Me</h2>
-      <div class="row align-items-center">
+      <div class="row">
         <div class="col-md-6">
           <p>
             I am currently completing my apprenticeship as an <strong>application developer</strong> while attending the <strong>Vocational Baccalaureate School (BMS-W)</strong>.

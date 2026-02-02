@@ -26,6 +26,21 @@ class ThemeManager {
     }
     this.updateThemeIcon(theme === 'light');
     this.updateMetaThemeColor(theme);
+    this.updateTechIcons(theme);
+  }
+
+  updateTechIcons(theme) {
+    const techIcons = document.querySelectorAll('.tech-icons');
+    techIcons.forEach(icon => {
+      const src = icon.getAttribute('src');
+      if (src) {
+        // skillicons.dev uses 'dark' or 'light'
+        const newSrc = src.replace(/theme=(dark|light)/, `theme=${theme}`);
+        if (newSrc !== src) {
+          icon.setAttribute('src', newSrc);
+        }
+      }
+    });
   }
 
   toggleTheme() {
@@ -37,7 +52,9 @@ class ThemeManager {
   updateThemeIcon(isLight) {
     const themeIcon = document.querySelector('.theme-toggle-btn i');
     if (themeIcon) {
-      themeIcon.className = isLight ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+      // If Light Theme active -> Show Moon (to switch to dark)
+      // If Dark Theme active -> Show Sun (to switch to light)
+      themeIcon.className = isLight ? 'bi bi-moon-fill' : 'bi bi-sun-fill';
     }
   }
 
