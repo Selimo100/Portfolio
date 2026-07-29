@@ -1,474 +1,538 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+require __DIR__ . '/assets/php/data/projects.php';
+
+$pageTitle = 'Selina Mogicato — Application Developer';
+$pageDescription = 'Portfolio of Selina Mogicato, apprentice application developer from Switzerland. Web and mobile projects built with React Native, TypeScript, PHP and more.';
+$canonicalPath = '/';
+$pageStyles = ['assets/css/pages/home.css'];
+
+// In-page anchors on this page; sub-pages point back at index.php.
+$navPrefix = '';
+$activePage = 'home';
+$navSpy = true;
+
+$formErrors = $_SESSION['errors'] ?? [];
+$formSuccess = $_SESSION['success'] ?? null;
+$formError = $_SESSION['error'] ?? null;
+$oldInput = $_SESSION['old_input'] ?? [];
+unset($_SESSION['errors'], $_SESSION['success'], $_SESSION['error']);
+if ($formSuccess) {
+    unset($_SESSION['old_input']);
+    $oldInput = [];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selina Mogicato</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/utilities.css">
-  <link rel="stylesheet" href="assets/css/components/navbar.css">
-  <link rel="stylesheet" href="assets/css/components/hero.css">
-  <link rel="stylesheet" href="assets/css/components/about.css">
-  <link rel="stylesheet" href="assets/css/components/projects.css">
-  <link rel="stylesheet" href="assets/css/components/contact.css">
-  <link rel="stylesheet" href="assets/css/enhanced-effects.css">
-  <link rel="stylesheet" href="assets/css/professional-effects.css">
-
-  <link rel="icon" type="image/png" href="assets/images/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
-
-  <!-- Theme initialization script - must be in head to prevent FOUC -->
-  <script src="assets/js/theme-init.js"></script>
+  <?php require __DIR__ . '/assets/php/head.php'; ?>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Selina Mogicato",
+      "url": "https://selina.mogicato.ch",
+      "jobTitle": "Apprentice Application Developer",
+      "email": "mailto:selimo.contact@gmail.com",
+      "address": { "@type": "PostalAddress", "addressCountry": "CH" },
+      "sameAs": [
+        "https://github.com/Selimo100",
+        "https://www.linkedin.com/in/selina-mogicato-a48166316"
+      ]
+    }
+  </script>
 </head>
 
-<body>
-  <!-- Skip to content link for accessibility -->
-  <a href="#home" class="skip-link">Skip to main content</a>
+<body id="top">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="assets/images/Logo.png" alt="SM Logo" height="30" class="d-inline-block align-text-top me-2">
-        Selina Mogicato
-      </a>
-      <div class="theme-toggle">
-        <button class="theme-toggle-btn" aria-label="Toggle theme">
-          <i class="bi bi-moon-fill"></i>
-        </button>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="karate.html">Karate</a></li>
-          <li class="nav-item"><a class="nav-link" href="imprint.html">Imprint</a></li>
+  <?php require __DIR__ . '/assets/php/header.php'; ?>
+
+  <main id="main">
+
+    <!-- ================= Hero ================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container container--content hero__inner">
+        <p class="status-pill">
+          <span class="status-pill__dot" aria-hidden="true"></span>
+          Apprentice application developer · Switzerland
+        </p>
+
+        <h1 class="hero-title" id="hero-title">Selina Mogicato</h1>
+
+        <p class="hero__role">I build software people actually use.</p>
+
+        <p class="body-large hero__lead">
+          I&rsquo;m completing my apprenticeship as an application developer
+          while attending vocational baccalaureate school. I work across the
+          full stack — from clean frontends to the backend systems behind
+          them — and I care most about clear architecture and code that stays
+          maintainable.
+        </p>
+
+        <div class="btn-row btn-row--center">
+          <a class="btn btn--primary btn--lg" href="#work">View my work</a>
+          <a class="btn btn--secondary btn--lg" href="#contact">Get in touch</a>
+        </div>
+
+        <ul class="hero__meta">
+          <li><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>Switzerland</li>
+          <li><i class="bi bi-mortarboard-fill" aria-hidden="true"></i>Apprenticeship &amp; BMS-W</li>
+          <li><i class="bi bi-github" aria-hidden="true"></i>
+            <a href="https://github.com/Selimo100" target="_blank" rel="noopener noreferrer">Selimo100</a>
+          </li>
         </ul>
       </div>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero-section">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center">
-        <div class="col-lg-8">
-          <p class="welcome-text">Hi, I'm</p>
-          <h1 class="name">Selina Mogicato</h1>
-          <h2 class="title typing-cursor">Apprentice Application Developer</h2>
-          <p class="description">
-            I'm a creative developer who loves building
-            modern, functional, and user-focused digital experiences —
-            from clean frontends to robust backend systems.
-          </p>
-          <p class="mb-4 text-secondary">
-            <i class="bi bi-geo-alt-fill me-2"></i>Switzerland ·
-            <i class="bi bi-mortarboard-fill me-2 ms-3"></i>Apprentice Application Developer · BMS
-          </p>
-          <a href="#projects" class="cta-btn">View My Work</a>
-        </div>
-        <div class="col-lg-4 d-none d-lg-block text-center">
-          <img src="assets/images/Logo.png" alt="Selina Mogicato Logo" class="hero-logo-large img-fluid">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section-padding">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <p>
-            I am currently completing my apprenticeship as an <strong>application developer</strong> while attending the <strong>Vocational Baccalaureate School (BMS-W)</strong>.
-            My focus lies in building <strong>clean, scalable, and well-structured web applications</strong> that are both technically solid and pleasant to use.
-          </p>
-          <p>
-            I enjoy working across the full stack and care deeply about:
-          </p>
-          <ul class="mb-4 text-secondary">
-            <li>Clear architecture</li>
-            <li>Maintainable code</li>
-            <li>Thoughtful user experience</li>
-            <li>Real-world usability</li>
-          </ul>
-
-          <div class="skills-container">
-            <h3>Tech Stack</h3>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Languages</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Markdown</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Frontend</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">Next.js</span>
-                <span class="skill-tag">Vite</span>
-                <span class="skill-tag">Tailwind</span>
-                <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">React Router</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Mobile</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">Expo</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Backend & Frameworks</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Flask</span>
-                <span class="skill-tag">NPM</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Databases & Backend Services</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">Redis</span>
-                <span class="skill-tag">SQLite</span>
-                <span class="skill-tag">Firebase</span>
-                <span class="skill-tag">Supabase</span>
-                <span class="skill-tag">MariaDB</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Hosting & Deployment</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Vercel</span>
-                <span class="skill-tag">Netlify</span>
-                <span class="skill-tag">Nginx</span>
-                <span class="skill-tag">Docker</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">CI/CD & Version Control</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">GitHub</span>
-                <span class="skill-tag">GitLab</span>
-                <span class="skill-tag">GitLab CI</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Testing & Code Quality</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Vitest</span>
-                <span class="skill-tag">Jest</span>
-                <span class="skill-tag">Prettier</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Monitoring & Tooling</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Grafana</span>
-                <span class="skill-tag">Gradle</span>
-                <span class="skill-tag">Prometheus</span>
-                <span class="skill-tag">Swagger</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Design & Presentation</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Canva</span>
-                <span class="skill-tag">Prezi</span>
-              </div>
-            </div>
+      <div class="container">
+        <div class="hero-showcase">
+          <div class="hero-showcase__item hero-showcase__item--side">
+            <img
+              src="assets/images/Kaisho-DojoTime.png"
+              alt="The Kaisho DojoTime training schedule."
+              width="1365" height="592"
+              loading="lazy" decoding="async"
+              sizes="30vw"
+            />
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="about-image">
-            <img src="assets/images/Portrait.png" alt="Profilepicture Selina Mogicato" class="profile-img">
+          <div class="hero-showcase__item hero-showcase__item--lead">
+            <img
+              src="assets/images/Rummy.png"
+              alt="The Rummy scorekeeping web app."
+              width="1893" height="896"
+              fetchpriority="high" decoding="async"
+              sizes="(max-width: 860px) 92vw, 40vw"
+            />
+          </div>
+          <div class="hero-showcase__item hero-showcase__item--side">
+            <img
+              src="assets/images/portfolio_bbc.png"
+              alt="The Berufsbildungscenter portfolio site."
+              width="1018" height="544"
+              loading="lazy" decoding="async"
+              sizes="30vw"
+            />
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section-padding">
-    <div class="container">
-      <h2 class="section-title">My Projects</h2>
-      <div class="row g-4">
-        <!-- Project Card 1 -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/yumigo_app_project.jpg" alt="Yumigo App Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Yumigo App</h3>
-              <p>
-                A mobile app that turns spontaneous food cravings into seasonal recipe suggestions.
-              </p>
-              <div class="project-tags">
-                <span>React Native</span>
-                <span>Expo</span>
-                <span>Firebase</span>
-              </div>
-              <div class="project-links">
-                <a href="https://yumigoapp.netlify.app/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-                <a href="assets/images/yumigo_app_video.mp4" class="project-link" target="_blank">
-                  <i class="bi bi-play-circle me-1"></i>Demo Video
-                </a>
-              </div>
-            </div>
-          </div>
-        </div><!-- Project Card 2 -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/Rummy.png" alt="Rummy Websites Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Rummy Websites</h3>
-              <p>
-                A modern web tool for managing Rummy games with innovative features and an intuitive UI.
-                Originally built as my final secondary school project for family use.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>PHP</span>
-                <span>SQL</span>
-                <span>Bootstrap</span>
-              </div>
-              <div class="project-links">
-                <a href="https://rummy.mogicato.ch/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
+    <!-- ================= Selected work ================= -->
+    <section id="work" class="section section--white section--lead-in" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-heading section-heading--center reveal">
+          <p class="eyebrow eyebrow--accent">Selected work</p>
+          <h2 class="section-title" id="work-title">Things I&rsquo;ve built</h2>
+          <p class="body-large section-heading__lead">
+            Applications built for real people — a family card game, a karate
+            club and a kitchen. Each one shipped and in use.
+          </p>
         </div>
-        <!-- next-->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/portfolio_bbc.png" alt="Portfolio Berufbildungscenter Websites Screenshot"
-                class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Portfolio Berufbildungscenter</h3>
-              <p>
-                A personal portfolio showcasing my journey as an apprentice application developer.
-                Built completely from scratch without any framework.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <div class="project-links">
-                <a href="https://selina.mogicato.ch/Portfolio_bbc/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Work Portfolio -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/selina-working.png" alt="Work Portfolio Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Work Portfolio</h3>
-              <p>
-                A dedicated portfolio developed for my professional environment, showcasing projects,
-                achievements, and technical growth within my apprenticeship.
-              </p>
-              <div class="project-links">
-                <a href="https://selina.sunrise-avengers.ch" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Kaisho DojoTime Project -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image logo-image">
-              <img src="assets/images/Kaisho-DojoTime.png" alt="Kaisho DojoTime App Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Kaisho DojoTime</h3>
-              <p>
-                An organisation tool developed for my Karate club, Kaisho Karate Bassersdorf. It helps manage
-                training schedules, who are the trainers, and club events efficiently. Built with modern
-                technologies to streamline club administration and improve communication.
-              </p>
-              <div class="project-tags">
-                <span>TypeScript</span>
-                <span>Supabase</span>
-              </div>
-              <div class="project-links">
-                <a href="https://kaisho-dojotime.netlify.app/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center mb-4">Get In Touch</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
+    <?php foreach ($featuredProjects as $index => $project): ?>
+      <?php
+        $position = $index + 1;
+        require __DIR__ . '/assets/php/components/featured-project.php';
+      ?>
+    <?php endforeach; ?>
 
-          <!-- Display Success Message -->
-          <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <i class="bi bi-check-circle-fill"></i> <?php echo $_SESSION['success']; ?>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php unset($_SESSION['success']);
-            unset($_SESSION['old_input']); ?>
-          <?php endif; ?>
+    <!-- ================= More work ================= -->
+    <section class="section section--white" aria-labelledby="more-work-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">More work</p>
+          <h2 class="title-sm" id="more-work-title">Other projects</h2>
+        </div>
 
-          <!-- Display Validation Errors -->
-          <?php if (isset($_SESSION['errors'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <i class="bi bi-exclamation-triangle-fill"></i> <strong>There were some issues:</strong>
-              <ul class="mb-0">
-                <?php foreach ($_SESSION['errors'] as $error): ?>
-                  <li><?php echo htmlspecialchars($error); ?></li>
+        <div class="project-grid reveal-stagger">
+          <?php foreach ($otherProjects as $item): ?>
+            <article class="card project-card">
+              <div class="frame frame--zoom project-card__media">
+                <img
+                  src="<?php echo htmlspecialchars($item['image']['src']); ?>"
+                  alt="<?php echo htmlspecialchars($item['image']['alt']); ?>"
+                  width="<?php echo (int) $item['image']['width']; ?>"
+                  height="<?php echo (int) $item['image']['height']; ?>"
+                  loading="lazy" decoding="async"
+                  sizes="(max-width: 720px) 92vw, 45vw"
+                />
+              </div>
+              <div class="card__body">
+                <h3 class="project-card__title">
+                  <a href="<?php echo htmlspecialchars($item['url']); ?>" target="_blank" rel="noopener noreferrer">
+                    <?php echo htmlspecialchars($item['name']); ?>
+                  </a>
+                </h3>
+                <p class="body-sm"><?php echo htmlspecialchars($item['summary']); ?></p>
+                <?php if (!empty($item['tech'])): ?>
+                  <ul class="tag-list">
+                    <?php foreach ($item['tech'] as $tech): ?>
+                      <li class="tag"><?php echo htmlspecialchars($tech); ?></li>
+                    <?php endforeach; ?>
+                  </ul>
+                <?php endif; ?>
+                <p class="project-card__foot">
+                  <span class="text-link" aria-hidden="true">
+                    Visit site <i class="bi bi-arrow-right"></i>
+                  </span>
+                </p>
+              </div>
+            </article>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= About ================= -->
+    <section id="about" class="section section--wash" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--accent">About</p>
+          <h2 class="section-title" id="about-title">Who&rsquo;s behind this</h2>
+        </div>
+
+        <div class="about__grid">
+          <div class="frame frame--raised about__portrait reveal">
+            <img
+              src="assets/images/Portrait.png"
+              alt="Portrait of Selina Mogicato."
+              width="1536" height="1024"
+              loading="lazy" decoding="async"
+              sizes="(max-width: 860px) 92vw, 40vw"
+            />
+          </div>
+
+          <div class="stack-lg reveal">
+            <p class="body-large">
+              I am currently completing my apprenticeship as an application
+              developer while attending the Vocational Baccalaureate School
+              (BMS-W). My focus is on building clean, scalable and
+              well-structured web applications that are technically solid and
+              pleasant to use.
+            </p>
+            <p class="body measure">
+              Most of my projects start with a real problem close to me: a
+              family card game that needed a better scoreboard, a karate club
+              that was managing its schedule by hand, a kitchen with too many
+              ingredients and no plan. Building for people I know keeps me
+              honest about whether something actually works.
+            </p>
+            <p class="body measure">
+              I enjoy working across the full stack, and I&rsquo;m happiest when
+              a system is small enough to understand end to end but real enough
+              that people depend on it. Outside of code, I train and teach
+              Shotokan karate — a practice that has shaped how I approach
+              precision and patience in everything else.
+            </p>
+
+            <ul class="about__values">
+              <li>
+                <i class="bi bi-diagram-3-fill" aria-hidden="true"></i>
+                <span><strong>Clear architecture</strong> — structure that explains itself.</span>
+              </li>
+              <li>
+                <i class="bi bi-code-square" aria-hidden="true"></i>
+                <span><strong>Maintainable code</strong> — written for whoever reads it next.</span>
+              </li>
+              <li>
+                <i class="bi bi-person-hearts" aria-hidden="true"></i>
+                <span><strong>Thoughtful user experience</strong> — the interface should get out of the way.</span>
+              </li>
+              <li>
+                <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                <span><strong>Real-world usability</strong> — it has to hold up outside the demo.</span>
+              </li>
+            </ul>
+
+            <ul class="timeline">
+              <li class="timeline__item">
+                <div>
+                  <p class="timeline__date">Current</p>
+                </div>
+                <div>
+                  <h3 class="title-xs">Apprenticeship, Application Development</h3>
+                  <p class="timeline__org">BBC Basislehrjahr</p>
+                  <p class="body-sm timeline__body">
+                    Training in application development with a focus on modern
+                    web technologies and software development practice.
+                  </p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <div>
+                  <p class="timeline__date">Current</p>
+                </div>
+                <div>
+                  <h3 class="title-xs">Vocational Baccalaureate School (BMS-W)</h3>
+                  <p class="timeline__org">Alongside the apprenticeship</p>
+                  <p class="body-sm timeline__body">
+                    Business-oriented vocational baccalaureate, taken in
+                    parallel with the apprenticeship.
+                  </p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <div>
+                  <p class="timeline__date">Since 2016</p>
+                </div>
+                <div>
+                  <h3 class="title-xs">Shotokan Karate — practising and teaching</h3>
+                  <p class="timeline__org">Kaisho Karate Bassersdorf</p>
+                  <p class="body-sm timeline__body">
+                    Brown belt, competing regionally and internationally, and
+                    teaching children since 2025.
+                    <a class="text-link" href="karate.php">Read the full story <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Skills ================= -->
+    <section id="skills" class="section section--white" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--accent">Toolkit</p>
+          <h2 class="section-title" id="skills-title">Technologies I work with</h2>
+          <p class="body-large section-heading__lead">
+            Languages, frameworks and tools I&rsquo;ve used across school,
+            apprenticeship and personal projects.
+          </p>
+        </div>
+
+        <div class="skills reveal-stagger">
+          <?php foreach (array_values($skillGroups) as $groupIndex => $skills): ?>
+            <?php $groupName = array_keys($skillGroups)[$groupIndex]; ?>
+            <section class="skills__group" aria-labelledby="skills-group-<?php echo $groupIndex; ?>">
+              <h3 class="skills__title" id="skills-group-<?php echo $groupIndex; ?>">
+                <?php echo htmlspecialchars($groupName); ?>
+              </h3>
+              <ul class="tag-list">
+                <?php foreach ($skills as $skill): ?>
+                  <li class="tag"><?php echo htmlspecialchars($skill); ?></li>
                 <?php endforeach; ?>
               </ul>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php unset($_SESSION['errors']); ?>
-          <?php endif; ?>
-
-          <!-- Contact Form -->
-          <form class="contact-form needs-validation" action="sendMail.php" method="POST" novalidate>
-            <div class="mb-3">
-              <label for="name" class="form-label">Your Name</label>
-              <input type="text" name="name" id="name" class="form-control"
-                placeholder="Your Name" value="<?php echo htmlspecialchars($_SESSION['old_input']['name'] ?? ''); ?>" required>
-              <div class="invalid-feedback">Please enter your name.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">Your Email</label>
-              <input type="email" name="email" id="email" class="form-control"
-                placeholder="Your Email" value="<?php echo htmlspecialchars($_SESSION['old_input']['email'] ?? ''); ?>" required>
-              <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea name="message" id="message" class="form-control" rows="5"
-                placeholder="Your Message" required><?php echo htmlspecialchars($_SESSION['old_input']['message'] ?? ''); ?></textarea>
-              <div class="invalid-feedback">Please enter your message.</div>
-            </div>
-
-            <button type="submit" class="cta-btn btn btn-primary">Send Message</button>
-          </form>
-
+            </section>
+          <?php endforeach; ?>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <div class="social-links">
-            <a href="https://www.instagram.com/selina.mogi" class="social-link" target="_blank" title="Instagram">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://snapchat.com/t/hR0kXwyE" class="social-link" target="_blank" title="Snapchat">
-              <i class="bi bi-snapchat"></i>
-            </a>
-            <a href="https://www.facebook.com/selina.mogicato" class="social-link" target="_blank" title="Facebook">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/selina-mogicato-a48166316" class="social-link" target="_blank" title="LinkedIn">
-              <i class="bi bi-linkedin"></i>
-            </a>
-            <a href="https://x.com/SMogicat" class="social-link" target="_blank" title="X (Twitter)">
-              <i class="bi bi-twitter-x"></i>
-            </a>
-            <a href="https://www.youtube.com/@SelinaMogicato" class="social-link" target="_blank" title="YouTube">
-              <i class="bi bi-youtube"></i>
-            </a>
-            <a href="https://github.com/Selimo100" class="social-link" target="_blank" title="GitHub">
-              <i class="bi bi-github"></i>
-            </a>
+    <!-- ================= Arcade ================= -->
+    <section id="arcade" class="section surface-dark" aria-labelledby="arcade-title">
+      <div class="container">
+        <div class="arcade__grid">
+          <div class="stack-lg reveal">
+            <p class="eyebrow eyebrow--accent">Side quest</p>
+            <h2 class="section-title" id="arcade-title">The Arcade</h2>
+            <p class="body-large">
+              Twelve small browser games I wrote from scratch — Pong, Snake,
+              Breakout, Hangman and more. No engine, no framework: just canvas,
+              DOM and plain JavaScript.
+            </p>
+            <p class="body measure">
+              It started as a way to practise game loops, collision detection
+              and state handling, and it stayed because it&rsquo;s fun. Play it
+              right here, or open it full screen.
+            </p>
+            <div class="btn-row">
+              <a
+                class="btn btn--primary btn--lg"
+                href="assets/arcade/arcade.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open the arcade
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+              </a>
+            </div>
+            <p class="body-sm arcade__hint">
+              <i class="bi bi-lightbulb" aria-hidden="true"></i>
+              Anywhere on this site, press <kbd>A</kbd> to jump straight there.
+            </p>
           </div>
-          <div class="container text-center">
-            <p>Designed &amp; Built by Selina Mogicato</p>
+
+          <div
+            class="frame frame--raised arcade__frame reveal"
+            data-arcade-embed="assets/arcade/arcade.html"
+          >
+            <noscript>
+              <img
+                src="assets/images/arcade.png"
+                alt="The arcade homepage showing a grid of playable games."
+                width="1885" height="868"
+                loading="lazy"
+              />
+            </noscript>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ================= Contact ================= -->
+    <section id="contact" class="section section--wash" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--accent">Contact</p>
+          <h2 class="section-title" id="contact-title">Let&rsquo;s build something</h2>
+          <p class="body-large section-heading__lead">
+            Open to projects, apprenticeship collaboration and a good technical
+            conversation. Send a message and I&rsquo;ll get back to you.
+          </p>
+        </div>
+
+        <div class="contact__grid">
+          <div class="stack-lg reveal">
+            <h3 class="title-xs">Other ways to reach me</h3>
+            <ul class="contact__channels">
+              <li class="contact__channel">
+                <i class="bi bi-envelope" aria-hidden="true"></i>
+                <span>
+                  <a href="mailto:selimo.contact@gmail.com">selimo.contact@gmail.com</a>
+                </span>
+              </li>
+              <li class="contact__channel">
+                <i class="bi bi-linkedin" aria-hidden="true"></i>
+                <span>
+                  <a href="https://www.linkedin.com/in/selina-mogicato-a48166316" target="_blank" rel="noopener noreferrer">
+                    Selina Mogicato on LinkedIn
+                  </a>
+                </span>
+              </li>
+              <li class="contact__channel">
+                <i class="bi bi-github" aria-hidden="true"></i>
+                <span>
+                  <a href="https://github.com/Selimo100" target="_blank" rel="noopener noreferrer">
+                    Selimo100 on GitHub
+                  </a>
+                </span>
+              </li>
+              <li class="contact__channel">
+                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                <span class="body">Zurich, Switzerland</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <?php if ($formSuccess): ?>
+              <div class="alert alert--success" role="status">
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <div class="alert__body"><?php echo htmlspecialchars($formSuccess); ?></div>
+                <button class="alert__close" type="button" data-alert-close aria-label="Dismiss message">&times;</button>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($formError): ?>
+              <div class="alert alert--error" role="alert">
+                <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                <div class="alert__body"><?php echo htmlspecialchars($formError); ?></div>
+                <button class="alert__close" type="button" data-alert-close aria-label="Dismiss message">&times;</button>
+              </div>
+            <?php endif; ?>
+
+            <?php if (!empty($formErrors)): ?>
+              <div class="alert alert--error" role="alert">
+                <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                <div class="alert__body">
+                  <strong>Your message wasn&rsquo;t sent:</strong>
+                  <ul>
+                    <?php foreach ($formErrors as $error): ?>
+                      <li><?php echo htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+                <button class="alert__close" type="button" data-alert-close aria-label="Dismiss message">&times;</button>
+              </div>
+            <?php endif; ?>
+
+            <form class="form" action="sendMail.php" method="POST" novalidate data-validate>
+              <div class="field<?php echo isset($formErrors['name']) ? ' is-invalid' : ''; ?>">
+                <label class="field__label" for="name">Your name</label>
+                <input
+                  class="field__control"
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="Jane Doe"
+                  aria-describedby="name-error"
+                  required
+                  value="<?php echo htmlspecialchars($oldInput['name'] ?? ''); ?>"
+                />
+                <p class="field__error" id="name-error">
+                  <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                  Please enter your name.
+                </p>
+              </div>
+
+              <div class="field<?php echo isset($formErrors['email']) ? ' is-invalid' : ''; ?>">
+                <label class="field__label" for="email">Your email</label>
+                <input
+                  class="field__control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="jane@example.com"
+                  aria-describedby="email-error"
+                  required
+                  value="<?php echo htmlspecialchars($oldInput['email'] ?? ''); ?>"
+                />
+                <p class="field__error" id="email-error">
+                  <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                  Please enter a valid email address.
+                </p>
+              </div>
+
+              <div class="field<?php echo isset($formErrors['message']) ? ' is-invalid' : ''; ?>">
+                <label class="field__label" for="message">Your message</label>
+                <textarea
+                  class="field__control"
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="What would you like to build?"
+                  aria-describedby="message-error"
+                  required
+                ><?php echo htmlspecialchars($oldInput['message'] ?? ''); ?></textarea>
+                <p class="field__error" id="message-error">
+                  <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                  Please enter a message.
+                </p>
+              </div>
+
+              <div class="btn-row">
+                <button class="btn btn--primary btn--lg" type="submit">
+                  <span data-submit-label>Send message</span>
+                  <i class="bi bi-send" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <?php require __DIR__ . '/assets/php/footer.php'; ?>
+
   <script src="assets/js/error-handler.js"></script>
-  <script src="assets/js/theme.js"></script>
-  <script src="assets/js/navigation.js"></script>
-  <script src="assets/js/animations.js"></script>
-  <script src="assets/js/form.js"></script>
-  <script src="assets/js/consoleLog.js"></script>
-  <script src="assets/js/easter-egg.js"></script>
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/navigation.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/arcade-embed.js" defer></script>
+  <script src="assets/js/form.js" defer></script>
+  <script src="assets/js/consoleLog.js" defer></script>
+  <script src="assets/js/easter-egg.js" defer></script>
 </body>
 
 </html>

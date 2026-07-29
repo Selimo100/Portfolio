@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selina's Arcade</title>
+    <meta name="description"
+        content="Twelve small browser games written from scratch by Selina Mogicato — Pong, Snake, Breakout, Hangman and more.">
+    <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/shell.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -17,9 +21,12 @@
     <header>
         <div class="header-content">
             <h1>🎮 Selina's Arcade</h1>
-            <button id="theme-toggle" aria-label="Toggle dark/light mode">
-                <span id="theme-icon">🌙</span>
-            </button>
+            <div class="header-actions">
+                <a class="header-back" href="/index.php" target="_top">← Portfolio</a>
+                <button type="button" id="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -130,7 +137,7 @@
                 <h3>Selina's Arcade</h3>
                 <p>A collection of fun browser games</p>
                 <br>
-                <a href="/index.php" class="featured-button">Back to Portfolio</a>
+                <a href="/index.php" class="featured-button" target="_top">Back to Portfolio</a>
             </div>
             <div class="footer-copyright">
                 <p>2025 Selina's Arcade</p>

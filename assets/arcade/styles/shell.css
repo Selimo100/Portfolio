@@ -1,0 +1,314 @@
+/* =========================================================================
+   Arcade shell — aligns the arcade landing page with the portfolio design
+   system (typography, spacing, radii, accent).
+
+   Loaded after main.css and scoped to the landing page chrome only. The
+   individual game stylesheets and all game logic are untouched, so the
+   arcade keeps its own playful character where it matters.
+
+   Design tokens come from ../css/tokens.css, linked ahead of this file.
+   ========================================================================= */
+
+body {
+  font-family: var(--font-text);
+  background-color: var(--color-onyx);
+  color: #f5f5f7;
+  letter-spacing: var(--tracking-body);
+}
+
+body.light {
+  background-color: var(--color-frost);
+  color: var(--color-carbon);
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+header {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.72);
+  border-bottom: 1px solid #37373b;
+  box-shadow: none;
+}
+
+body.light header {
+  background-color: rgba(255, 255, 255, 0.72);
+  border-bottom-color: #d2d2d7;
+}
+
+.header-content {
+  min-height: 52px;
+  padding-inline: var(--gutter);
+  gap: var(--spacing-16);
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.6vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f5f5f7;
+  text-shadow: none;
+}
+
+body.light header h1 {
+  color: var(--color-carbon);
+  text-shadow: none;
+}
+
+#theme-toggle {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: none;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(41, 151, 255, 0.14);
+  transform: none;
+  box-shadow: none;
+}
+
+body.light #theme-toggle:hover {
+  background-color: rgba(0, 102, 204, 0.08);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero-section {
+  background: none;
+  background-color: var(--color-carbon);
+  border-bottom: 1px solid #37373b;
+  padding: clamp(56px, 9vw, 104px) 0;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+body.light .hero-section {
+  background: none;
+  background-color: #ffffff;
+  border-bottom-color: #d2d2d7;
+}
+
+.hero-content h2,
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: #f5f5f7;
+  margin-bottom: var(--spacing-16);
+}
+
+body.light .hero-content h2,
+body.light .section-header h2 {
+  background: none;
+  color: var(--color-carbon);
+}
+
+.section-header h2 {
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.intro,
+.section-header p {
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: #c8c8cc;
+  opacity: 1;
+}
+
+body.light .intro,
+body.light .section-header p {
+  color: var(--color-smoke);
+}
+
+.section-header {
+  margin-bottom: var(--spacing-40);
+}
+
+/* --- Game cards ---------------------------------------------------------- */
+
+#game-container,
+#more-games-container {
+  gap: var(--spacing-16);
+}
+
+.game-card {
+  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  border: 1px solid #37373b;
+  background-color: var(--color-carbon);
+  color: #f5f5f7;
+  box-shadow: none;
+  gap: var(--spacing-16);
+  transition:
+    border-color var(--duration-base) ease,
+    background-color var(--duration-base) ease,
+    transform var(--duration-base) var(--ease-out);
+}
+
+body.light .game-card {
+  border-color: #d2d2d7;
+  background-color: #ffffff;
+  color: var(--color-carbon);
+}
+
+.game-card:hover,
+.game-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: none;
+  border-color: var(--color-signal-blue);
+  background-color: var(--color-carbon);
+}
+
+body.light .game-card:hover,
+body.light .game-card:focus-visible {
+  border-color: var(--color-link-blue);
+  background-color: #ffffff;
+}
+
+.game-icon {
+  margin-right: 0;
+  font-size: 2.2rem;
+  min-width: 48px;
+}
+
+.game-title {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  font-weight: 600;
+  letter-spacing: var(--tracking-subheading);
+  margin-bottom: 6px;
+}
+
+.game-description {
+  font-size: var(--text-body-sm);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-body-sm);
+  color: #a1a1a6;
+  opacity: 1;
+}
+
+body.light .game-description {
+  color: var(--color-graphite);
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.featured-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 21px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-apple-blue);
+  color: #ffffff;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-body-sm);
+  box-shadow: none;
+}
+
+body.light .featured-button {
+  background-color: var(--color-apple-blue);
+  color: #ffffff;
+}
+
+.featured-button:hover,
+body.light .featured-button:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: #0077ed;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+footer {
+  background: none;
+  background-color: var(--color-onyx);
+  border-top: 1px solid #37373b;
+  box-shadow: none;
+}
+
+body.light footer {
+  background-color: var(--color-frost);
+  border-top-color: #d2d2d7;
+}
+
+.footer-info h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.footer-copyright p {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  color: #858585;
+}
+
+/* --- Focus & motion ------------------------------------------------------ */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-signal-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+
+  .game-card:hover {
+    transform: none;
+  }
+}
+
+/* --- Header actions ------------------------------------------------------ */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.header-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-signal-blue);
+  border-radius: var(--radius-full);
+  color: var(--color-signal-blue);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.header-back:hover {
+  background-color: rgba(41, 151, 255, 0.14);
+}
+
+body.light .header-back {
+  border-color: var(--color-link-blue);
+  color: var(--color-link-blue);
+}
+
+body.light .header-back:hover {
+  background-color: rgba(0, 102, 204, 0.08);
+}

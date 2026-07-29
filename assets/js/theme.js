@@ -1,101 +1,81 @@
-// Theme Management System
-class ThemeManager {
-  constructor() {
-    this.init();
+/**
+ * Theme toggle.
+ *
+ * The initial value is already applied by theme-init.js; this module only
+ * wires the control, keeps the icon and meta theme-colour in sync, and
+ * follows the system preference until the user makes an explicit choice.
+ */
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "theme";
+  var root = document.documentElement;
+
+  function current() {
+    return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
   }
 
-  init() {
-    // Initialize theme on page load
-    this.applyStoredTheme();
-    this.setupEventListeners();
-    this.handleSystemThemeChange();
-  }
+  function syncControls(theme) {
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+      var isDark = theme === "dark";
+      var icon = button.querySelector(".bi");
+      if (icon) {
+        icon.className = isDark ? "bi bi-sun-fill" : "bi bi-moon-fill";
+      }
+      button.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light theme" : "Switch to dark theme"
+      );
+      button.setAttribute("aria-pressed", String(isDark));
+    });
 
-  applyStoredTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    
-    this.setTheme(theme, false); // Don't store on initial load if using system preference
-  }
-
-  setTheme(theme, store = true) {
-    document.documentElement.setAttribute('data-theme', theme);
-    if (store) {
-      localStorage.setItem('theme', theme);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "theme-color";
+      document.head.appendChild(meta);
     }
-    this.updateThemeIcon(theme === 'light');
-    this.updateMetaThemeColor(theme);
-    this.updateTechIcons(theme);
+    meta.content = theme === "dark" ? "#000000" : "#ffffff";
   }
 
-  updateTechIcons(theme) {
-    const techIcons = document.querySelectorAll('.tech-icons');
-    techIcons.forEach(icon => {
-      const src = icon.getAttribute('src');
-      if (src) {
-        // skillicons.dev uses 'dark' or 'light'
-        const newSrc = src.replace(/theme=(dark|light)/, `theme=${theme}`);
-        if (newSrc !== src) {
-          icon.setAttribute('src', newSrc);
-        }
+  function apply(theme, persist) {
+    root.setAttribute("data-theme", theme);
+    if (persist) {
+      try {
+        localStorage.setItem(STORAGE_KEY, theme);
+      } catch (e) {
+        /* storage unavailable — the theme still applies for this session */
+      }
+    }
+    syncControls(theme);
+  }
+
+  syncControls(current());
+
+  document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      apply(current() === "dark" ? "light" : "dark", true);
+    });
+  });
+
+  // Keep tabs in sync.
+  window.addEventListener("storage", function (event) {
+    if (event.key === STORAGE_KEY && event.newValue) {
+      apply(event.newValue, false);
+    }
+  });
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", function (event) {
+      var stored = null;
+      try {
+        stored = localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        /* ignore */
+      }
+      if (!stored) {
+        apply(event.matches ? "dark" : "light", false);
       }
     });
-  }
-
-  toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    this.setTheme(newTheme);
-  }
-
-  updateThemeIcon(isLight) {
-    const themeIcon = document.querySelector('.theme-toggle-btn i');
-    if (themeIcon) {
-      // If Light Theme active -> Show Moon (to switch to dark)
-      // If Dark Theme active -> Show Sun (to switch to light)
-      themeIcon.className = isLight ? 'bi bi-moon-fill' : 'bi bi-sun-fill';
-    }
-  }
-
-  updateMetaThemeColor(theme) {
-    let themeColorMeta = document.querySelector('meta[name="theme-color"]');
-    if (!themeColorMeta) {
-      themeColorMeta = document.createElement('meta');
-      themeColorMeta.name = 'theme-color';
-      document.head.appendChild(themeColorMeta);
-    }
-    themeColorMeta.content = theme === 'light' ? '#ffffff' : '#0E1418';
-  }
-
-  setupEventListeners() {
-    const themeToggleBtn = document.querySelector('.theme-toggle-btn');
-    if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', () => this.toggleTheme());
-    }
-
-    // Listen for storage changes to sync theme across tabs
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'theme' && e.newValue) {
-        this.setTheme(e.newValue, false);
-      }
-    });
-  }
-
-  handleSystemThemeChange() {
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        this.setTheme(e.matches ? 'dark' : 'light', false);
-      }
-    });
-  }
-}
-
-// Initialize theme manager when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new ThemeManager();
-});
-
-// Expose theme manager globally for potential external use
-window.ThemeManager = ThemeManager;
+})();

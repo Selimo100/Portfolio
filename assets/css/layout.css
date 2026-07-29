@@ -1,0 +1,326 @@
+/* =========================================================================
+   Site chrome: header, mobile navigation, scroll progress, footer
+   ========================================================================= */
+
+/* --- Scroll progress ----------------------------------------------------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background-color: var(--accent);
+  pointer-events: none;
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  border-bottom: 1px solid var(--border-hairline);
+  /* Establishes a stacking context without becoming the containing block for
+     the position:fixed mobile panel — which is why the blur below lives on a
+     pseudo-element rather than on this element. */
+  isolation: isolate;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--nav-surface-solid);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header::before {
+    background-color: var(--nav-surface);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+.site-header__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  min-height: var(--nav-height);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  color: var(--text-primary);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-body-sm);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.brand__mark {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+/* --- Primary navigation -------------------------------------------------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.nav__link:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* Active state is carried by both an underline and a weight change, so it
+   never depends on colour alone. */
+.nav__link[aria-current="page"],
+.nav__link.is-active {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.nav__link[aria-current="page"]::after,
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--accent);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+/* --- Theme toggle -------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent-wash);
+  color: var(--text-primary);
+}
+
+/* --- Mobile navigation --------------------------------------------------- */
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  background-color: var(--accent-wash);
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-header__nav {
+    position: fixed;
+    inset: var(--nav-height) 0 0 0;
+    z-index: 1;
+    display: block;
+    padding: var(--spacing-24) var(--gutter) var(--spacing-40);
+    background-color: var(--nav-surface-solid);
+    border-top: 1px solid var(--border-hairline);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--duration-base) ease,
+      transform var(--duration-base) var(--ease-out),
+      visibility var(--duration-base);
+  }
+
+  .site-header__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav__item {
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .nav__link {
+    padding: 16px 4px;
+    font-size: var(--text-subheading);
+    letter-spacing: var(--tracking-subheading);
+    border-radius: 0;
+  }
+
+  .nav__link[aria-current="page"]::after,
+  .nav__link.is-active::after {
+    left: 4px;
+    right: auto;
+    bottom: 12px;
+    width: 20px;
+  }
+
+  .nav__cta {
+    margin-top: var(--spacing-24);
+    display: flex;
+  }
+
+  .nav__cta .btn {
+    width: 100%;
+  }
+
+  /* Prevent the page behind an open menu from scrolling. */
+  body.nav-open {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 861px) {
+  .nav__cta {
+    display: none;
+  }
+}
+
+/* Hide the desktop-only header CTA where space is tight. */
+@media (max-width: 1080px) {
+  .site-header__cta {
+    display: none;
+  }
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.site-footer {
+  background-color: var(--surface-canvas);
+  border-top: 1px solid var(--border-hairline);
+  padding-block: var(--spacing-48);
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--spacing-40);
+  padding-bottom: var(--spacing-24);
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-24);
+  list-style: none;
+  justify-content: flex-end;
+  align-content: flex-start;
+}
+
+.site-footer__nav a {
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+}
+
+.site-footer__nav a:hover {
+  color: var(--text-primary);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-24);
+  }
+
+  .site-footer__nav {
+    justify-content: flex-start;
+    gap: var(--spacing-16);
+  }
+}

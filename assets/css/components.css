@@ -1,0 +1,410 @@
+/* =========================================================================
+   Shared UI components: buttons, tags, links, media frames, motion
+   ========================================================================= */
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  min-height: 44px;
+  padding: 11px 21px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  font-family: var(--font-text);
+  font-size: var(--text-body-sm);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-body-sm);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    opacity var(--duration-fast) ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--lg {
+  min-height: 50px;
+  padding: 13px 26px;
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.btn--primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.btn--primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--text-on-accent);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--accent-link);
+  color: var(--accent-link);
+}
+
+.btn--secondary:hover {
+  background-color: var(--accent-wash);
+  color: var(--accent-link);
+}
+
+/* Quiet variant for dense areas such as project link rows. */
+.btn--ghost {
+  background-color: transparent;
+  border-color: var(--border-hairline);
+  color: var(--text-primary);
+}
+
+.btn--ghost:hover {
+  border-color: var(--border-strong);
+  background-color: var(--accent-wash);
+}
+
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--element-gap);
+  align-items: center;
+}
+
+.btn-row--center {
+  justify-content: center;
+}
+
+/* --- Text link ----------------------------------------------------------- */
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-link);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.text-link .bi {
+  font-size: 0.9em;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.text-link:hover .bi-arrow-right {
+  transform: translateX(3px);
+}
+
+/* --- Tags ---------------------------------------------------------------- */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  color: var(--text-tertiary);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.tag:hover {
+  border-color: var(--accent-detail);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* --- Status pill (availability, project status) -------------------------- */
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: 6px 14px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-white);
+  color: var(--text-tertiary);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+}
+
+.status-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-detail);
+  flex: none;
+}
+
+/* --- Media frame --------------------------------------------------------- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-pebble);
+  border: 1px solid var(--border-hairline);
+}
+
+.frame img,
+.frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Elevation is allowed here only: it separates a screenshot from its canvas. */
+.frame--raised {
+  box-shadow: var(--shadow-media);
+}
+
+/* Lets the image keep its own aspect ratio: nothing is cropped or stretched,
+   and the intrinsic width/height attributes reserve the space up front. */
+.frame--natural img {
+  height: auto;
+  object-fit: fill;
+}
+
+.frame--contain {
+  background-color: var(--surface-white);
+}
+
+.frame--contain img {
+  object-fit: contain;
+}
+
+.frame--zoom img {
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+a:hover .frame--zoom img,
+.card:hover .frame--zoom img {
+  transform: scale(1.03);
+}
+
+/* --- Icon link (social, compact actions) --------------------------------- */
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-tertiary);
+  font-size: 18px;
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.icon-link:hover {
+  color: var(--accent-link);
+  background-color: var(--accent-wash);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.icon-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+/* --- Cards --------------------------------------------------------------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-white);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) ease,
+    transform var(--duration-base) var(--ease-out);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--element-gap);
+  padding: var(--card-padding);
+  flex: 1;
+}
+
+/* --- Scroll reveal ------------------------------------------------------- */
+
+/* Content is visible by default; JS opts elements in only once it runs, so
+   the page stays readable without JavaScript. */
+.reveal.is-armed {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal.is-armed.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-slow) ease,
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal-stagger.is-armed > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal-stagger.is-armed.is-visible > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-slow) ease,
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal-stagger.is-armed.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-armed.is-visible > *:nth-child(2) { transition-delay: 70ms; }
+.reveal-stagger.is-armed.is-visible > *:nth-child(3) { transition-delay: 140ms; }
+.reveal-stagger.is-armed.is-visible > *:nth-child(4) { transition-delay: 210ms; }
+.reveal-stagger.is-armed.is-visible > *:nth-child(5) { transition-delay: 280ms; }
+.reveal-stagger.is-armed.is-visible > *:nth-child(6) { transition-delay: 350ms; }
+
+/* --- Reduced motion ------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal.is-armed,
+  .reveal-stagger.is-armed > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Arcade overlay (console easter egg) --------------------------------- */
+
+.arcade-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.arcade-overlay__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(1100px, 100%);
+  height: min(760px, 90vh);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-hairline);
+}
+
+.arcade-overlay__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-12) var(--spacing-20);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.arcade-overlay__close {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.arcade-overlay__close:hover {
+  background-color: var(--accent-wash);
+  color: var(--text-primary);
+}
+
+.arcade-overlay iframe {
+  flex: 1;
+  width: 100%;
+  border: 0;
+}
+
+.matrix-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+}

@@ -1,32 +1,21 @@
-// Theme initialization to prevent FOUC (Flash of Unstyled Content)
-(function() {
-  'use strict';
-  
-  // Apply theme immediately before DOM is ready
-  function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    
-    document.documentElement.setAttribute('data-theme', theme);
-    
-    // Add a class to indicate theme is loading
-    document.documentElement.classList.add('theme-loading');
-    
-    // Remove loading class after a short delay
-    setTimeout(() => {
-      document.documentElement.classList.remove('theme-loading');
-      document.documentElement.classList.add('theme-loaded');
-    }, 100);
-  }
-  
-  // Run immediately
-  initTheme();
-  
-  // Also run when DOM is ready as backup
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTheme);
-  } else {
-    initTheme();
+/**
+ * Applies the stored (or system) theme before first paint.
+ * Kept as a tiny blocking script in <head> so there is no colour flash.
+ * It must never hide content — the page stays readable even if it fails.
+ */
+(function () {
+  "use strict";
+
+  try {
+    var stored = localStorage.getItem("theme");
+    var theme =
+      stored === "light" || stored === "dark"
+        ? stored
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
   }
 })();

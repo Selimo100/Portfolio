@@ -1,0 +1,255 @@
+/* =========================================================================
+   Karate page: hero, journey, timeline, philosophy, schedule, club
+   ========================================================================= */
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.karate-hero {
+  position: relative;
+  min-height: min(76vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  padding-block: clamp(96px, 14vw, 180px) clamp(48px, 6vw, 80px);
+  background-color: var(--color-onyx);
+  overflow: hidden;
+}
+
+.karate-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.karate-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.55;
+}
+
+/* Keeps the headline legible over any part of the photograph. */
+.karate-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+.karate-hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  align-items: flex-start;
+  max-width: 760px;
+}
+
+.karate-hero__inner .hero-title,
+.karate-hero__inner .eyebrow {
+  color: #ffffff;
+}
+
+.karate-hero__inner .body-large {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* --- Journey ------------------------------------------------------------- */
+
+.journey__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.journey__media {
+  position: sticky;
+  top: calc(var(--nav-height) + 40px);
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 860px) {
+  .journey__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey__media {
+    position: static;
+  }
+}
+
+/* --- Timeline ------------------------------------------------------------ */
+
+.karate-timeline {
+  list-style: none;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.karate-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--spacing-16) var(--spacing-40);
+  padding-block: var(--spacing-40);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.karate-timeline__date {
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.karate-timeline__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.karate-timeline__body strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Belt entries are visually quieter than competitions and milestones. */
+.karate-timeline__item--belt .karate-timeline__marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.belt-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .karate-timeline__item {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+    padding-block: var(--spacing-24);
+  }
+}
+
+/* --- Philosophy ---------------------------------------------------------- */
+
+.philosophy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--spacing-40) var(--spacing-48);
+}
+
+.philosophy__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.philosophy__item .bi {
+  font-size: 22px;
+  color: var(--accent-detail);
+}
+
+/* --- Training schedule --------------------------------------------------- */
+
+.schedule {
+  list-style: none;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.schedule__day {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: var(--spacing-16) var(--spacing-40);
+  padding-block: var(--spacing-24);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.schedule__name {
+  font-size: var(--text-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.schedule__sessions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.schedule__session {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-8) var(--spacing-16);
+}
+
+.schedule__activity {
+  color: var(--text-secondary);
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.schedule__time {
+  color: var(--text-muted);
+  font-size: var(--text-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .schedule__day {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
+  }
+}
+
+/* --- Club ---------------------------------------------------------------- */
+
+.club__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.club__logo {
+  max-width: 200px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-hairline);
+}
+
+.club__entry + .club__entry {
+  margin-top: var(--spacing-40);
+  padding-top: var(--spacing-40);
+  border-top: 1px solid var(--border-hairline);
+}
+
+@media (max-width: 860px) {
+  .club__grid {
+    grid-template-columns: 1fr;
+  }
+}

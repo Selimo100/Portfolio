@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rm *)",
+      "Read(//usr/bin/**)",
+      "Bash(command -v docker brew node npx python3)",
+      "Bash(docker info *)"
+    ]
+  }
+}
