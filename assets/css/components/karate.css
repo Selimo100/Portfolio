@@ -622,3 +622,19 @@
     font-size: 0.9rem;
   }
 }
+/* Beyond Code intro */
+.journey-content .journey-lead {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.journey-content .journey-quote {
+  color: var(--accent);
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin-bottom: 0;
+}

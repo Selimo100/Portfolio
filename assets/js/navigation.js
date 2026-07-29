@@ -21,3 +21,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         : 'rgba(10, 25, 47, 0.85)';
     }
   });
+// Keep the footer copyright year current.
+document.querySelectorAll('[data-current-year]').forEach(function (el) {
+  el.textContent = new Date().getFullYear();
+});

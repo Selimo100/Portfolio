@@ -2,10 +2,9 @@
 
 /* Professional hero section for karate page */
 .karate-hero {
-    background: linear-gradient(135deg, 
-        rgba(14, 20, 24, 0.9), 
-        rgba(26, 34, 40, 0.9)), 
-        url('../images/karate-hero.png') center/cover;
+    background: linear-gradient(135deg,
+        var(--background),
+        var(--background-secondary));
     min-height: 70vh;
     display: flex;
     align-items: center;

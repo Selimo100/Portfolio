@@ -1,4 +1,75 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once __DIR__ . '/tech-icons.php';
+
+// Professional experience is counted from the start of the apprenticeship.
+$careerStart = new DateTimeImmutable('2024-08-01');
+$now = new DateTimeImmutable('now');
+$experienceYears = $now > $careerStart
+  ? floor(($careerStart->diff($now)->days / 365.25) * 10) / 10
+  : 0;
+$experienceLabel = number_format($experienceYears, 1) . ' years';
+
+$projects = [
+  [
+    'slug' => 'momento',
+    'title' => 'Momento App',
+    'category' => 'personal',
+    'year' => 'June 2026 – present',
+    'image' => 'assets/images/momento_app_card.png',
+    'summary' => 'A local-first iOS app for creating personal photo moments — adding stories, choosing the best shots, and exporting beautiful albums directly to Apple Photos.',
+    'technologies' => ['Swift'],
+    'liveUrl' => 'https://momento.mogicato.ch',
+  ],
+  [
+    'slug' => 'homelab',
+    'title' => 'HomeLab',
+    'category' => 'personal',
+    'year' => 'February 2026 – present',
+    'image' => 'assets/images/homelab_card.png',
+    'summary' => 'A self-built homelab running on a 2012 MacBook Pro. A hands-on way to learn server management, virtualization and networking while repurposing old hardware to host personal projects and experiment with different operating systems.',
+    'technologies' => ['Linux', 'Docker', 'Nginx'],
+  ],
+  [
+    'slug' => 'yumigo',
+    'title' => 'Yumigo App',
+    'category' => 'personal',
+    'year' => 'July 2025 – present',
+    'image' => 'assets/images/yumigo_app_card.png',
+    'summary' => 'A mobile app that turns spontaneous food cravings into recipe suggestions. Users enter what they crave, browse curated recipes and filter by seasonality and location, encouraging mindful and seasonal eating. Built during the BBC Basislehrjahr.',
+    'technologies' => ['React Native', 'Expo', 'JavaScript', 'Firebase'],
+    'liveUrl' => 'https://yumigoapp.netlify.app/',
+    'demoVideo' => 'assets/images/yumigo_app_video.mp4',
+  ],
+  [
+    'slug' => 'work-portfolio',
+    'title' => 'Work Portfolio',
+    'category' => 'professional',
+    'image' => 'assets/images/work_portfolio_card.png',
+    'summary' => 'A dedicated portfolio developed for my professional environment, showcasing projects, achievements, and technical growth within my apprenticeship.',
+    'technologies' => ['React', 'Tailwind CSS', 'Vite'],
+    'liveUrl' => 'https://selina.sunrise-avengers.ch',
+  ],
+  [
+    'slug' => 'kaisho-dojotime',
+    'title' => 'Kaisho DojoTime',
+    'category' => 'personal',
+    'image' => 'assets/images/kaisho_dojotime_card.png',
+    'summary' => 'An organisation tool developed for my Karate club, Kaisho Karate Bassersdorf. It helps manage training schedules, trainer assignments and club events efficiently, streamlining club administration and improving communication.',
+    'technologies' => ['TypeScript', 'Supabase'],
+    'liveUrl' => 'https://kaisho-dojotime.netlify.app/',
+  ],
+  [
+    'slug' => 'rummy',
+    'title' => 'Rummy Website',
+    'category' => 'personal',
+    'image' => 'assets/images/rummy_card.png',
+    'summary' => 'A modern web tool for managing Rummy games with innovative features and an intuitive UI. Originally built as my final secondary school project for family use.',
+    'technologies' => ['HTML', 'CSS', 'JavaScript', 'PHP', 'SQL', 'Bootstrap'],
+    'liveUrl' => 'https://rummy.mogicato.ch/',
+  ],
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +79,8 @@
   <title>Selina Mogicato</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -108,121 +181,162 @@
             <li>Real-world usability</li>
           </ul>
 
-          <div class="skills-container">
-            <h3>Tech Stack</h3>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Languages</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Markdown</span>
-              </div>
+          <div class="quick-facts">
+            <div class="quick-fact">
+              <span class="quick-fact-label">Work Experience</span>
+              <span class="quick-fact-value"><?php echo htmlspecialchars($experienceLabel); ?></span>
             </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Frontend</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">Next.js</span>
-                <span class="skill-tag">Vite</span>
-                <span class="skill-tag">Tailwind</span>
-                <span class="skill-tag">Bootstrap</span>
-                <span class="skill-tag">React Router</span>
-              </div>
+            <div class="quick-fact">
+              <span class="quick-fact-label">Programming Since</span>
+              <span class="quick-fact-value">Early 2019</span>
             </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Mobile</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">Expo</span>
-              </div>
+            <div class="quick-fact quick-fact--wide">
+              <span class="quick-fact-label">Languages</span>
+              <span class="quick-fact-value">German, Italian, English, French, learning Spanish</span>
             </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Backend & Frameworks</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Flask</span>
-                <span class="skill-tag">NPM</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Databases & Backend Services</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">Redis</span>
-                <span class="skill-tag">SQLite</span>
-                <span class="skill-tag">Firebase</span>
-                <span class="skill-tag">Supabase</span>
-                <span class="skill-tag">MariaDB</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Hosting & Deployment</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Vercel</span>
-                <span class="skill-tag">Netlify</span>
-                <span class="skill-tag">Nginx</span>
-                <span class="skill-tag">Docker</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">CI/CD & Version Control</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">GitHub</span>
-                <span class="skill-tag">GitLab</span>
-                <span class="skill-tag">GitLab CI</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Testing & Code Quality</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Vitest</span>
-                <span class="skill-tag">Jest</span>
-                <span class="skill-tag">Prettier</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Monitoring & Tooling</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Grafana</span>
-                <span class="skill-tag">Gradle</span>
-                <span class="skill-tag">Prometheus</span>
-                <span class="skill-tag">Swagger</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Design & Presentation</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Canva</span>
-                <span class="skill-tag">Prezi</span>
-              </div>
+            <div class="quick-fact quick-fact--wide">
+              <span class="quick-fact-label">Interests</span>
+              <span class="quick-fact-value">Software Development, Frontend Development, UI/UX Design, AI</span>
             </div>
           </div>
+
         </div>
         <div class="col-md-6">
           <div class="about-image">
             <img src="assets/images/Portrait.png" alt="Profilepicture Selina Mogicato" class="profile-img">
           </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+            <div class="skills-container">
+              <h3>Tech Stack</h3>
+
+              <div class="skill-categories">
+              <div class="skill-category">
+                <h4 class="skill-category-title">Languages</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Java'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('HTML'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('CSS'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('JavaScript'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('TypeScript'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('PHP'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Python'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Markdown'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Frontend</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('React'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Vue.js'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Next.js'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Vite'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Tailwind'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Bootstrap'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('React Router'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Mobile</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('React Native'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Expo'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Swift'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Backend & Frameworks</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Spring Boot'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Node.js'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Flask'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Rust'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('NPM'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Databases & Backend Services</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('MySQL'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('PostgreSQL'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('MongoDB'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Redis'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('SQLite'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Firebase'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Supabase'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('MariaDB'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Hosting & Deployment</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Vercel'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Netlify'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Nginx'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Docker'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Server Hosting'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('FTP'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">CI/CD & Version Control</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Git'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('GitHub'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('GitLab'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('GitLab CI'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Testing & Code Quality</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Vitest'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Jest'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Postman'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Swagger'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Prettier'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Monitoring & Tooling</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Grafana'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Gradle'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Prometheus'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Swagger'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Design & Presentation</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('Figma'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Canva'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Prezi'); ?></span>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h4 class="skill-category-title">Operating Systems</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag"><?php echo tech_tag('macOS'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Windows 11'); ?></span>
+                  <span class="skill-tag"><?php echo tech_tag('Linux'); ?></span>
+                </div>
+              </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -232,137 +346,86 @@
   <section id="projects" class="section-padding">
     <div class="container">
       <h2 class="section-title">My Projects</h2>
-      <div class="row g-4">
-        <!-- Project Card 1 -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/yumigo_app_project.jpg" alt="Yumigo App Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Yumigo App</h3>
-              <p>
-                A mobile app that turns spontaneous food cravings into seasonal recipe suggestions.
-              </p>
-              <div class="project-tags">
-                <span>React Native</span>
-                <span>Expo</span>
-                <span>Firebase</span>
+      <p class="section-lead">
+        A selection of things I have built — from mobile apps and club tooling to my own
+        self-hosted infrastructure. Select a project to see the details.
+      </p>
+      <div class="row g-4 project-grid">
+        <?php foreach ($projects as $project): ?>
+          <div class="col-md-6 col-lg-4">
+            <article class="project-card" tabindex="0" role="button"
+              aria-label="<?php echo htmlspecialchars('View details for ' . $project['title']); ?>"
+              data-project='<?php echo htmlspecialchars(json_encode($project, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), ENT_QUOTES); ?>'>
+              <div class="project-image <?php echo htmlspecialchars($project['imageClass'] ?? ''); ?>">
+                <img src="<?php echo htmlspecialchars($project['image']); ?>"
+                  alt="<?php echo htmlspecialchars($project['title']); ?> screenshot"
+                  class="project-img" loading="lazy" decoding="async">
+                <span class="project-badge"><?php echo $project['category'] === 'professional' ? 'Professional' : 'Personal'; ?></span>
               </div>
-              <div class="project-links">
-                <a href="https://yumigoapp.netlify.app/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-                <a href="assets/images/yumigo_app_video.mp4" class="project-link" target="_blank">
-                  <i class="bi bi-play-circle me-1"></i>Demo Video
-                </a>
+              <div class="project-content">
+                <div class="project-heading">
+                  <h3><?php echo htmlspecialchars($project['title']); ?></h3>
+                  <?php if (!empty($project['year'])): ?>
+                    <span class="project-year"><?php echo htmlspecialchars($project['year']); ?></span>
+                  <?php endif; ?>
+                </div>
+                <p class="project-summary"><?php echo htmlspecialchars($project['summary']); ?></p>
+                <div class="project-tags">
+                  <?php foreach ($project['technologies'] as $tech): ?>
+                    <span><?php echo tech_tag($tech); ?></span>
+                  <?php endforeach; ?>
+                </div>
+                <div class="project-links">
+                  <?php if (!empty($project['liveUrl'])): ?>
+                    <a href="<?php echo htmlspecialchars($project['liveUrl']); ?>" class="project-link" target="_blank"
+                      rel="noopener noreferrer">
+                      <i class="bi bi-box-arrow-up-right me-1"></i>Launch
+                    </a>
+                  <?php endif; ?>
+                  <?php if (!empty($project['demoVideo'])): ?>
+                    <button type="button" class="project-link project-video-btn"
+                      data-video="<?php echo htmlspecialchars($project['demoVideo']); ?>">
+                      <i class="bi bi-play-circle me-1"></i>Demo Video
+                    </button>
+                  <?php endif; ?>
+                </div>
               </div>
-            </div>
+            </article>
           </div>
-        </div><!-- Project Card 2 -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/Rummy.png" alt="Rummy Websites Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Rummy Websites</h3>
-              <p>
-                A modern web tool for managing Rummy games with innovative features and an intuitive UI.
-                Originally built as my final secondary school project for family use.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>PHP</span>
-                <span>SQL</span>
-                <span>Bootstrap</span>
-              </div>
-              <div class="project-links">
-                <a href="https://rummy.mogicato.ch/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- next-->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/portfolio_bbc.png" alt="Portfolio Berufbildungscenter Websites Screenshot"
-                class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Portfolio Berufbildungscenter</h3>
-              <p>
-                A personal portfolio showcasing my journey as an apprentice application developer.
-                Built completely from scratch without any framework.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <div class="project-links">
-                <a href="https://selina.mogicato.ch/Portfolio_bbc/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Work Portfolio -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/images/selina-working.png" alt="Work Portfolio Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Work Portfolio</h3>
-              <p>
-                A dedicated portfolio developed for my professional environment, showcasing projects,
-                achievements, and technical growth within my apprenticeship.
-              </p>
-              <div class="project-links">
-                <a href="https://selina.sunrise-avengers.ch" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Kaisho DojoTime Project -->
-        <div class="col-md-6">
-          <div class="project-card">
-            <div class="project-image logo-image">
-              <img src="assets/images/Kaisho-DojoTime.png" alt="Kaisho DojoTime App Screenshot" class="project-img">
-            </div>
-            <div class="project-content">
-              <h3>Kaisho DojoTime</h3>
-              <p>
-                An organisation tool developed for my Karate club, Kaisho Karate Bassersdorf. It helps manage
-                training schedules, who are the trainers, and club events efficiently. Built with modern
-                technologies to streamline club administration and improve communication.
-              </p>
-              <div class="project-tags">
-                <span>TypeScript</span>
-                <span>Supabase</span>
-              </div>
-              <div class="project-links">
-                <a href="https://kaisho-dojotime.netlify.app/" class="project-link" target="_blank">
-                  <i class="bi bi-eye me-1"></i>View Project
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <?php endforeach; ?>
       </div>
+    </div>
   </section>
 
+  <!-- Project detail modal -->
+  <div class="project-modal" id="projectModal" hidden>
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button type="button" class="project-modal-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      <div class="project-modal-media">
+        <img src="" alt="" id="projectModalImage">
+      </div>
+      <div class="project-modal-body">
+        <div class="project-modal-meta">
+          <span class="project-badge" id="projectModalCategory"></span>
+          <span class="project-year" id="projectModalYear"></span>
+        </div>
+        <h2 id="projectModalTitle"></h2>
+        <h3 class="project-modal-label">Description</h3>
+        <p id="projectModalSummary"></p>
+        <h3 class="project-modal-label">Technologies</h3>
+        <div class="project-tags" id="projectModalTags"></div>
+        <div class="project-links" id="projectModalLinks"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video modal -->
+  <div class="video-modal" id="videoModal" hidden>
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Project demo video">
+      <button type="button" class="video-modal-close" aria-label="Close video"><i class="bi bi-x-lg"></i></button>
+      <video id="videoModalPlayer" controls playsinline></video>
+    </div>
+  </div>
   <!-- Contact Section -->
   <section id="contact" class="section-padding">
     <div class="container">
@@ -426,37 +489,36 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <div class="social-links">
-            <a href="https://www.instagram.com/selina.mogi" class="social-link" target="_blank" title="Instagram">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://snapchat.com/t/hR0kXwyE" class="social-link" target="_blank" title="Snapchat">
-              <i class="bi bi-snapchat"></i>
-            </a>
-            <a href="https://www.facebook.com/selina.mogicato" class="social-link" target="_blank" title="Facebook">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/selina-mogicato-a48166316" class="social-link" target="_blank" title="LinkedIn">
-              <i class="bi bi-linkedin"></i>
-            </a>
-            <a href="https://x.com/SMogicat" class="social-link" target="_blank" title="X (Twitter)">
-              <i class="bi bi-twitter-x"></i>
-            </a>
-            <a href="https://www.youtube.com/@SelinaMogicato" class="social-link" target="_blank" title="YouTube">
-              <i class="bi bi-youtube"></i>
-            </a>
-            <a href="https://github.com/Selimo100" class="social-link" target="_blank" title="GitHub">
-              <i class="bi bi-github"></i>
-            </a>
-          </div>
-          <div class="container text-center">
-            <p>Designed &amp; Built by Selina Mogicato</p>
-          </div>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-brand-name">Selina Mogicato</p>
+          <p class="footer-tagline">
+            Passionate about new technologies and software development.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/selina-mogicato-a48166316" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/Selimo100" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+            <a href="mailto:selimo.contact@gmail.com" aria-label="Email" title="Email"><i class="bi bi-envelope"></i></a>
+            </div>
         </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="karate.html">Karate</a></li>
+            <li><a href="imprint.html">Imprint</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span data-current-year>2026</span> Selina Mogicato. All rights reserved.</p>
+        <p>Made in Zurich, Switzerland</p>
       </div>
     </div>
   </footer>
@@ -467,6 +529,7 @@
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/form.js"></script>
+  <script src="assets/js/projects.js"></script>
   <script src="assets/js/consoleLog.js"></script>
   <script src="assets/js/easter-egg.js"></script>
 </body>

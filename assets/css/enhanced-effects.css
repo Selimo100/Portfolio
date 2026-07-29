@@ -119,7 +119,9 @@
 }
 
 .skill-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     background: var(--background-tertiary);
     color: var(--accent);
     padding: 0.5rem 1rem;
