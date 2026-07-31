@@ -27,3 +27,7 @@ __pycache__/
 dist/
 build/
 out/
+# Momo assistant secrets and runtime storage
+config/openai.php
+storage/ratelimit/
+storage/rate-limit-salt
