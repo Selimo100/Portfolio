@@ -1,19 +1,21 @@
 RewriteEngine On
 
-# Redirect index.php to root (hide index.php in URLs)
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.php [NC]
+# Redirect index.php to root
+RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
 RewriteRule ^index\.php$ / [R=301,L]
 
-# Redirect requests to .html URLs to remove .html from the URL
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)\.html [NC]
-RewriteRule ^ %1 [R=301,L]
+# Redirect .html URLs to URL without .html
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# Internally rewrite requests without .html to the corresponding .html file
+# Internally rewrite URLs without .html if corresponding file exists
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
+RewriteRule ^(.+)$ $1.html [L]
 
-# Allow PHP files to be accessed without .php in the URL
+# Allow PHP files to be accessed without .php
+# ONLY if corresponding PHP file actually exists
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^/]+)/?$ $1.php [L]
