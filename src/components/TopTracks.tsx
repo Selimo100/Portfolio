@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { FALLBACK_TRACKS, MUSIC_COPY, type Track } from "@/lib/content";
 import type { Lang } from "@/lib/i18n";
 
+const SPOTIFY_ICON =
+  "M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.668 11.531a.5.5 0 0 1-.688.165c-1.885-1.151-4.258-1.412-7.053-.777a.5.5 0 0 1-.221-.976c3.058-.695 5.686-.397 7.795.891a.5.5 0 0 1 .167.697m.982-2.186a.624.624 0 0 1-.858.206c-2.158-1.327-5.447-1.712-7.999-.936a.625.625 0 0 1-.363-1.196c2.913-.884 6.534-.456 9.017 1.07a.625.625 0 0 1 .203.856m.084-2.278C10.147 5.53 5.88 5.387 3.41 6.137a.75.75 0 0 1-.435-1.436c2.837-.86 7.554-.694 10.544 1.015a.75.75 0 1 1-.785 1.305";
+
 /**
  * Top tracks come from spotify-top.php, which caches Spotify's answer on disk.
  * The static build ships a snapshot as the fallback, so the card is never empty
@@ -62,12 +65,14 @@ export default function TopTracks({ lang }: { lang: Lang }) {
                 <span className="trackTitle" style={{ display: "block" }}>
                   {track.title}
                 </span>
-                <span className="trackArtist" style={{ display: "block" }}>
-                  {track.artist}
+                <span className="trackArtistRow">
+                  <span className="trackArtist">{track.artist}</span>
+                  {track.url ? (
+                    <svg className="trackSpotify" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d={SPOTIFY_ICON} />
+                    </svg>
+                  ) : null}
                 </span>
-              </span>
-              <span aria-hidden="true" style={{ fontSize: 15, color: "var(--accent2)", textAlign: "right" }}>
-                ◉
               </span>
             </>
           );

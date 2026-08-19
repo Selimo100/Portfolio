@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import MomoMark from "./MomoMark";
 import { href, type Lang } from "@/lib/i18n";
 import { MOMO_PROMPTS, type Translation } from "@/lib/content";
 
@@ -77,13 +78,17 @@ export default function Momo({ lang, momo }: { lang: Lang; momo: Translation["mo
         title={momo.label}
         aria-label={momo.label}
         aria-expanded={open}
+        data-open={open}
       >
-        <span aria-hidden="true" />
+        <MomoMark size={26} />
       </button>
 
       {open && (
         <div className="momoPanel" role="dialog" aria-label={momo.title}>
-          <div className="momoTitle">{momo.title}</div>
+          <div className="momoHead">
+            <MomoMark size={30} />
+            <div className="momoTitle">{momo.title}</div>
+          </div>
           <div className="momoBlurb">{momo.blurb}</div>
 
           {messages.length > 0 && (
@@ -94,8 +99,10 @@ export default function Momo({ lang, momo }: { lang: Lang; momo: Translation["mo
                 </div>
               ))}
               {busy && (
-                <div className="momoMsg" data-from="momo">
-                  …
+                <div className="momoMsg momoTyping" data-from="momo" aria-label="Momo is typing">
+                  <span />
+                  <span />
+                  <span />
                 </div>
               )}
             </div>
