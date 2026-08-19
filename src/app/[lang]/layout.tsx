@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Momo from "@/components/Momo";
 import Reveal from "@/components/Reveal";
+import ArcadeHotkey from "@/components/ArcadeHotkey";
 import { TRANSLATIONS } from "@/lib/content";
 import { LANGS, isLang } from "@/lib/i18n";
 
@@ -39,6 +40,7 @@ export default async function LangLayout({
         {children}
       </div>
       <Footer lang={lang} t={t} />
+      <ArcadeHotkey />
       <Momo lang={lang} momo={t.momo} />
       <Reveal />
     </div>
