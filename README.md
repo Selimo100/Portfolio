@@ -1,73 +1,120 @@
 # Selina Mogicato Portfolio
 
-A clean, responsive portfolio site built with PHP, handcrafted CSS, and vanilla JavaScript.
+A trilingual portfolio site built with Next.js, exported as static HTML and
+served from shared hosting alongside a handful of small PHP endpoints.
 
-It presents selected projects, background information, contact details, and a small hidden arcade layer that adds some personality without getting in the way of the main experience.
+It presents selected projects, background information, contact details, a
+Spotify "on repeat" card, and a hidden arcade layer that adds some personality
+without getting in the way of the main experience.
 
 ## Overview
 
-This project is a custom portfolio website for Selina Mogicato, an application developer based in Switzerland. The site is designed around a minimal, polished presentation: strong typography, restrained motion, clear spacing, and a light/dark theme system.
+The site is designed around a minimal, polished presentation: strong typography
+(Archivo + IBM Plex), restrained motion, clear spacing, and a light/dark theme
+system. Every page exists in English, German and Italian.
+
+The front end is a fully static bundle — no Node process runs in production.
+The three things that genuinely need a server (the Momo assistant, the contact
+form, and the Spotify feed) are small PHP files uploaded next to it.
 
 ## Highlights
 
-- Responsive landing page with a polished hero and featured project sections
-- Reusable PHP partials for shared layout and project rendering
-- Lightweight design system powered by CSS tokens
-- Light and dark theme support with persisted user preference
-- Contact form with client-side validation and PHP mail handling
-- Scroll-reveal animations and progressive enhancement throughout
+- Static export: `out/` uploads straight to the Hostfactory web root
+- Three languages (EN / DE / IT), each a real prerendered URL
+- Light and dark theme with persisted preference and no flash on load
+- Scroll-reveal animations, with sensible no-JS and reduced-motion fallbacks
+- Contact form posting to a JSON PHP endpoint
+- Spotify top-tracks card, server-cached, with a build-time snapshot fallback
 - Dedicated arcade section with multiple browser games and hidden easter eggs
-- "Momo", a scoped AI assistant that answers questions about Selina from a local knowledge base
+- "Momo", a scoped AI assistant answering questions from a local knowledge base
 
 ## Stack
 
-- PHP
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Bootstrap Icons via CDN
+- Next.js 15 (App Router, `output: "export"`)
+- React 19 + TypeScript
+- Hand-written CSS with design tokens — no UI framework
+- PHP 8.1+ for the three dynamic endpoints
 
 ## Project Structure
 
 ```text
 .
-├── index.php                 # Main portfolio page
-├── karate.php                # Karate project page
-├── imprint.php               # Legal / imprint page
-├── sendMail.php              # Contact form handler
-├── ask.php                   # Momo assistant endpoint (OpenAI Responses API)
-├── config/                   # Optional local config (git-ignored secrets)
-├── data/                     # Shared project data + Momo knowledge base
-├── partials/                 # Reusable markup fragments
-├── storage/                  # Runtime files (rate-limit buckets), not served
-├── assets/
-│   ├── css/                  # Design tokens, layout, components, page styles
-│   ├── js/                   # Theme, animation, navigation, form, easter eggs
-│   ├── images/               # Portfolio and branding assets
-│   ├── php/                  # Partials, components, project data
-│   └── arcade/               # Separate arcade experience and game files
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx           # <html>, fonts, theme boot script
+│   │   ├── page.tsx             # Locale redirect at /
+│   │   └── [lang]/              # One route tree, prerendered per language
+│   │       ├── layout.tsx       # Header, footer, Momo, scroll reveal
+│   │       ├── page.tsx         # Home
+│   │       └── work|about|stack|karate|contact|imprint/
+│   ├── components/              # Header, Momo, project cards, forms, …
+│   ├── lib/
+│   │   ├── content.ts           # All copy and data, in all three languages
+│   │   └── i18n.ts              # Locale list, route helpers
+│   └── styles/globals.css       # Design tokens + every component style
+├── server/                      # Uploaded alongside the export
+│   ├── ask.php                  # Momo endpoint
+│   ├── sendMail.php             # Contact form endpoint (JSON)
+│   ├── spotify-top.php          # Top-tracks JSON feed
+│   ├── spotify-auth.php         # One-time Spotify authorisation flow
+│   ├── .htaccess                # Deploy rewrite/caching rules
+│   ├── lib/  data/  config/     # Support files for the endpoints
+│   └── storage/                 # Runtime state — never overwritten on deploy
+├── public/assets/
+│   ├── images/                  # Portfolio and branding assets
+│   └── arcade/                  # Separate arcade experience and game files
+├── scripts/copy-server-files.mjs
 └── README.md
 ```
 
+Content lives in exactly one place: `src/lib/content.ts`. Adding a project or
+fixing a wording means editing that file, in all three languages.
+
 ## Local Development
 
-Run the site with PHP’s built-in server from the project root:
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
+
+`/` redirects to the best matching locale; the real pages are `/en/`, `/de/`
+and `/it/`.
+
+The PHP endpoints are not served by `next dev`. To exercise Momo, the contact
+form or the Spotify card locally, run a PHP server over `server/` on another
+port and proxy to it, or test them against the built bundle:
 
 ```bash
-php -S localhost:8000
+npm run build
+php -S localhost:8000 -t out
 ```
 
-Then open:
+## Build & Deploy
 
-```text
-http://localhost:8000
+```bash
+npm run build
 ```
+
+This runs `next build` and then copies the PHP endpoints, their support files
+and the deploy `.htaccess` into `out/`. Upload the **contents** of `out/` to the
+Hostfactory web root.
+
+Two things must never be overwritten on the server:
+
+- `config/openai.php` and `config/spotify.php` — the real API credentials
+- `storage/` — the rate-limit salt and the Spotify cache
+
+`out/` ships empty `storage/` and `config/*.example.php` placeholders instead,
+so a clean upload cannot clobber them. `storage/` and `storage/ratelimit/` need
+to be writable by PHP. A generated `out/DEPLOY.txt` repeats these notes.
 
 ## Notes
 
-- The contact form posts to `sendMail.php` and uses PHP sessions to return validation and status messages.
-- Mail delivery depends on your local/server PHP mail configuration.
-- The arcade can be opened directly from `assets/arcade/arcade.html`, and there is also a keyboard shortcut/easter egg built into the main site.
+- The contact form posts to `sendMail.php`, which answers JSON so the page stays
+  put. Mail delivery depends on the server's PHP mail configuration.
+- The Spotify card fetches `spotify-top.php` on the client. If Spotify is not
+  configured or unreachable, the snapshot baked into the build is shown instead.
+- The arcade opens directly from `assets/arcade/arcade.html`.
 
 ## Momo — the portfolio assistant
 
@@ -83,29 +130,26 @@ to the local engine whenever that provider is unavailable.
 ### Architecture
 
 ```text
-assets/js/chatbot.js  →  POST ask.php  →  provider (Gemini / Groq / OpenAI)
-                                       ↘  lib/momo-local.php   (default + fallback)
+src/components/Momo.tsx  →  POST /ask.php  →  provider (Gemini / Groq / OpenAI)
+                                       ↘  server/lib/momo-local.php  (default + fallback)
                                               ↑
-                                    data/profile-context.php
+                                  server/data/profile-context.php
 ```
 
 | File | Purpose |
 | --- | --- |
-| `ask.php` | JSON endpoint: validation, rate limiting, provider choice, error handling |
-| `lib/momo-local.php` | Free local answering engine (intents + retrieval) |
-| `lib/momo-knowledge.php` | Parses and matches `data/knowledge.md` |
-| `lib/momo-remote.php` | Optional Gemini / Groq / OpenAI providers |
-| `data/knowledge.md` | **Plain-text file for adding your own Q&A — no code needed** |
-| `data/profile-context.php` | Structured facts (identity, skills, education, …) |
-| `data/projects.php` | Project list shared with `index.php` |
-| `config/openai.example.php` | Example configuration (no secrets) |
-| `partials/momo-chat.php` | Chat markup, included at the end of `index.php` |
-| `assets/js/chatbot.js` | Panel behaviour, message rendering, history |
-| `assets/css/chatbot.css` | Styling, built on the existing theme tokens |
-| `assets/images/momo-mascot.svg` | The mascot, inlined so CSS can animate it |
+| `server/ask.php` | JSON endpoint: validation, rate limiting, provider choice, error handling |
+| `server/lib/momo-local.php` | Free local answering engine (intents + retrieval) |
+| `server/lib/momo-knowledge.php` | Parses and matches `server/data/knowledge.md` |
+| `server/lib/momo-remote.php` | Optional Gemini / Groq / OpenAI providers |
+| `server/data/knowledge.md` | **Plain-text file for adding your own Q&A — no code needed** |
+| `server/data/profile-context.php` | Structured facts (identity, skills, education, …) |
+| `server/data/projects.php` | Project list backing Momo's answers |
+| `src/components/Momo.tsx` | Chat panel: prompts, message rendering, history |
+| `server/config/openai.example.php` | Example configuration (no secrets) |
 
-**Request flow:** the visitor submits a question → `chatbot.js` POSTs
-`{question, history}` as JSON → `ask.php` checks method, origin, content type,
+**Request flow:** the visitor submits a question → `Momo.tsx` POSTs
+`{question, history}` as JSON → `server/ask.php` checks method, origin, content type,
 question length and history shape → applies the rate limit → loads the profile
 context → asks the configured provider, or the local engine → picks an optional
 UI action from a fixed allowlist → returns `{success, answer, action}`.
@@ -131,7 +175,7 @@ the privacy note in the chat panel stays accurate either way.
 
 - PHP 8.1 or newer
 - Extensions: `json`, `mbstring` (plus `curl` only if you use a remote provider)
-- A writable `storage/` directory (rate-limit buckets and the hashing salt)
+- A writable `server/storage/` directory (rate-limit buckets and the hashing salt)
 
 ### Environment variables
 
@@ -172,16 +216,16 @@ env[GEMINI_API_KEY] = ...
 ```
 
 If the hosting plan offers no way to set environment variables, copy
-`config/openai.example.php` to `config/openai.php` — that file is git-ignored and
+`server/config/openai.example.php` to `config/openai.php` — that file is git-ignored and
 additionally blocked by `config/.htaccess`.
 
-Make sure `storage/` is writable by the web server:
+Make sure `server/storage/` is writable by the web server:
 
 ```bash
 chmod 770 storage
 ```
 
-The `config/`, `data/`, `lib/` and `storage/` directories ship with an
+The `config/`, `data/`, `lib/` and `server/storage/` directories ship with an
 `.htaccess` that denies direct HTTP access. On Nginx, add equivalent `location`
 deny rules.
 
@@ -189,7 +233,7 @@ deny rules.
 
 There are two places, and for everyday additions you only need the first.
 
-**1. `data/knowledge.md` — the easy one.** A plain text file you can fill in
+**1. `server/data/knowledge.md` — the easy one.** A plain text file you can fill in
 without touching any code. Each entry is a heading, optional keywords, and the
 answer:
 
@@ -207,15 +251,15 @@ Rules of thumb: give every entry at least two distinct keywords, prefer single
 words over phrases, add German trigger words alongside English ones, and only
 write things that may be public and are true — Momo repeats them verbatim.
 
-**2. `data/profile-context.php` — the structured one.** Momo may only state facts contained in that
+**2. `server/data/profile-context.php` — the structured one.** Momo may only state facts contained in that
 file — anything missing gets an honest "I don't know based on the portfolio".
-Project entries come from `data/projects.php`, which `index.php` also uses to
+Project entries come from `server/data/projects.php`, which `index.php` also uses to
 render the project cards, so projects only need to be maintained once.
 
 Only add publicly shareable information.
 
 When adding a new topic that the **local** engine should recognise, add an
-intent to `momo_local_intents()` in `lib/momo-local.php` and a matching branch in
+intent to `momo_local_intents()` in `server/lib/momo-local.php` and a matching branch in
 `momo_local_render()`. Remote providers pick new context up automatically.
 
 ### Disabling the chatbot
@@ -295,20 +339,15 @@ in German.
 
 The front end follows a minimal, product-style visual language:
 
-- soft neutral surfaces
-- restrained blue accents
-- spacious layout and readable type
+- deep blue-black surfaces, with a full light palette alongside
+- restrained `#8ecae6` accents, and monospace for labels and metadata
+- Archivo for display type, IBM Plex Sans for body copy
+- spacious layout, hairline rules, generous readable measure
 - subtle motion instead of heavy effects
 - clean component structure over framework complexity
 
-## Deployment
-
-This project is suited to any PHP-capable host that can serve:
-
-- `*.php` files
-- static assets from `assets/`
-- session support for form feedback
-- mail handling if the contact form should send emails
+See `src/styles/globals.css` — every token is defined once at the top, for both
+themes.
 
 ## Author
 

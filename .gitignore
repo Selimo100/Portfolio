@@ -28,8 +28,12 @@ dist/
 build/
 out/
 # Momo assistant secrets and runtime storage
-config/openai.php
-storage/ratelimit/
-storage/rate-limit-salt
-config/spotify.php
-storage/spotify-top-tracks.json
+server/config/openai.php
+server/storage/ratelimit/
+server/storage/rate-limit-salt
+server/config/spotify.php
+server/storage/spotify-top-tracks.json
+
+# Next.js
+.next/
+next-env.d.ts
