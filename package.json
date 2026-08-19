@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "php": "php -S localhost:8001 -t server",
     "build": "next build && node scripts/copy-server-files.mjs",
-    "start": "npx serve out",
+    "preview": "php -S localhost:8000 -t out",
     "lint": "next lint"
   },
   "dependencies": {

@@ -72,22 +72,25 @@ fixing a wording means editing that file, in all three languages.
 
 ## Local Development
 
-```bash
-npm install
-npm run dev      # http://localhost:3000
-```
-
-`/` redirects to the best matching locale; the real pages are `/en/`, `/de/`
-and `/it/`.
-
-The PHP endpoints are not served by `next dev`. To exercise Momo, the contact
-form or the Spotify card locally, run a PHP server over `server/` on another
-port and proxy to it, or test them against the built bundle:
+The site needs two processes: Next for the pages, PHP for the three endpoints.
+In two terminals, from the project root:
 
 ```bash
-npm run build
-php -S localhost:8000 -t out
+npm install      # once
+npm run php      # terminal 1 — PHP endpoints on :8001
+npm run dev      # terminal 2 — the site on :3000
 ```
+
+Open <http://localhost:3000>. `/` redirects to the best matching locale; the
+real pages are `/en/`, `/de/` and `/it/`.
+
+In development, `/ask.php`, `/sendMail.php` and `/spotify-top.php` are proxied
+to the PHP server (see the dev-only `rewrites` in `next.config.ts`), so Momo,
+the contact form and the Spotify card behave exactly as they do in production.
+Point them elsewhere with `PHP_DEV_ORIGIN` if :8001 is taken.
+
+`npm run dev` alone is fine for pure styling and layout work — those three
+features will simply 404 until the PHP server is running too.
 
 ## Build & Deploy
 
@@ -98,6 +101,18 @@ npm run build
 This runs `next build` and then copies the PHP endpoints, their support files
 and the deploy `.htaccess` into `out/`. Upload the **contents** of `out/` to the
 Hostfactory web root.
+
+To check the real bundle before uploading — static pages and PHP together, the
+way the server will run it:
+
+```bash
+npm run build
+npm run preview        # http://localhost:8000
+```
+
+Note that `out/` has no credentials in it by design, so the Spotify card shows
+the build-time snapshot there rather than live tracks. `npm run dev` reads the
+real `server/config/`, so it shows live data.
 
 Two things must never be overwritten on the server:
 
