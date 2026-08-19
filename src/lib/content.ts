@@ -69,15 +69,19 @@ const T = {
     ],
     karateCards: [
       { k: "Club", title: "Kaisho Karate Bassersdorf", text: "Member and helper — training regularly and supporting the organisation of schedules and events." },
-      { k: "Teaching", title: "Training children", text: "Since 2025 I pass on what I learned to the next generation, which taught me more about explaining than any course." },
-      { k: "Competition", title: "Kata & tournaments", text: "Regional and cantonal tournaments — 2nd place Kata Friendship Tournament, 3rd place Canton Zurich." }
+      { k: "Teaching", title: "Training children", text: "Since 2025 I pass on what I learned to the next generation — backed since 2026 by the J&S 1418Coach qualification." },
+      { k: "Competition", title: "Kata & tournaments", text: "Cantonal championships and the international Nicki Cup in Austria — most recently 3rd place in Kata against athletes from three countries." }
     ],
     karateTimeline: [
-      { when: "2025", what: "Teaching children", note: "Started training children, sharing my passion and knowledge of karate." },
-      { when: "November 2024", what: "Competition success", note: "2nd place in the Kata Friendship Tournament." },
-      { when: "July 2024", what: "Zürcher Kantonalmeisterschaften", note: "3rd place in the regional tournament, Canton Zurich." },
-      { when: "2024", what: "Violet belt", note: "Advanced technical proficiency and dedication." },
-      { when: "2023", what: "Half violet belt", note: "A significant step forward in the journey." }
+      { when: "July 2026", what: "Zürcher Kantonalmeisterschaften 2026", note: "Competed in Kata at the cantonal championships, and coached our kids in Kata and Team Kata." },
+      { when: "June 2026", what: "J&S 1418Coach course", note: "Completed the Jugend+Sport 1418Coach course — formal training for supporting young athletes." },
+      { when: "May 2026", what: "Nicki Cup, Austria", note: "3rd place in Kata at the international tournament, against athletes from Switzerland, Germany and Austria." },
+      { when: "September 2025", what: "Brown belt", note: "Passed the brown belt examination after a demanding grading — advanced technique and a deeper understanding of the art." },
+      { when: "July 2025", what: "Zürcher Kantonalmeisterschaften 2025", note: "2nd place in Kata and 5th place in Kumite at the cantonal championships." },
+      { when: "May 2025", what: "Nicki Cup, Austria", note: "3rd place in Kumite and 5th place in Kata at the international tournament in Austria." },
+      { when: "2025", what: "Teaching children", note: "Started training children, sharing my passion and knowledge of karate with the next generation." },
+      { when: "November 2024", what: "Kata Friendship Tournament", note: "2nd place in Kata." },
+      { when: "July 2024", what: "Zürcher Kantonalmeisterschaften 2024", note: "3rd place at the cantonal championships, Canton Zurich." }
     ],
     links: [
       { k: "Email", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },
@@ -132,15 +136,19 @@ const T = {
     ],
     karateCards: [
       { k: "Verein", title: "Kaisho Karate Bassersdorf", text: "Mitglied und Helferin — regelmässiges Training und Unterstützung bei Planung und Events." },
-      { k: "Unterricht", title: "Kindertraining", text: "Seit 2025 gebe ich mein Wissen an die nächste Generation weiter — die beste Schule im Erklären." },
-      { k: "Wettkampf", title: "Kata & Turniere", text: "Regionale und kantonale Turniere — 2. Platz Kata Friendship Tournament, 3. Platz Kanton Zürich." }
+      { k: "Unterricht", title: "Kindertraining", text: "Seit 2025 gebe ich mein Wissen an die nächste Generation weiter — seit 2026 mit dem J&S-Kurs 1418Coach im Rücken." },
+      { k: "Wettkampf", title: "Kata & Turniere", text: "Kantonalmeisterschaften und der internationale Nicki Cup in Österreich — zuletzt 3. Platz im Kata gegen Athletinnen und Athleten aus drei Ländern." }
     ],
     karateTimeline: [
-      { when: "2025", what: "Kindertraining", note: "Begonnen, Kinder zu trainieren und meine Begeisterung weiterzugeben." },
-      { when: "November 2024", what: "Wettkampferfolg", note: "2. Platz im Kata Friendship Tournament." },
-      { when: "Juli 2024", what: "Zürcher Kantonalmeisterschaften", note: "3. Platz am Regionalturnier, Kanton Zürich." },
-      { when: "2024", what: "Violetter Gürtel", note: "Fortgeschrittene Technik und Ausdauer." },
-      { when: "2023", what: "Halb violetter Gürtel", note: "Ein wichtiger Schritt auf dem Weg." }
+      { when: "Juli 2026", what: "Zürcher Kantonalmeisterschaften 2026", note: "Im Kata angetreten und unsere Kinder in Kata und Team-Kata gecoacht." },
+      { when: "Juni 2026", what: "J&S-Kurs 1418Coach", note: "Den Jugend+Sport-Kurs 1418Coach abgeschlossen — Ausbildung für die Begleitung junger Sportlerinnen und Sportler." },
+      { when: "Mai 2026", what: "Nicki Cup, Österreich", note: "3. Platz im Kata am internationalen Turnier, gegen Athletinnen und Athleten aus der Schweiz, Deutschland und Österreich." },
+      { when: "September 2025", what: "Brauner Gürtel", note: "Nach anspruchsvoller Prüfung den braunen Gürtel erreicht — fortgeschrittene Technik und ein tieferes Verständnis der Kunst." },
+      { when: "Juli 2025", what: "Zürcher Kantonalmeisterschaften 2025", note: "2. Platz im Kata und 5. Platz im Kumite an den Kantonalmeisterschaften." },
+      { when: "Mai 2025", what: "Nicki Cup, Österreich", note: "3. Platz im Kumite und 5. Platz im Kata am internationalen Turnier in Österreich." },
+      { when: "2025", what: "Kindertraining", note: "Begonnen, Kinder zu trainieren und meine Begeisterung an die nächste Generation weiterzugeben." },
+      { when: "November 2024", what: "Kata Friendship Tournament", note: "2. Platz im Kata." },
+      { when: "Juli 2024", what: "Zürcher Kantonalmeisterschaften 2024", note: "3. Platz an den Kantonalmeisterschaften, Kanton Zürich." }
     ],
     links: [
       { k: "E-Mail", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },
@@ -195,15 +203,19 @@ const T = {
     ],
     karateCards: [
       { k: "Club", title: "Kaisho Karate Bassersdorf", text: "Membro e aiutante — allenamenti regolari e supporto nell'organizzazione di orari ed eventi." },
-      { k: "Insegnamento", title: "Allenare i bambini", text: "Dal 2025 trasmetto ciò che ho imparato alla generazione successiva: la miglior scuola per spiegare bene." },
-      { k: "Gare", title: "Kata e tornei", text: "Tornei regionali e cantonali — 2° posto Kata Friendship Tournament, 3° posto Canton Zurigo." }
+      { k: "Insegnamento", title: "Allenare i bambini", text: "Dal 2025 trasmetto ciò che ho imparato alla nuova generazione — dal 2026 con la qualifica G+S 1418Coach alle spalle." },
+      { k: "Gare", title: "Kata e tornei", text: "Campionati cantonali e il Nicki Cup internazionale in Austria — da ultimo 3° posto nel Kata contro atleti di tre paesi." }
     ],
     karateTimeline: [
-      { when: "2025", what: "Allenare i bambini", note: "Ho iniziato ad allenare bambini, condividendo passione e conoscenza." },
-      { when: "Novembre 2024", what: "Successo in gara", note: "2° posto al Kata Friendship Tournament." },
-      { when: "Luglio 2024", what: "Campionati cantonali di Zurigo", note: "3° posto al torneo regionale, Canton Zurigo." },
-      { when: "2024", what: "Cintura viola", note: "Padronanza tecnica avanzata e dedizione." },
-      { when: "2023", what: "Mezza cintura viola", note: "Un passo importante nel percorso." }
+      { when: "Luglio 2026", what: "Campionati cantonali di Zurigo 2026", note: "In gara nel Kata e coach dei nostri bambini nel Kata e nel Kata a squadre." },
+      { when: "Giugno 2026", what: "Corso G+S 1418Coach", note: "Completato il corso Gioventù+Sport 1418Coach — formazione per accompagnare i giovani atleti." },
+      { when: "Maggio 2026", what: "Nicki Cup, Austria", note: "3° posto nel Kata al torneo internazionale, contro atleti da Svizzera, Germania e Austria." },
+      { when: "Settembre 2025", what: "Cintura marrone", note: "Superato un esame impegnativo per la cintura marrone — tecnica avanzata e una comprensione più profonda dell'arte." },
+      { when: "Luglio 2025", what: "Campionati cantonali di Zurigo 2025", note: "2° posto nel Kata e 5° posto nel Kumite ai campionati cantonali." },
+      { when: "Maggio 2025", what: "Nicki Cup, Austria", note: "3° posto nel Kumite e 5° posto nel Kata al torneo internazionale in Austria." },
+      { when: "2025", what: "Allenare i bambini", note: "Ho iniziato ad allenare bambini, condividendo passione e conoscenza con la nuova generazione." },
+      { when: "Novembre 2024", what: "Kata Friendship Tournament", note: "2° posto nel Kata." },
+      { when: "Luglio 2024", what: "Campionati cantonali di Zurigo 2024", note: "3° posto ai campionati cantonali, Canton Zurigo." }
     ],
     links: [
       { k: "Email", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },

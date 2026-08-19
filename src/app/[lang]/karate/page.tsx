@@ -30,9 +30,6 @@ export default async function KaratePage({ params }: { params: Promise<{ lang: s
         <p className="lede" style={{ marginTop: 22, lineHeight: 1.75 }}>
           {t.karate.blurb}
         </p>
-        <div className="karateBanner">
-          <img src="/assets/images/Kaisho_Logo.JPG" alt="Kaisho Karate Bassersdorf" loading="lazy" />
-        </div>
       </section>
 
       <section className="karateCards">
@@ -54,7 +51,7 @@ export default async function KaratePage({ params }: { params: Promise<{ lang: s
             <div
               className="timelineRow"
               style={{ gridTemplateColumns: "130px 1fr", alignItems: "baseline", padding: "18px 0" }}
-              key={e.what}
+              key={`${e.when}-${e.what}`}
             >
               <span className="milestoneWhen">{e.when}</span>
               <div>
