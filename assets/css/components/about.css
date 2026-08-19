@@ -224,39 +224,39 @@
 
 /* ---------- Music: top tracks from Spotify ---------- */
 
+.music-intro {
+  margin-bottom: 1.25rem;
+}
+
 .music-container {
   background-color: var(--background-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 1.8rem;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
   margin-bottom: 2.5rem;
 }
 
 .music-header {
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.9rem;
 }
 
-.music-header h3 {
-  margin-bottom: 0.25rem;
-}
-
-.music-header h3 i {
+.music-header i {
   color: var(--accent);
-  margin-right: 0.4rem;
+  margin-right: 0.3rem;
 }
 
 .music-subtitle {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 
-/* Equal columns keep the cards aligned with the quick-facts grid above */
+/* Stacked rows: the column is too narrow for side-by-side cards */
 .track-list {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
 }
@@ -264,23 +264,14 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  background-color: var(--background);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1rem 1.2rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.track:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
+  gap: 0.8rem;
+  min-width: 0;
 }
 
 .track-rank {
   flex-shrink: 0;
-  width: 1.2rem;
-  font-size: 0.95rem;
+  width: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent-muted);
   text-align: center;
@@ -288,10 +279,10 @@
 
 .track-cover {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px var(--shadow-light);
 }
 
@@ -299,11 +290,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-secondary);
+  background-color: var(--background);
   color: var(--text-tertiary);
 }
 
-/* min-width:0 lets long titles ellipsize instead of stretching the card */
+/* min-width:0 lets long titles ellipsize instead of stretching the row */
 .track-text {
   display: flex;
   flex-direction: column;
@@ -320,17 +311,18 @@
 
 .track-name {
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--text-primary);
 }
 
 .track-artists {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
 .track-link {
   flex-shrink: 0;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1;
   color: var(--text-tertiary);
   transition: color 0.2s ease;
@@ -338,20 +330,4 @@
 
 .track-link:hover {
   color: var(--accent);
-}
-
-@media (max-width: 991px) {
-  .track-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .music-container {
-    padding: 1.2rem;
-  }
-}
-
-.music-intro {
-  margin-bottom: 1.5rem;
 }

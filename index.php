@@ -148,26 +148,16 @@ $topTracks = spotify_top_tracks(3, 'short_term');
             </div>
           </div>
 
-        </div>
-        <div class="col-md-6">
-          <div class="about-image">
-            <img src="assets/images/Portrait.png" alt="Profilepicture Selina Mogicato" class="profile-img">
-          </div>
-        </div>
-      </div>
+          <p class="music-intro">
+            Outside of coding, <strong>music</strong> is a big passion of mine — it accompanies pretty much
+            everything I do, from long development sessions to training and studying.
+          </p>
 
-      <p class="music-intro">
-        Outside of coding, <strong>music</strong> is a big passion of mine — it accompanies pretty much
-        everything I do, from long development sessions to training and studying.
-      </p>
-
-      <?php if ($topTracks !== []): ?>
-        <div class="row">
-          <div class="col-12">
+          <?php if ($topTracks !== []): ?>
             <div class="music-container">
               <div class="music-header">
-                <h3><i class="bi bi-music-note-beamed"></i> On Repeat</h3>
-                <span class="music-subtitle">My top 3 most streamed songs of the last 4 weeks &mdash; straight from Spotify</span>
+                <span class="quick-fact-label"><i class="bi bi-music-note-beamed"></i> On Repeat</span>
+                <span class="music-subtitle">Top 3 of the last 4 weeks on Spotify</span>
               </div>
               <ol class="track-list">
                 <?php foreach ($topTracks as $index => $track): ?>
@@ -175,7 +165,7 @@ $topTracks = spotify_top_tracks(3, 'short_term');
                     <span class="track-rank"><?php echo $index + 1; ?></span>
                     <?php if ($track['cover'] !== ''): ?>
                       <img class="track-cover" src="<?php echo htmlspecialchars($track['cover']); ?>"
-                        alt="Album cover of <?php echo htmlspecialchars($track['album']); ?>" loading="lazy" width="56" height="56">
+                        alt="Album cover of <?php echo htmlspecialchars($track['album']); ?>" loading="lazy" width="48" height="48">
                     <?php else: ?>
                       <span class="track-cover track-cover--empty"><i class="bi bi-music-note"></i></span>
                     <?php endif; ?>
@@ -193,9 +183,15 @@ $topTracks = spotify_top_tracks(3, 'short_term');
                 <?php endforeach; ?>
               </ol>
             </div>
+          <?php endif; ?>
+
+        </div>
+        <div class="col-md-6">
+          <div class="about-image">
+            <img src="assets/images/Portrait.png" alt="Profilepicture Selina Mogicato" class="profile-img">
           </div>
         </div>
-      <?php endif; ?>
+      </div>
 
       <div class="row">
         <div class="col-12">
