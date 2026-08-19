@@ -19,6 +19,8 @@ export type Project = {
   tags: string[];
   /** Live deployment, where one exists. */
   url?: string;
+  /** Demo clip shown in the detail modal, where one exists. */
+  video?: string;
   period: Record<Lang, string>;
   desc: Record<Lang, string>;
 };
@@ -35,6 +37,7 @@ export type Track = { n: string; title: string; artist: string; url?: string; co
 const T = {
   en: {
     nav: { home: "Home", work: "Projects", about: "About", stack: "Stack", karate: "Karate", contact: "Contact" },
+    ui: { gridVariant: "Grid", demo: "Demo video" },
     hero: { hi: "Hi, I'm", eyebrow: "Apprentice Application Developer · Zurich", role: "Apprentice Application Developer", open: "Open to junior roles from 2027", claim: "Structured software, built with care.", blurb: "I design and build modern web and mobile products — from clean, considered frontends to solid backends. Currently completing my apprenticeship as an application developer alongside the Vocational Baccalaureate (BMS-W).", cta: "View my work", cta2: "Get in touch", cta3: "About me" },
     work: { title: "Selected work", sub: "Different projects, from a native iOS app to my own self-hosted infrastructure.", all: "All projects", pageTitle: "Projects", pageSub: "Mobile apps, club tooling and self-hosted infrastructure. Each entry says what it does, why I built it and what it runs on.", fanHint: "Hover to lift a card, click to open its details.", visit: "Visit project" },
     about: { title: "About", p1: "I am completing my apprenticeship as an application developer while attending the Vocational Baccalaureate School (BMS-W) in Switzerland. My focus lies in clean, scalable, well-structured web applications that are technically solid and pleasant to use.", p2: "I work across the full stack and enjoy the part most people skip: naming things well, keeping architecture legible, and making sure the code still makes sense six months later.", valuesTitle: "What I care about", pathTitle: "Path", cv: "Request my CV" },
@@ -104,6 +107,7 @@ const T = {
   },
   de: {
     nav: { home: "Start", work: "Projekte", about: "Über mich", stack: "Stack", karate: "Karate", contact: "Kontakt" },
+    ui: { gridVariant: "Raster", demo: "Demo-Video" },
     hero: { hi: "Hi, ich bin", eyebrow: "Applikationsentwicklerin in Ausbildung · Zürich", role: "Applikationsentwicklerin in Ausbildung", open: "Offen für Junior-Stellen ab 2027", claim: "Strukturierte Software, mit Sorgfalt gebaut.", blurb: "Ich gestalte und entwickle moderne Web- und Mobile-Produkte — von klaren, durchdachten Frontends bis zu stabilen Backends. Aktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W).", cta: "Projekte ansehen", cta2: "Kontakt aufnehmen", cta3: "Über mich" },
     work: { title: "Ausgewählte Projekte", sub: "Unterschiedliche Projekte, von einer native iOS-App bis zur eigenen Infrastruktur.", all: "Alle Projekte", pageTitle: "Projekte", pageSub: "Mobile Apps, Vereins-Tools und selbst gehostete Infrastruktur. Jeder Eintrag zeigt, was es macht, warum es entstand und worauf es läuft.", fanHint: "Karte zum Anheben antippen, klicken für Details.", visit: "Projekt öffnen" },
     about: { title: "Über mich", p1: "Ich absolviere meine Lehre als Applikationsentwicklerin und besuche parallel die Berufsmaturitätsschule (BMS-W). Mein Fokus liegt auf sauberen, skalierbaren und gut strukturierten Webanwendungen, die technisch solide und angenehm zu bedienen sind.", p2: "Ich arbeite über den ganzen Stack und mag genau den Teil, den viele überspringen: gute Benennungen, verständliche Architektur und Code, der auch in sechs Monaten noch Sinn ergibt.", valuesTitle: "Worauf ich achte", pathTitle: "Weg", cv: "CV anfragen" },
@@ -173,6 +177,7 @@ const T = {
   },
   it: {
     nav: { home: "Home", work: "Progetti", about: "Chi sono", stack: "Stack", karate: "Karate", contact: "Contatto" },
+    ui: { gridVariant: "Griglia", demo: "Video demo" },
     hero: { hi: "Ciao, sono", eyebrow: "Sviluppatrice di applicazioni in formazione · Zurigo", role: "Sviluppatrice di applicazioni in formazione", open: "Disponibile per ruoli junior dal 2027", claim: "Software strutturato, costruito con cura.", blurb: "Progetto e realizzo prodotti web e mobile moderni — da frontend puliti e ragionati a backend solidi. Attualmente completo il mio apprendistato come sviluppatrice di applicazioni insieme alla maturità professionale (BMS-W).", cta: "Vedi i progetti", cta2: "Contattami", cta3: "Chi sono" },
     work: { title: "Progetti selezionati", sub: "Diversi progetti, da un'app iOS nativa alla mia infrastruttura autogestita.", all: "Tutti i progetti", pageTitle: "Progetti", pageSub: "App mobile, strumenti per il club e infrastruttura autogestita. Ogni voce spiega cosa fa, perché l'ho creata e su cosa gira.", fanHint: "Passa il mouse per sollevare una carta, clicca per i dettagli.", visit: "Apri il progetto" },
     about: { title: "Chi sono", p1: "Sto completando l'apprendistato come sviluppatrice di applicazioni, frequentando in parallelo la scuola di maturità professionale (BMS-W). Mi concentro su applicazioni web pulite, scalabili e ben strutturate, solide tecnicamente e piacevoli da usare.", p2: "Lavoro su tutto lo stack e mi piace proprio la parte che molti saltano: dare buoni nomi, mantenere l'architettura leggibile e scrivere codice che avrà senso anche fra sei mesi.", valuesTitle: "Cosa mi importa", pathTitle: "Percorso", cv: "Richiedi il CV" },
@@ -249,22 +254,22 @@ const MOMO_Q = {
 };
 
 const PROJECTS: Project[] = [
-  { id: "momento", url: "https://momento.mogicato.ch", name: "Momento App", cat: "personal", shot: "momento_app_card.png", tags: ["Swift"],
+  { id: "momento", url: "https://momento.mogicato.ch/", name: "Momento App", cat: "personal", shot: "momento_app_card.png", tags: ["Swift"],
     period: { en: "Jun 2026 – present", de: "Juni 2026 – heute", it: "Giu 2026 – oggi" },
     desc: { en: "A local-first iOS app for turning photo sets into personal moments — adding the story, picking the best shots and exporting albums straight to Apple Photos.", de: "Eine local-first iOS-App, die Fotosets in persönliche Momente verwandelt — Geschichte ergänzen, beste Aufnahmen wählen, Album direkt nach Apple Fotos exportieren.", it: "Un'app iOS local-first che trasforma set di foto in momenti personali — aggiungi la storia, scegli le foto migliori, esporta album in Apple Foto." } },
   { id: "homelab", name: "HomeLab", cat: "personal", shot: "homelab_card.png", tags: ["Linux", "Docker", "Nginx"],
     period: { en: "Feb 2026 – present", de: "Feb 2026 – heute", it: "Feb 2026 – oggi" },
     desc: { en: "A self-built homelab on a 2012 MacBook Pro: containers, reverse proxying and monitoring on real hardware, hosting my own projects.", de: "Ein selbst gebautes Homelab auf einem MacBook Pro von 2012: Container, Reverse Proxy und Monitoring auf echter Hardware — hostet meine eigenen Projekte.", it: "Un homelab autocostruito su un MacBook Pro del 2012: container, reverse proxy e monitoraggio su hardware reale, ospita i miei progetti." } },
-  { id: "yumigo", url: "https://yumigoapp.netlify.app/", name: "Yumigo App", cat: "personal", shot: "yumigo_app_card.png", tags: ["React Native", "Expo", "Firebase"],
+  { id: "yumigo", url: "https://yumigoapp.netlify.app/", video: "yumigo_app_video.mp4", name: "Yumigo App", cat: "personal", shot: "yumigo_app_card.png", tags: ["React Native", "Expo", "Firebase"],
     period: { en: "Jul 2025 – present", de: "Juli 2025 – heute", it: "Lug 2025 – oggi" },
     desc: { en: "Turns spontaneous food cravings into recipe suggestions, with seasonality and locality as first-class filters. Built during the BBC Basislehrjahr.", de: "Verwandelt spontane Gelüste in Rezeptvorschläge, mit Saison und Region als zentrale Filter. Entstanden im BBC Basislehrjahr.", it: "Trasforma le voglie improvvise in proposte di ricette, con stagionalità e provenienza come filtri principali. Creata durante il BBC Basislehrjahr." } },
-  { id: "work", url: "https://selina.sunrise-avengers.ch", name: "Work Portfolio", cat: "professional", shot: "work_portfolio_card.png", tags: ["React", "Tailwind", "Vite"],
+  { id: "work", url: "https://selina.sunrise-avengers.ch/", name: "Work Portfolio", cat: "professional", shot: "work_portfolio_card.png", tags: ["React", "Tailwind", "Vite"],
     period: { en: "2025", de: "2025", it: "2025" },
     desc: { en: "A dedicated portfolio for my professional environment, showing projects, achievements and technical growth within the apprenticeship.", de: "Ein eigenes Portfolio für mein berufliches Umfeld: Projekte, Erfolge und technische Entwicklung während der Lehre.", it: "Un portfolio dedicato al mio ambiente professionale: progetti, risultati e crescita tecnica durante l'apprendistato." } },
-  { id: "kaisho", name: "Kaisho DojoTime", cat: "personal", shot: "kaisho_dojotime_card.png", tags: ["TypeScript", "Supabase", "React"],
+  { id: "kaisho", url: "https://kaisho-dojotime.netlify.app/", name: "Kaisho DojoTime", cat: "personal", shot: "kaisho_dojotime_card.png", tags: ["TypeScript", "Supabase", "React"],
     period: { en: "2025", de: "2025", it: "2025" },
     desc: { en: "An organisation tool for my karate club: training schedules, trainer assignments and club events in one place.", de: "Ein Organisationstool für meinen Karateverein: Trainingsplan, Trainerzuteilung und Vereinsanlässe an einem Ort.", it: "Uno strumento organizzativo per il mio club di karate: orari, assegnazione allenatori ed eventi in un unico posto." } },
-  { id: "rummy", name: "Rummy Website", cat: "personal", shot: "rummy_card.png", tags: ["PHP", "SQL", "Bootstrap"],
+  { id: "rummy", url: "https://rummy.mogicato.ch/", name: "Rummy Website", cat: "personal", shot: "rummy_card.png", tags: ["PHP", "SQL", "Bootstrap"],
     period: { en: "2024", de: "2024", it: "2024" },
     desc: { en: "A web tool for managing Rummy games with an intuitive scoring UI. Originally my final secondary school project, still used by my family.", de: "Ein Web-Tool zum Verwalten von Rummy-Partien mit intuitiver Punkteoberfläche. Ursprünglich meine Abschlussarbeit der Sekundarschule — bis heute im Familiengebrauch.", it: "Uno strumento web per gestire partite di Rummy con un'interfaccia punteggi intuitiva. Nato come progetto finale di scuola media, usato ancora in famiglia." } }
 ];

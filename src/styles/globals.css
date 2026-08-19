@@ -433,6 +433,129 @@ input, textarea, button { font-family: inherit; }
   color: var(--mu);
 }
 
+/* ---------- layout picker ---------- */
+.layoutPicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+.layoutPickerLabel {
+  font: 400 10px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.layoutPickerBtns {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.layoutBtn {
+  padding: 4px 11px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--mu);
+  font: 400 10.5px var(--mono);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.layoutBtn:hover { color: var(--tx); }
+.layoutBtn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--onAccent);
+  font-weight: 500;
+}
+
+.riseIn { animation: rise 0.4s ease both; }
+
+/* A card grid renders as buttons here, so strip the button chrome. */
+.cardButton {
+  padding: 0;
+  border: 1px solid var(--line);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.cardButton .cardShot { display: block; }
+.cardButton .cardBody { display: flex; }
+.cardButton .cardName, .cardButton .cardDesc { display: block; }
+.cardButton .cardMeta, .cardButton .tags { display: flex; }
+
+/* ---------- B: list ---------- */
+.listView { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.listRow {
+  display: grid;
+  grid-template-columns: 64px 1fr 220px 34px;
+  gap: 26px;
+  align-items: center;
+  padding: 22px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.25s;
+  width: 100%;
+}
+.listRow:hover { background: var(--surface); }
+.listNum { font: 400 11px var(--mono); color: var(--faint); }
+.listMain { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.listHead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.listName {
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.listDesc { font-size: 13.5px; line-height: 1.55; color: var(--mu); max-width: 70ch; text-wrap: pretty; }
+.listTags { margin-top: 0; padding-top: 0; }
+.listArrow { font-size: 17px; color: var(--mu); text-align: right; }
+
+/* ---------- C: alternating rows ---------- */
+.altView { display: flex; flex-direction: column; gap: 34px; }
+.altRow {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 38px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+.altRow:hover { border-color: var(--line2); box-shadow: var(--glow); }
+.altRow[data-flip="true"] { grid-template-columns: 1fr 1.05fr; }
+.altRow[data-flip="true"] .altShot { order: 2; }
+.altRow[data-flip="true"] .altBody { order: 1; }
+.altShot { display: block; min-height: 260px; align-self: stretch; overflow: hidden; }
+.altShot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.altBody { padding: 34px 40px; display: flex; flex-direction: column; gap: 12px; }
+.altName {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.altDesc { font-size: 15px; line-height: 1.65; color: var(--mu); max-width: 46ch; text-wrap: pretty; }
+
 /* ---------- project fan (grid variant D) ---------- */
 .fanWrap {
   position: relative;
@@ -544,7 +667,12 @@ input, textarea, button { font-family: inherit; }
   font: 400 11px var(--mono);
   color: var(--tx2);
 }
-.modalVisit { margin-top: 26px; padding: 13px 22px; font-size: 13.5px; }
+.modalActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.modalVisit { padding: 13px 22px; font-size: 13.5px; }
+.modalShot video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+/* The demo clip is a portrait screen recording, so a 16:9 frame would be
+   mostly black bars — give the video its own taller frame instead. */
+.modalShot.isVideo { aspect-ratio: auto; height: min(56vh, 440px); background: #000; }
 
 /* ---------- filters ---------- */
 .filters { display: flex; gap: 8px; margin: 40px 0 30px; flex-wrap: wrap; }
@@ -1045,6 +1173,14 @@ input, textarea, button { font-family: inherit; }
     z-index: auto !important;
   }
   .fanHint { display: none; }
+  .listRow { grid-template-columns: 40px 1fr; gap: 14px; }
+  .listTags, .listArrow { display: none; }
+  .altRow, .altRow[data-flip="true"] { grid-template-columns: 1fr; gap: 0; }
+  .altRow[data-flip="true"] .altShot { order: 0; }
+  .altRow[data-flip="true"] .altBody { order: 0; }
+  .altShot { min-height: 0; aspect-ratio: 16 / 10; }
+  .altBody { padding: 24px 22px 28px; }
+  .layoutPicker { justify-content: flex-start; }
   .scrim { padding: 16px; }
   .modalBody { padding: 24px 22px 28px; }
 }
