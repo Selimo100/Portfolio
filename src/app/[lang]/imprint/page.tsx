@@ -28,7 +28,17 @@ export default async function ImprintPage({ params }: { params: Promise<{ lang: 
             <dt className="metaKey" style={{ paddingTop: 3 }}>
               {b.k}
             </dt>
-            <dd>{b.v}</dd>
+            <dd>
+              {b.v}
+              {b.link && (
+                <>
+                  {" "}
+                  <a href={b.link.href} target="_blank" rel="license noreferrer">
+                    {b.link.label}
+                  </a>
+                </>
+              )}
+            </dd>
           </div>
         ))}
       </dl>

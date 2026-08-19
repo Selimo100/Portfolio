@@ -157,10 +157,14 @@ input, textarea, button { font-family: inherit; }
   border: 1px solid var(--line2);
   display: grid;
   place-items: center;
-  font: 600 11px var(--mono);
-  letter-spacing: 0.03em;
-  color: var(--accent);
   background: var(--surface);
+  overflow: hidden;
+}
+.brandMark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .brandName {
   font-family: var(--display);
@@ -226,6 +230,22 @@ input, textarea, button { font-family: inherit; }
 }
 .langBtn:hover { border-color: var(--line2); color: var(--tx); }
 .langCode { font: 500 11.5px var(--mono); letter-spacing: 0.06em; }
+.langFlag {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--line);
+  flex: none;
+}
+.langFlag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .langMenu {
   position: absolute;
   right: 0;
@@ -253,8 +273,14 @@ input, textarea, button { font-family: inherit; }
   transition: background 0.18s;
 }
 .langItem:hover { background: var(--bg2); color: var(--tx); }
-.langItem span { font: 500 10.5px var(--mono); letter-spacing: 0.08em; color: var(--faint); }
-.langItem[aria-current="true"] span { color: var(--accent); }
+.langLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.langItem > span:last-child { font: 500 10.5px var(--mono); letter-spacing: 0.08em; color: var(--faint); }
+.langItem[aria-current="true"] > span:last-child { color: var(--accent); }
 .navToggle { display: none; }
 
 /* ---------- hero ---------- */
@@ -693,24 +719,69 @@ input, textarea, button { font-family: inherit; }
   padding: 20px 0;
   border-top: 1px solid var(--line);
 }
-.imprintRow dd { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--tx2); white-space: pre-line; }
+.imprintRow dd {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--tx2);
+  white-space: pre-line;
+  max-width: 68ch;
+}
 
 /* ---------- footer ---------- */
-.footer { border-top: 1px solid var(--line); background: var(--bg2); }
-.footerInner {
-  max-width: var(--shell);
-  margin: 0 auto;
-  padding: 46px var(--pad);
+.footer { border-top: 1px solid var(--line); background: var(--bg2); margin-top: 0; }
+.footerInner { max-width: var(--shell); margin: 0 auto; padding: 48px var(--pad) 32px; }
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footerBrandName {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--tx);
+}
+.footerTagline {
+  margin: 0 0 16px;
+  max-width: 34ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--mu);
+}
+.footerSocials { display: flex; flex-wrap: wrap; gap: 16px; }
+.footerSocials a {
+  display: inline-flex;
+  color: var(--mu);
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.footerSocials a:hover { color: var(--accent); transform: translateY(-2px); }
+.footerNav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footerNav a { font-size: 13px; color: var(--mu); transition: color 0.2s ease; }
+.footerNav a:hover { color: var(--tx); }
+.footerBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
   flex-wrap: wrap;
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
 }
-.footerLinks { display: flex; gap: 22px; font-size: 12.5px; flex-wrap: wrap; }
-.footerLinks a { color: var(--mu); }
-.footerLinks a:hover { color: var(--tx); }
-.footerNote { font: 400 11px var(--mono); color: var(--faint); }
+.footerBottom p { margin: 0; font-size: 12px; color: var(--faint); }
 
 /* ---------- Momo ---------- */
 .momoLauncher {
@@ -842,7 +913,8 @@ input, textarea, button { font-family: inherit; }
   .valueList { grid-template-columns: 1fr; }
   .timelineRow, .imprintRow { grid-template-columns: 1fr; gap: 8px; }
   .heroMeta { grid-template-columns: 1fr; }
-  .footerInner { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .footerTop { flex-direction: column; gap: 28px; }
+  .footerBottom { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

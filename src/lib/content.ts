@@ -25,6 +25,10 @@ export type Project = {
 
 export type StackGroup = { group: string; items: string[] };
 
+export type LangOption = { code: string; key: Lang; name: string };
+
+export type ImprintBlock = { k: string; v: string; link?: { label: string; href: string } };
+
 export type Track = { n: string; title: string; artist: string; url?: string; cover?: string };
 
 
@@ -32,14 +36,14 @@ const T = {
   en: {
     nav: { home: "Home", work: "Projects", about: "About", stack: "Stack", karate: "Karate", contact: "Contact" },
     hero: { hi: "Hi, I'm", eyebrow: "Apprentice Application Developer · Zurich", role: "Apprentice Application Developer", open: "Open to junior roles from 2027", claim: "Structured software, built with care.", blurb: "I design and build modern web and mobile products — from clean, considered frontends to solid backends. Currently completing my apprenticeship as an application developer alongside the Vocational Baccalaureate (BMS-W).", cta: "View my work", cta2: "Get in touch", cta3: "About me" },
-    work: { title: "Selected work", sub: "Six projects, from a native iOS app to my own self-hosted infrastructure.", all: "All projects", pageTitle: "Projects", pageSub: "Mobile apps, club tooling and self-hosted infrastructure. Each entry says what it does, why I built it and what it runs on." },
+    work: { title: "Selected work", sub: "Different projects, from a native iOS app to my own self-hosted infrastructure.", all: "All projects", pageTitle: "Projects", pageSub: "Mobile apps, club tooling and self-hosted infrastructure. Each entry says what it does, why I built it and what it runs on." },
     about: { title: "About", p1: "I am completing my apprenticeship as an application developer while attending the Vocational Baccalaureate School (BMS-W) in Switzerland. My focus lies in clean, scalable, well-structured web applications that are technically solid and pleasant to use.", p2: "I work across the full stack and enjoy the part most people skip: naming things well, keeping architecture legible, and making sure the code still makes sense six months later.", valuesTitle: "What I care about", pathTitle: "Path", cv: "Request my CV" },
     stack: { title: "Stack", sub: "Tools I use regularly, grouped by where they sit in a project." },
     karate: { eyebrow: "Beyond the screen", title: "Karate — discipline that carries over.", blurb: "I train and help organise at Kaisho Karate Bassersdorf, and now teach children too. The same habits apply to code: repetition, precision, and showing up when it is not convenient.", milestones: "Milestones" },
     contact: { title: "Get in touch", blurb: "Open to apprenticeship follow-ups, junior roles and small freelance builds. Email is the quickest route.", name: "Your name", namePh: "Jane Doe", email: "Your email", emailPh: "you@example.com", message: "Message", messagePh: "What are you working on?", send: "Send message", note: "I usually reply within two days." },
     cta: { title: "Let's build something that lasts.", blurb: "Looking for a developer who cares about structure as much as the surface? I'd like to hear about it.", button: "Contact me" },
     imprint: { title: "Imprint" },
-    footer: { tag: "Passionate about software and new technologies.", imprint: "Imprint", made: "Made in Zurich, Switzerland" },
+    footer: { tag: "Passionate about new technologies and software development.", imprint: "Imprint", made: "Made in Zurich, Switzerland", rights: "All rights reserved." },
     momo: { label: "Ask Momo", title: "Momo — site assistant", blurb: "Ask about projects, technologies or the apprenticeship.", note: "Messages are sent to an AI service. Do not enter sensitive information." },
     filters: { all: "All", personal: "Personal", professional: "Professional" },
     stats: [
@@ -90,23 +94,25 @@ const T = {
     ],
     imprintBlocks: [
       { k: "Responsible", v: "Selina Mogicato\nZurich, Switzerland" },
-      { k: "Contact", v: "selimo.contact@gmail.com" },
-      { k: "Purpose", v: "Personal portfolio website. Content is provided for information purposes only." },
-      { k: "Liability", v: "Despite careful checking, no liability is accepted for the accuracy or completeness of the content, nor for the content of linked external sites." },
-      { k: "Copyright", v: "All texts, images and project material © 2026 Selina Mogicato unless stated otherwise." }
+      { k: "Contact", v: "selimo.contact@gmail.com\nlinkedin.com/in/selina-mogicato" },
+      { k: "Purpose", v: "Personal portfolio website, showing my work, skills and experience as an application developer. Content is provided for information purposes only.\n\nI am currently completing my apprenticeship in application development alongside the Vocational Baccalaureate (BMS-W)." },
+      { k: "Liability", v: "Despite careful checking, no liability is accepted for the accuracy or completeness of the content.\n\nThis site links to external websites whose content I have no influence over. The respective provider or operator is always responsible for their content." },
+      { k: "Copyright & licence", v: "All original texts, images and project material © 2026 Selina Mogicato unless stated otherwise. Third-party assets and libraries keep their own licences.\n\nThis portfolio is published under the Creative Commons BY-NC 4.0 licence.", link: { label: "CC BY-NC 4.0", href: "https://creativecommons.org/licenses/by-nc/4.0/" } },
+      { k: "Image credits", v: "Some images on this site were generated with DALL·E, OpenAI's image model, from prompts written by Selina Mogicato.\n\nWhere images are published under Creative Commons licences, those terms apply. Any further use requires explicit permission." },
+      { k: "Privacy", v: "No personal data is collected from visitors without explicit consent.\nContact form submissions are used solely to answer the enquiry.\nNo tracking cookies are used for analytics or advertising.\nServer logs may temporarily store IP addresses for security purposes.\nQuestions sent to the Momo assistant may be forwarded to an AI provider." }
     ]
   },
   de: {
     nav: { home: "Start", work: "Projekte", about: "Über mich", stack: "Stack", karate: "Karate", contact: "Kontakt" },
     hero: { hi: "Hi, ich bin", eyebrow: "Applikationsentwicklerin in Ausbildung · Zürich", role: "Applikationsentwicklerin in Ausbildung", open: "Offen für Junior-Stellen ab 2027", claim: "Strukturierte Software, mit Sorgfalt gebaut.", blurb: "Ich gestalte und entwickle moderne Web- und Mobile-Produkte — von klaren, durchdachten Frontends bis zu stabilen Backends. Aktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W).", cta: "Projekte ansehen", cta2: "Kontakt aufnehmen", cta3: "Über mich" },
-    work: { title: "Ausgewählte Projekte", sub: "Sechs Projekte, von einer native iOS-App bis zur eigenen Infrastruktur.", all: "Alle Projekte", pageTitle: "Projekte", pageSub: "Mobile Apps, Vereins-Tools und selbst gehostete Infrastruktur. Jeder Eintrag zeigt, was es macht, warum es entstand und worauf es läuft." },
+    work: { title: "Ausgewählte Projekte", sub: "Unterschiedliche Projekte, von einer native iOS-App bis zur eigenen Infrastruktur.", all: "Alle Projekte", pageTitle: "Projekte", pageSub: "Mobile Apps, Vereins-Tools und selbst gehostete Infrastruktur. Jeder Eintrag zeigt, was es macht, warum es entstand und worauf es läuft." },
     about: { title: "Über mich", p1: "Ich absolviere meine Lehre als Applikationsentwicklerin und besuche parallel die Berufsmaturitätsschule (BMS-W). Mein Fokus liegt auf sauberen, skalierbaren und gut strukturierten Webanwendungen, die technisch solide und angenehm zu bedienen sind.", p2: "Ich arbeite über den ganzen Stack und mag genau den Teil, den viele überspringen: gute Benennungen, verständliche Architektur und Code, der auch in sechs Monaten noch Sinn ergibt.", valuesTitle: "Worauf ich achte", pathTitle: "Weg", cv: "CV anfragen" },
     stack: { title: "Stack", sub: "Werkzeuge, die ich regelmässig einsetze — nach Projektbereich gruppiert." },
     karate: { eyebrow: "Neben dem Bildschirm", title: "Karate — Disziplin, die übertragbar ist.", blurb: "Ich trainiere und helfe bei der Organisation im Kaisho Karate Bassersdorf und unterrichte inzwischen auch Kinder. Dieselben Gewohnheiten gelten für Code: Wiederholung, Präzision und Dranbleiben, auch wenn es unbequem ist.", milestones: "Meilensteine" },
     contact: { title: "Kontakt", blurb: "Offen für Anschlusslösungen nach der Lehre, Junior-Stellen und kleine Freelance-Projekte. Am schnellsten per E-Mail.", name: "Name", namePh: "Vor- und Nachname", email: "E-Mail", emailPh: "du@beispiel.ch", message: "Nachricht", messagePh: "An was arbeitest du?", send: "Nachricht senden", note: "Antwort in der Regel innert zwei Tagen." },
     cta: { title: "Bauen wir etwas, das bleibt.", blurb: "Auf der Suche nach einer Entwicklerin, der Struktur so wichtig ist wie die Oberfläche? Ich freue mich auf deine Nachricht.", button: "Kontaktieren" },
     imprint: { title: "Impressum" },
-    footer: { tag: "Begeistert von Software und neuen Technologien.", imprint: "Impressum", made: "Gemacht in Zürich, Schweiz" },
+    footer: { tag: "Begeistert von neuen Technologien und Softwareentwicklung.", imprint: "Impressum", made: "Gemacht in Zürich, Schweiz", rights: "Alle Rechte vorbehalten." },
     momo: { label: "Momo fragen", title: "Momo — Seiten-Assistent", blurb: "Frag nach Projekten, Technologien oder der Lehre.", note: "Nachrichten werden an einen KI-Dienst gesendet. Keine sensiblen Daten eingeben." },
     filters: { all: "Alle", personal: "Privat", professional: "Beruflich" },
     stats: [
@@ -157,23 +163,25 @@ const T = {
     ],
     imprintBlocks: [
       { k: "Verantwortlich", v: "Selina Mogicato\nZürich, Schweiz" },
-      { k: "Kontakt", v: "selimo.contact@gmail.com" },
-      { k: "Zweck", v: "Persönliche Portfolio-Website. Die Inhalte dienen ausschliesslich der Information." },
-      { k: "Haftung", v: "Trotz sorgfältiger Prüfung wird keine Haftung für Richtigkeit und Vollständigkeit der Inhalte oder für Inhalte verlinkter externer Seiten übernommen." },
-      { k: "Urheberrecht", v: "Alle Texte, Bilder und Projektmaterialien © 2026 Selina Mogicato, sofern nicht anders angegeben." }
+      { k: "Kontakt", v: "selimo.contact@gmail.com\nlinkedin.com/in/selina-mogicato" },
+      { k: "Zweck", v: "Persönliche Portfolio-Website mit Arbeiten, Fähigkeiten und Erfahrung als Applikationsentwicklerin. Die Inhalte dienen ausschliesslich der Information.\n\nAktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W)." },
+      { k: "Haftung", v: "Trotz sorgfältiger Prüfung wird keine Haftung für Richtigkeit und Vollständigkeit der Inhalte übernommen.\n\nDiese Website verlinkt auf externe Seiten, auf deren Inhalte ich keinen Einfluss habe. Für diese ist stets der jeweilige Anbieter oder Betreiber verantwortlich." },
+      { k: "Urheberrecht & Lizenz", v: "Alle eigenen Texte, Bilder und Projektmaterialien © 2026 Selina Mogicato, sofern nicht anders angegeben. Assets und Bibliotheken Dritter behalten ihre eigenen Lizenzen.\n\nDieses Portfolio steht unter der Creative-Commons-Lizenz BY-NC 4.0.", link: { label: "CC BY-NC 4.0", href: "https://creativecommons.org/licenses/by-nc/4.0/deed.de" } },
+      { k: "Bildnachweis", v: "Einzelne Bilder dieser Website wurden mit DALL·E, dem Bildmodell von OpenAI, erzeugt — nach Prompts von Selina Mogicato.\n\nWo Bilder unter Creative-Commons-Lizenzen stehen, gelten deren Bedingungen. Jede weitere Nutzung bedarf der ausdrücklichen Erlaubnis." },
+      { k: "Datenschutz", v: "Ohne ausdrückliche Einwilligung werden keine personenbezogenen Daten von Besucherinnen und Besuchern erhoben.\nAngaben aus dem Kontaktformular werden ausschliesslich zur Beantwortung der Anfrage verwendet.\nEs werden keine Tracking-Cookies für Analyse oder Werbung eingesetzt.\nServer-Logs können IP-Adressen aus Sicherheitsgründen vorübergehend speichern.\nFragen an den Momo-Assistenten können an einen KI-Dienst weitergeleitet werden." }
     ]
   },
   it: {
     nav: { home: "Home", work: "Progetti", about: "Chi sono", stack: "Stack", karate: "Karate", contact: "Contatto" },
     hero: { hi: "Ciao, sono", eyebrow: "Sviluppatrice di applicazioni in formazione · Zurigo", role: "Sviluppatrice di applicazioni in formazione", open: "Disponibile per ruoli junior dal 2027", claim: "Software strutturato, costruito con cura.", blurb: "Progetto e realizzo prodotti web e mobile moderni — da frontend puliti e ragionati a backend solidi. Attualmente completo il mio apprendistato come sviluppatrice di applicazioni insieme alla maturità professionale (BMS-W).", cta: "Vedi i progetti", cta2: "Contattami", cta3: "Chi sono" },
-    work: { title: "Progetti selezionati", sub: "Sei progetti, da un'app iOS nativa alla mia infrastruttura autogestita.", all: "Tutti i progetti", pageTitle: "Progetti", pageSub: "App mobile, strumenti per il club e infrastruttura autogestita. Ogni voce spiega cosa fa, perché l'ho creata e su cosa gira." },
+    work: { title: "Progetti selezionati", sub: "Diversi progetti, da un'app iOS nativa alla mia infrastruttura autogestita.", all: "Tutti i progetti", pageTitle: "Progetti", pageSub: "App mobile, strumenti per il club e infrastruttura autogestita. Ogni voce spiega cosa fa, perché l'ho creata e su cosa gira." },
     about: { title: "Chi sono", p1: "Sto completando l'apprendistato come sviluppatrice di applicazioni, frequentando in parallelo la scuola di maturità professionale (BMS-W). Mi concentro su applicazioni web pulite, scalabili e ben strutturate, solide tecnicamente e piacevoli da usare.", p2: "Lavoro su tutto lo stack e mi piace proprio la parte che molti saltano: dare buoni nomi, mantenere l'architettura leggibile e scrivere codice che avrà senso anche fra sei mesi.", valuesTitle: "Cosa mi importa", pathTitle: "Percorso", cv: "Richiedi il CV" },
     stack: { title: "Stack", sub: "Strumenti che uso regolarmente, raggruppati per ambito di progetto." },
     karate: { eyebrow: "Oltre lo schermo", title: "Karate — disciplina che si trasferisce.", blurb: "Mi alleno e aiuto nell'organizzazione al Kaisho Karate Bassersdorf, e ora insegno anche ai bambini. Le stesse abitudini valgono per il codice: ripetizione, precisione e costanza anche quando non è comodo.", milestones: "Tappe" },
     contact: { title: "Contatto", blurb: "Disponibile per opportunità dopo l'apprendistato, ruoli junior e piccoli progetti freelance. La via più rapida è l'email.", name: "Nome", namePh: "Nome e cognome", email: "Email", emailPh: "tu@esempio.ch", message: "Messaggio", messagePh: "A cosa stai lavorando?", send: "Invia messaggio", note: "Rispondo di solito entro due giorni." },
     cta: { title: "Costruiamo qualcosa che duri.", blurb: "Cerchi una sviluppatrice attenta alla struttura tanto quanto alla superficie? Mi farebbe piacere sentirti.", button: "Scrivimi" },
     imprint: { title: "Note legali" },
-    footer: { tag: "Appassionata di software e nuove tecnologie.", imprint: "Note legali", made: "Fatto a Zurigo, Svizzera" },
+    footer: { tag: "Appassionata di nuove tecnologie e sviluppo software.", imprint: "Note legali", made: "Fatto a Zurigo, Svizzera", rights: "Tutti i diritti riservati." },
     momo: { label: "Chiedi a Momo", title: "Momo — assistente del sito", blurb: "Chiedi di progetti, tecnologie o apprendistato.", note: "I messaggi vengono inviati a un servizio IA. Non inserire dati sensibili." },
     filters: { all: "Tutti", personal: "Personale", professional: "Professionale" },
     stats: [
@@ -224,10 +232,12 @@ const T = {
     ],
     imprintBlocks: [
       { k: "Responsabile", v: "Selina Mogicato\nZurigo, Svizzera" },
-      { k: "Contatto", v: "selimo.contact@gmail.com" },
-      { k: "Scopo", v: "Sito portfolio personale. I contenuti hanno finalità puramente informative." },
-      { k: "Responsabilità", v: "Nonostante la verifica accurata, non si assume responsabilità per l'esattezza o la completezza dei contenuti, né per i contenuti dei siti esterni collegati." },
-      { k: "Copyright", v: "Tutti i testi, le immagini e i materiali di progetto © 2026 Selina Mogicato, salvo diversa indicazione." }
+      { k: "Contatto", v: "selimo.contact@gmail.com\nlinkedin.com/in/selina-mogicato" },
+      { k: "Scopo", v: "Sito portfolio personale, con lavori, competenze ed esperienza come sviluppatrice di applicazioni. I contenuti hanno finalità puramente informative.\n\nAttualmente sto completando l'apprendistato in sviluppo di applicazioni parallelamente alla maturità professionale (BMS-W)." },
+      { k: "Responsabilità", v: "Nonostante la verifica accurata, non si assume responsabilità per l'esattezza o la completezza dei contenuti.\n\nQuesto sito rimanda a siti esterni sui cui contenuti non ho alcuna influenza. Ne è sempre responsabile il rispettivo fornitore o gestore." },
+      { k: "Copyright e licenza", v: "Tutti i testi, le immagini e i materiali di progetto originali © 2026 Selina Mogicato, salvo diversa indicazione. Le risorse e le librerie di terzi mantengono le proprie licenze.\n\nQuesto portfolio è pubblicato con licenza Creative Commons BY-NC 4.0.", link: { label: "CC BY-NC 4.0", href: "https://creativecommons.org/licenses/by-nc/4.0/deed.it" } },
+      { k: "Crediti immagini", v: "Alcune immagini di questo sito sono state generate con DALL·E, il modello di immagini di OpenAI, a partire da prompt scritti da Selina Mogicato.\n\nDove le immagini sono pubblicate con licenze Creative Commons, valgono i relativi termini. Ogni ulteriore utilizzo richiede un'autorizzazione esplicita." },
+      { k: "Privacy", v: "Non vengono raccolti dati personali dei visitatori senza consenso esplicito.\nI dati inviati dal modulo di contatto servono unicamente a rispondere alla richiesta.\nNon vengono usati cookie di tracciamento per analisi o pubblicità.\nI log del server possono conservare temporaneamente indirizzi IP per motivi di sicurezza.\nLe domande poste all'assistente Momo possono essere inoltrate a un servizio di IA." }
     ]
   }
 };
@@ -274,7 +284,7 @@ const STACK: StackGroup[] = [
   { group: "Systems", items: ["macOS", "Windows 11", "Linux"] }
 ];
 
-const LANGS = [{ code: "EN", key: "en", name: "English" }, { code: "DE", key: "de", name: "Deutsch" }, { code: "IT", key: "it", name: "Italiano" }];
+const LANGS: LangOption[] = [{ code: "EN", key: "en", name: "English" }, { code: "DE", key: "de", name: "Deutsch" }, { code: "IT", key: "it", name: "Italiano" }];
 
 const MUSIC = {
   en: { label: "On repeat", sub: "Top 3 of the last 4 weeks on Spotify", intro: "Outside of coding, music is a big passion of mine — it accompanies pretty much everything I do, from long development sessions to training and studying." },
@@ -292,5 +302,10 @@ export type Translation = (typeof T)["en"];
 
 export const TRANSLATIONS: Record<Lang, Translation> = T;
 export const MOMO_PROMPTS: Record<Lang, string[]> = MOMO_Q;
+export const IMPRINT: Record<Lang, ImprintBlock[]> = {
+  en: T.en.imprintBlocks,
+  de: T.de.imprintBlocks,
+  it: T.it.imprintBlocks,
+};
 export const MUSIC_COPY: Record<Lang, { label: string; sub: string; intro: string }> = MUSIC;
 export { PROJECTS, STACK, LANGS as LANG_OPTIONS, TRACKS as FALLBACK_TRACKS };

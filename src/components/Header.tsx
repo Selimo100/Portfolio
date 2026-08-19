@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LangMenu from "./LangMenu";
@@ -21,7 +22,7 @@ export default function Header({ lang, nav }: { lang: Lang; nav: Translation["na
       <div className="headerInner">
         <Link className="brand" href={href(lang)} onClick={() => setOpen(false)}>
           <span className="brandMark" aria-hidden="true">
-            SM
+            <Image src="/assets/images/Logo.png" alt="" width={31} height={31} />
           </span>
           <span className="brandName">Selina Mogicato</span>
         </Link>
