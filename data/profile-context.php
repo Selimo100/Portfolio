@@ -20,6 +20,14 @@ $experienceYears = $now > $careerStart
     ? floor(($careerStart->diff($now)->days / 365.25) * 10) / 10
     : 0.0;
 
+// Live top tracks, so Momo quotes the same list the About section shows.
+require_once __DIR__ . '/../lib/spotify.php';
+$topTracks = spotify_top_tracks(3, 'short_term');
+$topTrackLabels = array_map(
+    static fn(array $track): string => $track['name'] . ' by ' . $track['artists'],
+    $topTracks
+);
+
 $projectEntries = array_map(static function (array $project): array {
     return [
         'title' => $project['title'],
@@ -88,6 +96,13 @@ return [
                 'Zürcher Kantonalmeisterschaften regional achievements in 2024, 2025 and 2026',
             ],
             'related_project' => 'Kaisho DojoTime, an organisation tool she built for the club.',
+        ],
+        'music' => [
+            'summary' => 'Music is one of Selina\'s biggest passions. It accompanies almost everything she does, from long development sessions to karate training and studying.',
+            'top_tracks' => $topTrackLabels,
+            'top_tracks_note' => $topTrackLabels === []
+                ? 'The live Spotify list is currently unavailable.'
+                : 'These are her three most streamed songs of the last four weeks, pulled live from the Spotify API and shown in the About section of the portfolio.',
         ],
         'other' => 'Runs a self-built homelab on a 2012 MacBook Pro to learn server management, virtualization and networking. The portfolio also contains a small hidden arcade with browser games.',
     ],

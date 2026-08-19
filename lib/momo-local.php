@@ -69,6 +69,12 @@ function momo_local_intents(): array
                 'dojo', 'kaisho', 'competition', 'wettkampf', 'turnier', 'shorin'],
             'weight' => 1.3,
         ],
+        'music' => [
+            'keywords' => ['music', 'musik', 'song', 'songs', 'lied', 'lieder', 'spotify', 'track',
+                'tracks', 'artist', 'artists', 'band', 'listen', 'hören', 'hoeren', 'playlist',
+                'album', 'streamed', 'gestreamt'],
+            'weight' => 1.3,
+        ],
         'interests' => [
             'keywords' => ['interest', 'interesse', 'hobby', 'hobbies', 'hobbys', 'free time',
                 'freizeit', 'passion', 'leidenschaft', 'likes', 'mag sie', 'besides', 'neben'],
@@ -392,9 +398,20 @@ function momo_local_render(string $intent, array $context): string
                 . 'Competitions: ' . momo_local_list($karate['competitions']) . ".\n\n"
                 . 'She also built ' . $karate['related_project'];
 
+        case 'music':
+            $music = $context['interests']['music'];
+            $answer = $music['summary'];
+
+            if ($music['top_tracks'] !== []) {
+                $answer .= "\n\nHer top tracks right now: " . momo_local_list($music['top_tracks']) . '.';
+            }
+
+            return $answer . "\n\n" . $music['top_tracks_note'];
+
         case 'interests':
             return 'Professionally Selina is interested in ' . momo_local_list($context['interests']['professional']) . ".\n\n"
-                . 'Outside of that: ' . $context['interests']['karate']['summary'] . "\n\n"
+                . 'Outside of that: ' . $context['interests']['karate']['summary'] . ' '
+                . $context['interests']['music']['summary'] . "\n\n"
                 . $context['interests']['other'];
 
         case 'homelab':
@@ -423,7 +440,7 @@ function momo_local_render(string $intent, array $context): string
 function momo_local_unknown(): string
 {
     return "I don't know that based on Selina's portfolio.\n\n"
-        . 'I can tell you about her projects, technologies, apprenticeship, karate, or how to contact her.';
+        . 'I can tell you about her projects, technologies, apprenticeship, karate, music, or how to contact her.';
 }
 
 /**
