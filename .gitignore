@@ -31,3 +31,5 @@ out/
 config/openai.php
 storage/ratelimit/
 storage/rate-limit-salt
+config/spotify.php
+storage/spotify-top-tracks.json

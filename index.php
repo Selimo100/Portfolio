@@ -13,6 +13,10 @@ $experienceLabel = number_format($experienceYears, 1) . ' years';
 // Project data is shared with the Momo assistant knowledge base.
 $projects = require __DIR__ . '/data/projects.php';
 
+// Top tracks of the last four weeks. Empty while Spotify is unconfigured.
+require_once __DIR__ . '/lib/spotify.php';
+$topTracks = spotify_top_tracks(3, 'short_term');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +129,6 @@ $projects = require __DIR__ . '/data/projects.php';
             <li>Thoughtful user experience</li>
             <li>Real-world usability</li>
           </ul>
-
           <div class="quick-facts">
             <div class="quick-fact">
               <span class="quick-fact-label">Work Experience</span>
@@ -141,7 +144,7 @@ $projects = require __DIR__ . '/data/projects.php';
             </div>
             <div class="quick-fact quick-fact--wide">
               <span class="quick-fact-label">Interests</span>
-              <span class="quick-fact-value">Software Development, Frontend Development, UI/UX Design, AI</span>
+              <span class="quick-fact-value">Software Development, Frontend Development, UI/UX Design, AI, Music</span>
             </div>
           </div>
 
@@ -152,6 +155,47 @@ $projects = require __DIR__ . '/data/projects.php';
           </div>
         </div>
       </div>
+
+      <p class="music-intro">
+        Outside of coding, <strong>music</strong> is a big passion of mine — it accompanies pretty much
+        everything I do, from long development sessions to training and studying.
+      </p>
+
+      <?php if ($topTracks !== []): ?>
+        <div class="row">
+          <div class="col-12">
+            <div class="music-container">
+              <div class="music-header">
+                <h3><i class="bi bi-music-note-beamed"></i> On Repeat</h3>
+                <span class="music-subtitle">My top 3 most streamed songs of the last 4 weeks &mdash; straight from Spotify</span>
+              </div>
+              <ol class="track-list">
+                <?php foreach ($topTracks as $index => $track): ?>
+                  <li class="track">
+                    <span class="track-rank"><?php echo $index + 1; ?></span>
+                    <?php if ($track['cover'] !== ''): ?>
+                      <img class="track-cover" src="<?php echo htmlspecialchars($track['cover']); ?>"
+                        alt="Album cover of <?php echo htmlspecialchars($track['album']); ?>" loading="lazy" width="56" height="56">
+                    <?php else: ?>
+                      <span class="track-cover track-cover--empty"><i class="bi bi-music-note"></i></span>
+                    <?php endif; ?>
+                    <span class="track-text">
+                      <span class="track-name"><?php echo htmlspecialchars($track['name']); ?></span>
+                      <span class="track-artists"><?php echo htmlspecialchars($track['artists']); ?></span>
+                    </span>
+                    <?php if ($track['url'] !== ''): ?>
+                      <a class="track-link" href="<?php echo htmlspecialchars($track['url']); ?>" target="_blank"
+                        rel="noopener noreferrer" aria-label="Open &quot;<?php echo htmlspecialchars($track['name']); ?>&quot; on Spotify">
+                        <i class="bi bi-spotify"></i>
+                      </a>
+                    <?php endif; ?>
+                  </li>
+                <?php endforeach; ?>
+              </ol>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
 
       <div class="row">
         <div class="col-12">
