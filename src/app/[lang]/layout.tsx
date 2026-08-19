@@ -23,7 +23,7 @@ export default async function LangLayout({
   const t = TRANSLATIONS[lang];
 
   return (
-    <div data-lang={lang}>
+    <div className="appShell" data-lang={lang}>
       {/* The <html> element is rendered by the root layout, which cannot know
           the locale, so each exported page stamps its own language here. */}
       <script
@@ -35,7 +35,9 @@ export default async function LangLayout({
         Skip to content
       </a>
       <Header lang={lang} nav={t.nav} />
-      <div id="main">{children}</div>
+      <div id="main" className="appMain">
+        {children}
+      </div>
       <Footer lang={lang} t={t} />
       <Momo lang={lang} momo={t.momo} />
       <Reveal />

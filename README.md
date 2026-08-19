@@ -418,5 +418,5 @@ themes.
 
 - Portfolio: `https://selina.mogicato.ch`
 - GitHub: `https://github.com/Selimo100`
-- LinkedIn: `https://www.linkedin.com/in/selina-mogicato-a48166316`
+- LinkedIn: `https://www.linkedin.com/in/selina-mogicato-4b7a7637a/`
 

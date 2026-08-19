@@ -116,7 +116,7 @@ return [
     'contact' => [
         'note' => 'Use the contact form in the Contact section of the portfolio for enquiries, collaborations or job-related questions.',
         'email' => 'selimo.contact@gmail.com',
-        'linkedin' => 'https://www.linkedin.com/in/selina-mogicato-a48166316',
+        'linkedin' => 'https://www.linkedin.com/in/selina-mogicato-4b7a7637a/',
         'github' => 'https://github.com/Selimo100',
     ],
 ];

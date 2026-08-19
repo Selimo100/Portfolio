@@ -25,7 +25,8 @@ export type Project = {
   desc: Record<Lang, string>;
 };
 
-export type StackGroup = { group: string; items: string[] };
+export type StackItem = { name: string; icon?: string };
+export type StackGroup = { group: string; items: StackItem[] };
 
 export type LangOption = { code: string; key: Lang; name: string };
 
@@ -93,7 +94,7 @@ const T = {
     links: [
       { k: "Email", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },
       { k: "GitHub", v: "Selimo100", href: "https://github.com/Selimo100" },
-      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-a48166316" }
+      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" }
     ],
     imprintBlocks: [
       { k: "Responsible", v: "Selina Mogicato\nZurich, Switzerland" },
@@ -163,7 +164,7 @@ const T = {
     links: [
       { k: "E-Mail", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },
       { k: "GitHub", v: "Selimo100", href: "https://github.com/Selimo100" },
-      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-a48166316" }
+      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" }
     ],
     imprintBlocks: [
       { k: "Verantwortlich", v: "Selina Mogicato\nZürich, Schweiz" },
@@ -233,7 +234,7 @@ const T = {
     links: [
       { k: "Email", v: "selimo.contact@gmail.com", href: "mailto:selimo.contact@gmail.com" },
       { k: "GitHub", v: "Selimo100", href: "https://github.com/Selimo100" },
-      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-a48166316" }
+      { k: "LinkedIn", v: "selina-mogicato", href: "https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" }
     ],
     imprintBlocks: [
       { k: "Responsabile", v: "Selina Mogicato\nZurigo, Svizzera" },
@@ -275,18 +276,18 @@ const PROJECTS: Project[] = [
 ];
 
 const STACK: StackGroup[] = [
-  { group: "Languages", items: ["Java", "TypeScript", "JavaScript", "PHP", "Python", "HTML", "CSS", "Markdown"] },
-  { group: "Frontend", items: ["React", "Vue.js", "Next.js", "Vite", "Tailwind", "Bootstrap", "React Router"] },
-  { group: "Mobile", items: ["React Native", "Expo", "Swift"] },
-  { group: "Backend", items: ["Spring Boot", "Node.js", "Flask", "Rust", "NPM"] },
-  { group: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "SQLite", "MariaDB"] },
-  { group: "Backend services", items: ["Firebase", "Supabase"] },
-  { group: "Hosting", items: ["Vercel", "Netlify", "Nginx", "Docker", "Self-hosted", "FTP"] },
-  { group: "CI/CD & VCS", items: ["Git", "GitHub", "GitLab", "GitLab CI"] },
-  { group: "Testing & quality", items: ["Vitest", "Jest", "Postman", "Swagger", "Prettier"] },
-  { group: "Monitoring", items: ["Grafana", "Prometheus", "Gradle"] },
-  { group: "Design", items: ["Figma", "Canva", "Prezi"] },
-  { group: "Systems", items: ["macOS", "Windows 11", "Linux"] }
+  { group: "Languages", items: [{ name: "Java", icon: "devicon-java-plain colored" }, { name: "TypeScript", icon: "devicon-typescript-plain colored" }, { name: "JavaScript", icon: "devicon-javascript-plain colored" }, { name: "PHP", icon: "devicon-php-plain colored" }, { name: "Python", icon: "devicon-python-plain colored" }, { name: "HTML", icon: "devicon-html5-plain colored" }, { name: "CSS", icon: "devicon-css3-plain colored" }, { name: "Markdown", icon: "devicon-markdown-original" }] },
+  { group: "Frontend", items: [{ name: "React", icon: "devicon-react-original colored" }, { name: "Vue.js", icon: "devicon-vuejs-plain colored" }, { name: "Next.js", icon: "devicon-nextjs-plain" }, { name: "Vite", icon: "devicon-vitejs-plain colored" }, { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" }, { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" }, { name: "React Router", icon: "devicon-reactrouter-plain colored" }] },
+  { group: "Mobile", items: [{ name: "React Native", icon: "devicon-react-original colored" }, { name: "Expo", icon: "devicon-expo-original" }, { name: "Swift", icon: "devicon-swift-plain colored" }] },
+  { group: "Backend", items: [{ name: "Spring Boot", icon: "devicon-spring-original colored" }, { name: "Node.js", icon: "devicon-nodejs-plain colored" }, { name: "Flask", icon: "devicon-flask-original" }, { name: "Rust", icon: "devicon-rust-plain colored" }, { name: "NPM", icon: "devicon-npm-original-wordmark colored" }] },
+  { group: "Databases", items: [{ name: "MySQL", icon: "devicon-mysql-plain colored" }, { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" }, { name: "MongoDB", icon: "devicon-mongodb-plain colored" }, { name: "Redis", icon: "devicon-redis-plain colored" }, { name: "SQLite", icon: "devicon-sqlite-plain colored" }, { name: "MariaDB", icon: "devicon-mariadb-original colored" }] },
+  { group: "Backend services", items: [{ name: "Firebase", icon: "devicon-firebase-plain colored" }, { name: "Supabase", icon: "devicon-supabase-plain colored" }] },
+  { group: "Hosting", items: [{ name: "Vercel", icon: "devicon-vercel-original" }, { name: "Netlify", icon: "devicon-netlify-plain colored" }, { name: "Nginx", icon: "devicon-nginx-original colored" }, { name: "Docker", icon: "devicon-docker-plain colored" }, { name: "Self-hosted" }, { name: "FTP" }] },
+  { group: "CI/CD & VCS", items: [{ name: "Git", icon: "devicon-git-plain colored" }, { name: "GitHub", icon: "devicon-github-original" }, { name: "GitLab", icon: "devicon-gitlab-plain colored" }, { name: "GitLab CI", icon: "devicon-gitlab-plain colored" }] },
+  { group: "Testing & quality", items: [{ name: "Vitest", icon: "devicon-vitest-plain colored" }, { name: "Jest", icon: "devicon-jest-plain colored" }, { name: "Postman", icon: "devicon-postman-plain colored" }, { name: "Swagger", icon: "devicon-swagger-plain colored" }, { name: "Prettier", icon: "devicon-prettier-plain colored" }] },
+  { group: "Monitoring", items: [{ name: "Grafana", icon: "devicon-grafana-original colored" }, { name: "Prometheus", icon: "devicon-prometheus-original colored" }, { name: "Gradle", icon: "devicon-gradle-plain colored" }] },
+  { group: "Design", items: [{ name: "Figma", icon: "devicon-figma-plain colored" }, { name: "Canva", icon: "devicon-canva-original colored" }, { name: "Prezi" }] },
+  { group: "Systems", items: [{ name: "macOS", icon: "devicon-apple-original" }, { name: "Windows 11", icon: "devicon-windows8-original colored" }, { name: "Linux", icon: "devicon-linux-plain colored" }] }
 ];
 
 const LANGS: LangOption[] = [{ code: "EN", key: "en", name: "English" }, { code: "DE", key: "de", name: "Deutsch" }, { code: "IT", key: "it", name: "Italiano" }];

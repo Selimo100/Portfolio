@@ -34,8 +34,9 @@ export default async function StackPage({ params }: { params: Promise<{ lang: st
             </div>
             <div className="chips">
               {g.items.map((i) => (
-                <span className="chip" key={i}>
-                  {i}
+                <span className="chip" key={i.name}>
+                  {i.icon && <i className={`chipIcon ${i.icon}`} aria-hidden="true" />}
+                  {i.name}
                 </span>
               ))}
             </div>

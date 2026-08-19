@@ -4,6 +4,18 @@ import { PROJECTS, TRANSLATIONS } from "@/lib/content";
 import { LANGS, href, isLang, type Lang } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
+function renderHeroWord(word: string) {
+  return word.split("").map((letter, index) => (
+    <span
+      key={`${word}-${index}`}
+      className="heroLetter"
+      style={{ transitionDelay: `${index * 18}ms` }}
+    >
+      {letter}
+    </span>
+  ));
+}
+
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
 }
@@ -18,12 +30,13 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* Hero — variant C of the design: full-bleed wordmark over a portrait. */}
       <section className="heroSection">
         <div className="heroTop">
+          <p className="heroSubtitle">{t.hero.eyebrow}</p>
           <h1 className="heroName">
             <span className="mask">
-              <span>Selina</span>
+              <span className="heroWord">{renderHeroWord("Selina")}</span>
             </span>
             <span className="mask">
-              <span>Mogicato</span>
+              <span className="heroWord">{renderHeroWord("Mogicato")}</span>
             </span>
           </h1>
           <div className="heroRule" />

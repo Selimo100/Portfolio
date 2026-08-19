@@ -29,6 +29,7 @@ export default function ProjectsView({ lang, t }: { lang: Lang; t: Copy }) {
   const [filter, setFilter] = useState<Filter>("all");
   const [layout, setLayout] = useState<Layout>("d");
   const [openId, setOpenId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   // The choice is a preference, so it outlives the visit.
   useEffect(() => {
@@ -38,6 +39,14 @@ export default function ProjectsView({ lang, t }: { lang: Lang; t: Copy }) {
     } catch {
       /* Private browsing — the default layout stands. */
     }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 720px)");
+    const sync = () => setIsMobile(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
   }, []);
 
   function chooseLayout(next: Layout) {
@@ -55,25 +64,28 @@ export default function ProjectsView({ lang, t }: { lang: Lang; t: Copy }) {
   );
 
   const open = openId ? (filtered.find((p) => p.id === openId) ?? null) : null;
+  const activeLayout: Layout = isMobile ? "a" : layout;
 
   return (
     <>
-      <div className="layoutPicker">
-        <span className="layoutPickerLabel">{t.ui.gridVariant}</span>
-        <div className="layoutPickerBtns">
-          {LAYOUTS.map((l) => (
-            <button
-              key={l}
-              className="layoutBtn"
-              aria-pressed={layout === l}
-              aria-label={`${t.ui.gridVariant} ${l.toUpperCase()}`}
-              onClick={() => chooseLayout(l)}
-            >
-              {l.toUpperCase()}
-            </button>
-          ))}
+      {!isMobile && (
+        <div className="layoutPicker">
+          <span className="layoutPickerLabel">{t.ui.gridVariant}</span>
+          <div className="layoutPickerBtns">
+            {LAYOUTS.map((l) => (
+              <button
+                key={l}
+                className="layoutBtn"
+                aria-pressed={layout === l}
+                aria-label={`${t.ui.gridVariant} ${l.toUpperCase()}`}
+                onClick={() => chooseLayout(l)}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="filters" role="group" aria-label={t.work.pageTitle}>
         {FILTERS.map((f) => (
@@ -88,11 +100,11 @@ export default function ProjectsView({ lang, t }: { lang: Lang; t: Copy }) {
         ))}
       </div>
 
-      <div key={`${layout}-${filter}`}>
-        {layout === "a" && <GridA projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
-        {layout === "b" && <GridB projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
-        {layout === "c" && <GridC projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
-        {layout === "d" && <GridD projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
+      <div key={`${activeLayout}-${filter}`}>
+        {activeLayout === "a" && <GridA projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
+        {activeLayout === "b" && <GridB projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
+        {activeLayout === "c" && <GridC projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
+        {activeLayout === "d" && <GridD projects={filtered} lang={lang} t={t} onOpen={setOpenId} />}
       </div>
 
       {open && (

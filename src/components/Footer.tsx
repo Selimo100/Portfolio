@@ -21,7 +21,7 @@ const ICONS = {
 
 export default function Footer({ lang, t }: { lang: Lang; t: Translation }) {
   const socials = [
-    { key: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/selina-mogicato-a48166316" },
+    { key: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/selina-mogicato-4b7a7637a/" },
     { key: "github", label: "GitHub", href: "https://github.com/Selimo100" },
     { key: "email", label: "Email", href: "mailto:selimo.contact@gmail.com" },
   ] as const;
