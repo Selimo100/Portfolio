@@ -18,6 +18,13 @@ const CONTACT_RECIPIENT = 'selimo.contact@gmail.com';
 const CONTACT_MAX_MESSAGE_LENGTH = 4000;
 
 /**
+ * Envelope sender. This must be an address on a domain whose SPF record
+ * authorises this server, or the big providers will bin the mail — it is what
+ * they check, not the From: header.
+ */
+const CONTACT_SENDER = 'no-reply@mogicato.ch';
+
+/**
  * @param array<string, mixed> $payload
  */
 function contact_respond(int $status, array $payload): never
@@ -52,19 +59,38 @@ $replyTo = preg_replace('/[\r\n]+/', '', $email) ?? '';
 $safeName = preg_replace('/[\r\n]+/', ' ', $name) ?? '';
 
 $headers = implode("\r\n", [
-    'From: Portfolio <no-reply@mogicato.ch>',
+    'From: Portfolio <' . CONTACT_SENDER . '>',
     'Reply-To: ' . $replyTo,
+    'Date: ' . date('r'),
+    'Message-ID: <' . bin2hex(random_bytes(12)) . '@mogicato.ch>',
+    'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: 8bit',
 ]);
 
 $body = "Name: {$safeName}\nEmail: {$replyTo}\n\nMessage:\n{$message}\n";
 
-if (!mail(CONTACT_RECIPIENT, 'Portfolio contact from ' . $safeName, $body, $headers)) {
-    error_log('[contact] mail() returned false');
+// The fifth argument sets the envelope sender, which is what SPF is checked
+// against. Without it the host's default (often www-data@servername) is used
+// and the mail fails SPF alignment at Gmail and Outlook.
+$sent = mail(
+    CONTACT_RECIPIENT,
+    'Portfolio contact from ' . $safeName,
+    $body,
+    $headers,
+    '-f' . CONTACT_SENDER
+);
+
+if (!$sent) {
+    error_log('[contact] mail() returned false for ' . $replyTo);
     contact_respond(502, [
         'success' => false,
         'error' => 'The message could not be sent. Please email me directly.',
     ]);
 }
+
+// mail() only reports that the local MTA accepted the message — delivery can
+// still fail later, and the bounce goes to CONTACT_SENDER, not to this log.
+error_log('[contact] handed to MTA: ' . $replyTo);
 
 contact_respond(200, ['success' => true, 'message' => 'Message sent — thank you!']);

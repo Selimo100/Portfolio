@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "php": "php -S localhost:8001 -t server",
+    "php": "php -S localhost:8001 -t server -d sendmail_path=\"$PWD/scripts/dev-mail.sh\"",
     "build": "next build && node scripts/copy-server-files.mjs",
     "preview": "php -S localhost:8000 -t out",
     "lint": "next lint"

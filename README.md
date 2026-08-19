@@ -77,7 +77,7 @@ In two terminals, from the project root:
 
 ```bash
 npm install      # once
-npm run php      # terminal 1 — PHP endpoints on :8001
+npm run php      # terminal 1 — PHP endpoints on :8001 (mail is captured to a file)
 npm run dev      # terminal 2 — the site on :3000
 ```
 
@@ -126,10 +126,58 @@ to be writable by PHP. A generated `out/DEPLOY.txt` repeats these notes.
 ## Notes
 
 - The contact form posts to `sendMail.php`, which answers JSON so the page stays
-  put. Mail delivery depends on the server's PHP mail configuration.
+  put. See "Contact form mail" below — it does not deliver from a laptop.
 - The Spotify card fetches `spotify-top.php` on the client. If Spotify is not
   configured or unreachable, the snapshot baked into the build is shown instead.
 - The arcade opens directly from `assets/arcade/arcade.html`.
+
+## Contact form mail
+
+**Mail cannot be delivered from a development machine.** Gmail, Outlook and the
+rest refuse mail sent straight from a residential IP:
+
+```
+550-5.7.1 The IP you're using to send mail is not authorized to send
+email directly to our servers. Please use the SMTP relay at your
+service provider instead.
+```
+
+`mail()` still returns true in that case — it only reports that the local mail
+transfer agent accepted the message, which happens long before the rejection.
+So the form will say "sent" and nothing will arrive, and the bounce lands in
+your local mailbox (`/var/mail/$USER` on macOS), not in the browser.
+
+To avoid that trap, `npm run php` points PHP's `sendmail_path` at
+`scripts/dev-mail.sh`, which appends every outgoing message to
+`server/storage/maillog` instead of trying to send it:
+
+```bash
+npm run php
+# submit the form, then:
+cat server/storage/maillog
+```
+
+The log is git-ignored and shows the full message with its headers, which is
+what you want when checking wording or debugging the endpoint.
+
+### On the server
+
+Real delivery only happens on the host. Two things decide whether it lands:
+
+- **The envelope sender.** `sendMail.php` passes `-f no-reply@mogicato.ch` as
+  `mail()`'s fifth argument. This is the address receiving mail servers check
+  SPF against — not the `From:` header. Without it, the host's default
+  (`www-data@somehost`) is used and Gmail is likely to reject or spam-folder
+  the message.
+- **SPF for mogicato.ch** must authorise the Hostfactory mail servers. If the
+  domain's DNS is elsewhere, add their SPF include, or change
+  `CONTACT_SENDER` to an address on a domain that already authorises them.
+
+The visitor's address goes in `Reply-To:` only, never in `From:` — putting an
+arbitrary address in `From:` is what gets a domain's reputation burned.
+
+After deploying, send yourself one test message and confirm it arrives. If it
+does not, check the server's mail log; `mail()` returning true proves nothing.
 
 ## Momo — the portfolio assistant
 

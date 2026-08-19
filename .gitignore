@@ -37,3 +37,6 @@ server/storage/spotify-top-tracks.json
 # Next.js
 .next/
 next-env.d.ts
+
+# Local mail capture (npm run php)
+server/storage/maillog

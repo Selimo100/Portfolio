@@ -77,7 +77,7 @@ const T = {
     karateCards: [
       { k: "Club", title: "Kaisho Karate Bassersdorf", text: "Member and helper — training regularly and supporting the organisation of schedules and events." },
       { k: "Teaching", title: "Training children", text: "Since 2025 I pass on what I learned to the next generation — backed since 2026 by the J&S 1418Coach qualification." },
-      { k: "Competition", title: "Kata & tournaments", text: "Cantonal championships and the international Nicki Cup in Austria — most recently 3rd place in Kata against athletes from three countries." }
+      { k: "Competition", title: "Tournaments", text: "Cantonal championships and the international Nicki Cup in Austria — most recently 3rd place in Kata against athletes from three countries." }
     ],
     karateTimeline: [
       { when: "July 2026", what: "Zürcher Kantonalmeisterschaften 2026", note: "Competed in Kata at the cantonal championships, and coached our kids in Kata and Team Kata." },
@@ -147,7 +147,7 @@ const T = {
     karateCards: [
       { k: "Verein", title: "Kaisho Karate Bassersdorf", text: "Mitglied und Helferin — regelmässiges Training und Unterstützung bei Planung und Events." },
       { k: "Unterricht", title: "Kindertraining", text: "Seit 2025 gebe ich mein Wissen an die nächste Generation weiter — seit 2026 mit dem J&S-Kurs 1418Coach im Rücken." },
-      { k: "Wettkampf", title: "Kata & Turniere", text: "Kantonalmeisterschaften und der internationale Nicki Cup in Österreich — zuletzt 3. Platz im Kata gegen Athletinnen und Athleten aus drei Ländern." }
+      { k: "Wettkampf", title: "Turniere", text: "Kantonalmeisterschaften und der internationale Nicki Cup in Österreich — zuletzt 3. Platz im Kata gegen Athletinnen und Athleten aus drei Ländern." }
     ],
     karateTimeline: [
       { when: "Juli 2026", what: "Zürcher Kantonalmeisterschaften 2026", note: "Im Kata angetreten und unsere Kinder in Kata und Team-Kata gecoacht." },
@@ -217,7 +217,7 @@ const T = {
     karateCards: [
       { k: "Club", title: "Kaisho Karate Bassersdorf", text: "Membro e aiutante — allenamenti regolari e supporto nell'organizzazione di orari ed eventi." },
       { k: "Insegnamento", title: "Allenare i bambini", text: "Dal 2025 trasmetto ciò che ho imparato alla nuova generazione — dal 2026 con la qualifica G+S 1418Coach alle spalle." },
-      { k: "Gare", title: "Kata e tornei", text: "Campionati cantonali e il Nicki Cup internazionale in Austria — da ultimo 3° posto nel Kata contro atleti di tre paesi." }
+      { k: "Gare", title: "Tornei", text: "Campionati cantonali e il Nicki Cup internazionale in Austria — da ultimo 3° posto nel Kata contro atleti di tre paesi." }
     ],
     karateTimeline: [
       { when: "Luglio 2026", what: "Campionati cantonali di Zurigo 2026", note: "In gara nel Kata e coach dei nostri bambini nel Kata e nel Kata a squadre." },
@@ -268,7 +268,7 @@ const PROJECTS: Project[] = [
     desc: { en: "A dedicated portfolio for my professional environment, showing projects, achievements and technical growth within the apprenticeship.", de: "Ein eigenes Portfolio für mein berufliches Umfeld: Projekte, Erfolge und technische Entwicklung während der Lehre.", it: "Un portfolio dedicato al mio ambiente professionale: progetti, risultati e crescita tecnica durante l'apprendistato." } },
   { id: "kaisho", url: "https://kaisho-dojotime.netlify.app/", name: "Kaisho DojoTime", cat: "personal", shot: "kaisho_dojotime_card.png", tags: ["TypeScript", "Supabase", "React"],
     period: { en: "2025", de: "2025", it: "2025" },
-    desc: { en: "An organisation tool for my karate club: training schedules, trainer assignments and club events in one place.", de: "Ein Organisationstool für meinen Karateverein: Trainingsplan, Trainerzuteilung und Vereinsanlässe an einem Ort.", it: "Uno strumento organizzativo per il mio club di karate: orari, assegnazione allenatori ed eventi in un unico posto." } },
+    desc: { en: "An organisation tool developed for my Karate club, Kaisho Karate Bassersdorf. It helps manage training schedules, trainer assignments and club events efficiently, streamlining club administration and improving communication.", de: "Ein Organisationstool für meinen Karateverein: Trainingsplan, Trainerzuteilung und Vereinsanlässe an einem Ort.", it: "Uno strumento organizzativo per il mio club di karate: orari, assegnazione allenatori ed eventi in un unico posto." } },
   { id: "rummy", url: "https://rummy.mogicato.ch/", name: "Rummy Website", cat: "personal", shot: "rummy_card.png", tags: ["PHP", "SQL", "Bootstrap"],
     period: { en: "2024", de: "2024", it: "2024" },
     desc: { en: "A web tool for managing Rummy games with an intuitive scoring UI. Originally my final secondary school project, still used by my family.", de: "Ein Web-Tool zum Verwalten von Rummy-Partien mit intuitiver Punkteoberfläche. Ursprünglich meine Abschlussarbeit der Sekundarschule — bis heute im Familiengebrauch.", it: "Uno strumento web per gestire partite di Rummy con un'interfaccia punteggi intuitiva. Nato come progetto finale di scuola media, usato ancora in famiglia." } }
