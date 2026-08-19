@@ -433,6 +433,119 @@ input, textarea, button { font-family: inherit; }
   color: var(--mu);
 }
 
+/* ---------- project fan (grid variant D) ---------- */
+.fanWrap {
+  position: relative;
+  padding: 60px 0 40px;
+  display: flex;
+  justify-content: center;
+  animation: rise 0.4s ease both;
+}
+.fan { display: flex; justify-content: center; align-items: flex-end; }
+.fanCard {
+  width: 230px;
+  margin-left: -64px;
+  flex: none;
+  transform-origin: bottom center;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: inherit;
+}
+.fanCardInner {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line2);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--glow);
+}
+.fanShot { aspect-ratio: 16 / 11; display: block; overflow: hidden; }
+.fanShot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fanBody { padding: 16px 17px 19px; display: flex; flex-direction: column; gap: 8px; }
+.fanCat {
+  font: 500 9px var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.fanName {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.fanPeriod { font: 400 9.5px var(--mono); color: var(--faint); }
+.fanHint { text-align: center; margin: 8px 0 0; font-size: 12.5px; color: var(--faint); }
+
+/* ---------- project modal ---------- */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(4, 6, 9, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  animation: fade 0.25s ease both;
+}
+.modal {
+  width: 100%;
+  max-width: 620px;
+  max-height: 86vh;
+  overflow: auto;
+  border: 1px solid var(--line2);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--glow);
+  animation: rise 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.modalShot { aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+.modalShot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.modalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--tx);
+  transition: border-color 0.2s, color 0.2s;
+}
+.modalClose:hover { border-color: var(--line2); color: var(--accent); }
+.modalBody { padding: 30px 32px 34px; }
+.modalTitle {
+  margin: 12px 0 0;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.modalDesc { margin: 14px 0 0; font-size: 15px; line-height: 1.7; color: var(--mu); text-wrap: pretty; }
+.modalTags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.modalTag {
+  padding: 4.5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font: 400 11px var(--mono);
+  color: var(--tx2);
+}
+.modalVisit { margin-top: 26px; padding: 13px 22px; font-size: 13.5px; }
+
 /* ---------- filters ---------- */
 .filters { display: flex; gap: 8px; margin: 40px 0 30px; flex-wrap: wrap; }
 .filter {
@@ -915,6 +1028,27 @@ input, textarea, button { font-family: inherit; }
 .skipLink:focus { left: 0; color: var(--onAccent); }
 
 /* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .fanWrap { padding: 30px 0 10px; }
+  .fan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    width: 100%;
+    align-items: stretch;
+  }
+  /* The fan transform is an inline style, so overriding it needs !important. */
+  .fanCard {
+    width: 100%;
+    margin-left: 0;
+    transform: none !important;
+    z-index: auto !important;
+  }
+  .fanHint { display: none; }
+  .scrim { padding: 16px; }
+  .modalBody { padding: 24px 22px 28px; }
+}
+
 @media (max-width: 980px) {
   :root { --pad: 22px; }
   .heroBody { grid-template-columns: 1fr; gap: 30px; }
