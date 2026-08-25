@@ -54,7 +54,7 @@ const T = {
     stats: [
       { value: "2.0 yrs", label: "Professional experience" },
       { value: "2019", label: "Programming since" },
-      { value: "6", label: "Shipped projects" },
+      { value: "7", label: "Shipped projects" },
       { value: "4+", label: "Languages spoken" }
     ],
     heroMeta: [
@@ -124,7 +124,7 @@ const T = {
     stats: [
       { value: "2.0 J.", label: "Berufserfahrung" },
       { value: "2019", label: "Programmiere seit" },
-      { value: "6", label: "Umgesetzte Projekte" },
+      { value: "7", label: "Umgesetzte Projekte" },
       { value: "4+", label: "Gesprochene Sprachen" }
     ],
     heroMeta: [
@@ -194,7 +194,7 @@ const T = {
     stats: [
       { value: "2.0 anni", label: "Esperienza professionale" },
       { value: "2019", label: "Programmo dal" },
-      { value: "6", label: "Progetti realizzati" },
+      { value: "7", label: "Progetti realizzati" },
       { value: "4+", label: "Lingue parlate" }
     ],
     heroMeta: [
@@ -259,6 +259,9 @@ const PROJECTS: Project[] = [
   { id: "momento", url: "https://momento.mogicato.ch/", name: "Momento App", cat: "personal", shot: "momento_app_card.png", tags: ["Swift"],
     period: { en: "Jun 2026 – present", de: "Juni 2026 – heute", it: "Giu 2026 – oggi" },
     desc: { en: "A local-first iOS app for turning photo sets into personal moments — adding the story, picking the best shots and exporting albums straight to Apple Photos.", de: "Eine local-first iOS-App, die Fotosets in persönliche Momente verwandelt — Geschichte ergänzen, beste Aufnahmen wählen, Album direkt nach Apple Fotos exportieren.", it: "Un'app iOS local-first che trasforma set di foto in momenti personali — aggiungi la storia, scegli le foto migliori, esporta album in Apple Foto." } },
+  { id: "vibra", url: "https://selin.mogicato.ch/vibra", name: "Vibra", cat: "personal", shot: "vibra.svg", tags: ["Spotify", "Music Player", "Web App"],
+    period: { en: "Aug 2026 – present", de: "Aug 2026 – heute", it: "Ago 2026 – oggi" },
+    desc: { en: "My own music player powered by Spotify, built as a private project to give listening a more personal interface and flow.", de: "Mein eigener Musikplayer auf Basis von Spotify, als privates Projekt gebaut, um dem Hören eine persönlichere Oberfläche und Bedienung zu geben.", it: "Il mio music player personale basato su Spotify, creato come progetto privato per dare all'ascolto un'interfaccia e un flusso piu personali." } },
   { id: "homelab", name: "HomeLab", cat: "personal", shot: "homelab_card.png", tags: ["Linux", "Docker", "Nginx"],
     period: { en: "Feb 2026 – present", de: "Feb 2026 – heute", it: "Feb 2026 – oggi" },
     desc: { en: "A self-built homelab on a 2012 MacBook Pro: containers, reverse proxying and monitoring on real hardware, hosting my own projects.", de: "Ein selbst gebautes Homelab auf einem MacBook Pro von 2012: Container, Reverse Proxy und Monitoring auf echter Hardware — hostet meine eigenen Projekte.", it: "Un homelab autocostruito su un MacBook Pro del 2012: container, reverse proxy e monitoraggio su hardware reale, ospita i miei progetti." } },

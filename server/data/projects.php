@@ -10,6 +10,16 @@
 
 return [
   [
+    'slug' => 'vibra',
+    'title' => 'Vibra',
+    'category' => 'personal',
+    'year' => 'August 2026 – present',
+    'image' => 'assets/images/vibra.svg',
+    'summary' => 'My own music player powered by Spotify, built as a private project to give listening a more personal interface and flow.',
+    'technologies' => ['Spotify', 'Music Player', 'Web App'],
+    'liveUrl' => 'https://selin.mogicato.ch/vibra',
+  ],
+  [
     'slug' => 'momento',
     'title' => 'Momento App',
     'category' => 'personal',
