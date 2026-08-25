@@ -18,7 +18,7 @@ jobs:
     name: Lint, type-check and build the static export
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v5
         with:
@@ -41,7 +41,7 @@ jobs:
     name: Syntax-check the PHP endpoints
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
