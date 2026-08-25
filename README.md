@@ -123,6 +123,86 @@ Two things must never be overwritten on the server:
 so a clean upload cannot clobber them. `storage/` and `storage/ratelimit/` need
 to be writable by PHP. A generated `out/DEPLOY.txt` repeats these notes.
 
+### Uploading over FTP
+
+Short version: [DEPLOY.md](DEPLOY.md). The rest of this section is the why.
+
+Once, copy the example credentials file and fill it in from the Hostfactory
+control panel:
+
+```bash
+cp .env.deploy.example .env.deploy
+```
+
+`.env.deploy` is git-ignored and must stay that way. `FTP_REMOTE_DIR` is
+`/httpdocs`, and `FTP_HOST` is `server11.hostfactory.ch`, **not** `mogicato.ch`
+— the FTP server presents a Sectigo certificate for `*.hostfactory.ch`, so
+connecting under the domain name fails verification (FileZilla hides this
+behind a "trust this certificate?" prompt). Both names are the same machine, so
+the hostfactory name gives a fully verified TLS session with no exceptions.
+
+Then, for every deploy:
+
+```bash
+npm run build
+npm run deploy:dry      # lists exactly what would be uploaded
+npm run deploy          # uploads it, then size-checks what it sent
+npm run deploy:verify   # size-check all 244 files, re-upload any that are wrong
+```
+
+The script hashes every file in `out/` and records the result in
+`.deploy-manifest.json`, so later deploys upload only what changed.
+`npm run deploy -- --all` ignores the manifest.
+
+Deliberately never uploaded: `storage/`, the real `config/openai.php` and
+`config/spotify.php`. The script also never deletes — if a file disappears
+locally it says so and leaves the server copy alone.
+
+On a **first** deploy to an empty web root, create `storage/` and
+`storage/ratelimit/` by hand (755, writable by PHP) and upload
+`server/storage/.htaccess` into it; the script skips that tree by design.
+
+#### Removing files the site no longer has
+
+`deploy-ftp.py` never deletes, so old files pile up. `scripts/prune-remote.py`
+is the other half:
+
+```bash
+npm run deploy:prune -- --dry-run   # list what would go
+npm run deploy:prune                # back up locally, then delete
+```
+
+It compares the web root against `.deploy-manifest.json`, downloads everything
+that is not part of the current site into `.server-backup/<date>/`, deletes it,
+and then removes the directories that became empty. Nothing is deleted before
+it has been saved locally.
+
+Four top-level names are protected and never walked into:
+
+- `config/` and `storage/` — credentials and runtime state, owned by the server
+- `Berufswahl/` and `GossipGirl/` — standalone sites parked in the web root,
+  reachable at `/Berufswahl/` and `/GossipGirl/`
+
+Anything else added to the web root by hand will be treated as stale, so park
+new side projects under a protected name or add it to `PROTECTED` in the script.
+
+#### Why Python, and why the size check
+
+The uploader is `scripts/deploy-ftp.py`, not a Node script, because the `curl`
+that ships with macOS is built against SecureTransport. This server rejects its
+TLS data channel with `426 Transfer aborted` for files roughly between 16 KB
+and 128 KB — reproducibly, by size, regardless of passive mode, EPSV or rate
+limit. Python's `ftplib` uses OpenSSL and uploads the same files without
+complaint, over a single connection held open for the whole run.
+
+Worse than failing, that curl also reported success for some of those files
+while leaving **0 bytes** on the server. That is why every run now finishes by
+comparing the size of each uploaded file against the local one and re-uploading
+any that do not match. `npm run deploy:verify` runs that check across the whole
+site, which is the thing to reach for if a page ever loads blank.
+
+Requires `python3` (any 3.9+; macOS ships one).
+
 ## Notes
 
 - The contact form posts to `sendMail.php`, which answers JSON so the page stays

@@ -22,6 +22,8 @@ __pycache__/
 # Environment files
 .env
 .env.*
+# ...but the deploy template must ship, or nobody knows what to fill in.
+!.env.deploy.example
 
 # Build output
 dist/
@@ -40,3 +42,9 @@ next-env.d.ts
 
 # Local mail capture (npm run php)
 server/storage/maillog
+
+# FTP deploy manifest (.env.deploy is covered by the .env.* rule above)
+.deploy-manifest.json
+
+# Files pulled off the server before pruning them
+.server-backup/
