@@ -3,9 +3,9 @@
 /**
  * Shared project data.
  *
- * Used by index.php to render the project cards and by data/profile-context.php
- * to build the knowledge base for the Momo chat assistant. Keep this file as the
- * single source of truth for project information.
+ * Read by data/profile-context.php to build the knowledge base for the Momo chat
+ * assistant. The front end renders its project cards from src/lib/content.ts, so
+ * keep the two in step whenever a project is added or changed.
  */
 
 return [

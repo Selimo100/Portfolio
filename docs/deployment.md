@@ -1,8 +1,7 @@
 # Deploying the portfolio
 
 The site is a static export plus a few PHP endpoints, uploaded over FTPS to
-`server11.hostfactory.ch:/httpdocs`. Full background lives in the README; this
-is the short version.
+`server11.hostfactory.ch:/httpdocs`.
 
 ## One-time setup
 
@@ -75,3 +74,28 @@ normal deploy cannot clobber either.
 Deleted something by accident? `deploy:prune` keeps a copy in
 `.server-backup/<date>/`, and everything else can be rebuilt with
 `npm run build && npm run deploy -- --all`.
+
+## Why Python, and why the size check
+
+The uploader is [`scripts/deploy-ftp.py`](../scripts/deploy-ftp.py) rather than a
+Node script because the `curl` that ships with macOS is built against
+SecureTransport. This server rejects its TLS data channel with `426 Transfer
+aborted` for files roughly between 16 KB and 128 KB — reproducibly, by size,
+regardless of passive mode, EPSV or rate limit. Python's `ftplib` uses OpenSSL
+and uploads the same files without complaint, over a single connection held open
+for the whole run.
+
+Worse than failing, that `curl` also reported success for some of those files
+while leaving **0 bytes** on the server. That is why every run finishes by
+comparing the size of each uploaded file against the local one and re-uploading
+any that do not match, and why `npm run deploy:verify` exists as a full-site
+version of the same check.
+
+## First deploy to an empty web root
+
+The uploader skips `storage/` by design, so create it by hand once: `storage/`
+and `storage/ratelimit/`, mode 755 and writable by PHP, with
+[`server/storage/.htaccess`](../server/storage/.htaccess) uploaded into it.
+
+The deploy script also never deletes. If a file disappears locally it says so
+and leaves the server copy alone — removal is `npm run deploy:prune`.
