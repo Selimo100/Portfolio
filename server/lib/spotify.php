@@ -10,7 +10,8 @@ declare(strict_types=1);
  * The result is cached on disk so a page view never waits on Spotify.
  */
 
-const SPOTIFY_CACHE_FILE = __DIR__ . '/../storage/spotify-top-tracks.json';
+const SPOTIFY_TRACKS_CACHE_FILE = __DIR__ . '/../storage/spotify-top-tracks.json';
+const SPOTIFY_ARTISTS_CACHE_FILE = __DIR__ . '/../storage/spotify-top-artists.json';
 const SPOTIFY_CACHE_TTL = 6 * 3600;
 
 // Bumped whenever the shape of a cached track changes, so old caches are dropped.
@@ -158,6 +159,55 @@ function spotify_fetch_top_tracks(int $limit, string $timeRange): ?array
 }
 
 /**
+ * Fetches the user's top artists.
+ *
+ * @param string $timeRange short_term (~4 weeks), medium_term (~6 months) or long_term.
+ * @return list<array{name:string,url:string,image:string}>|null Null on any failure.
+ */
+function spotify_fetch_top_artists(int $limit, string $timeRange): ?array
+{
+    $token = spotify_access_token();
+    if ($token === null) {
+        return null;
+    }
+
+    $query = http_build_query(['limit' => $limit, 'time_range' => $timeRange]);
+    $ch = curl_init('https://api.spotify.com/v1/me/top/artists?' . $query);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_HTTPHEADER => ['Authorization: Bearer ' . $token],
+    ]);
+
+    $body = curl_exec($ch);
+    $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($body === false || $status !== 200) {
+        return null;
+    }
+
+    $decoded = json_decode((string) $body, true);
+    if (!is_array($decoded) || !isset($decoded['items']) || !is_array($decoded['items'])) {
+        return null;
+    }
+
+    $artists = [];
+    foreach ($decoded['items'] as $item) {
+        $images = is_array($item['images'] ?? null) ? $item['images'] : [];
+        $image = $images[1]['url'] ?? ($images[0]['url'] ?? '');
+
+        $artists[] = [
+            'name' => (string) ($item['name'] ?? ''),
+            'url' => (string) ($item['external_urls']['spotify'] ?? ''),
+            'image' => (string) $image,
+        ];
+    }
+
+    return $artists;
+}
+
+/**
  * Returns the top tracks, refreshing the on-disk cache at most every few hours.
  * Falls back to a stale cache when Spotify is unreachable, and to an empty list
  * when nothing was ever cached.
@@ -166,8 +216,8 @@ function spotify_fetch_top_tracks(int $limit, string $timeRange): ?array
  */
 function spotify_top_tracks(int $limit = 5, string $timeRange = 'short_term'): array
 {
-    $cache = is_readable(SPOTIFY_CACHE_FILE)
-        ? json_decode((string) file_get_contents(SPOTIFY_CACHE_FILE), true)
+    $cache = is_readable(SPOTIFY_TRACKS_CACHE_FILE)
+        ? json_decode((string) file_get_contents(SPOTIFY_TRACKS_CACHE_FILE), true)
         : null;
 
     $isUsable = is_array($cache)
@@ -184,7 +234,7 @@ function spotify_top_tracks(int $limit = 5, string $timeRange = 'short_term'): a
         return $isUsable && isset($cache['tracks']) ? $cache['tracks'] : [];
     }
 
-    @file_put_contents(SPOTIFY_CACHE_FILE, json_encode([
+    @file_put_contents(SPOTIFY_TRACKS_CACHE_FILE, json_encode([
         'version' => SPOTIFY_CACHE_VERSION,
         'fetched_at' => time(),
         'time_range' => $timeRange,
@@ -193,4 +243,73 @@ function spotify_top_tracks(int $limit = 5, string $timeRange = 'short_term'): a
     ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
 
     return $tracks;
+}
+
+/**
+ * Returns the top artists, refreshing the on-disk cache at most every few hours.
+ * Falls back to a stale cache when Spotify is unreachable, and to an empty list
+ * when nothing was ever cached.
+ *
+ * @return list<array{name:string,url:string,image:string}>
+ */
+function spotify_top_artists(int $limit = 5, string $timeRange = 'short_term'): array
+{
+    $cache = is_readable(SPOTIFY_ARTISTS_CACHE_FILE)
+        ? json_decode((string) file_get_contents(SPOTIFY_ARTISTS_CACHE_FILE), true)
+        : null;
+
+    $isUsable = is_array($cache)
+        && ($cache['version'] ?? 0) === SPOTIFY_CACHE_VERSION
+        && ($cache['time_range'] ?? '') === $timeRange
+        && ($cache['limit'] ?? 0) === $limit;
+
+    if ($isUsable && (time() - (int) ($cache['fetched_at'] ?? 0)) < SPOTIFY_CACHE_TTL) {
+        return $cache['artists'];
+    }
+
+    $artists = spotify_fetch_top_artists($limit, $timeRange);
+    if ($artists === null) {
+        return $isUsable && isset($cache['artists']) ? $cache['artists'] : [];
+    }
+
+    @file_put_contents(SPOTIFY_ARTISTS_CACHE_FILE, json_encode([
+        'version' => SPOTIFY_CACHE_VERSION,
+        'fetched_at' => time(),
+        'time_range' => $timeRange,
+        'limit' => $limit,
+        'artists' => $artists,
+    ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
+
+    return $artists;
+}
+
+/**
+ * Reads cache metadata for a given Spotify cache file.
+ *
+ * @return array{fetched_at:int|null,next_refresh_at:int|null}
+ */
+function spotify_cache_meta(string $cacheFile, int $limit, string $timeRange): array
+{
+    $cache = is_readable($cacheFile)
+        ? json_decode((string) file_get_contents($cacheFile), true)
+        : null;
+
+    $isUsable = is_array($cache)
+        && ($cache['version'] ?? 0) === SPOTIFY_CACHE_VERSION
+        && ($cache['time_range'] ?? '') === $timeRange
+        && ($cache['limit'] ?? 0) === $limit;
+
+    if (!$isUsable) {
+        return ['fetched_at' => null, 'next_refresh_at' => null];
+    }
+
+    $fetchedAt = (int) ($cache['fetched_at'] ?? 0);
+    if ($fetchedAt <= 0) {
+        return ['fetched_at' => null, 'next_refresh_at' => null];
+    }
+
+    return [
+        'fetched_at' => $fetchedAt,
+        'next_refresh_at' => $fetchedAt + SPOTIFY_CACHE_TTL,
+    ];
 }

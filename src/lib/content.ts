@@ -33,13 +33,14 @@ export type LangOption = { code: string; key: Lang; name: string };
 export type ImprintBlock = { k: string; v: string; link?: { label: string; href: string } };
 
 export type Track = { n: string; title: string; artist: string; url?: string; cover?: string };
+export type Artist = { n: string; name: string; url?: string; image?: string };
 
 
 const T = {
   en: {
     nav: { home: "Home", work: "Projects", about: "About", stack: "Stack", karate: "Karate", contact: "Contact" },
     ui: { gridVariant: "Grid", demo: "Demo video" },
-    hero: { hi: "Hi, I'm", eyebrow: "Apprentice Application Developer · Zurich", role: "Apprentice Application Developer", open: "Open to junior roles from 2027", claim: "Structured software, built with care.", blurb: "I design and build modern web and mobile products — from clean, considered frontends to solid backends. Currently completing my apprenticeship as an application developer alongside the Vocational Baccalaureate (BMS-W).", cta: "View my work", cta2: "Get in touch", cta3: "About me" },
+    hero: { hi: "Hi, I'm", eyebrow: "Apprentice Application Developer · Zurich", role: "Apprentice Application Developer", open: "Open to junior roles from 2028", claim: "Structured software, built with care.", blurb: "I design and build modern web and mobile products — from clean, considered frontends to solid backends. Currently completing my apprenticeship as an application developer alongside the Vocational Baccalaureate (BMS-W).", cta: "View my work", cta2: "Get in touch", cta3: "About me" },
     work: { title: "Selected work", sub: "Different projects, from a native iOS app to my own self-hosted infrastructure.", all: "All projects", pageTitle: "Projects", pageSub: "Mobile apps, club tooling and self-hosted infrastructure. Each entry says what it does, why I built it and what it runs on.", fanHint: "Hover to lift a card, click to open its details.", visit: "Visit project" },
     about: { title: "About", p1: "I am completing my apprenticeship as an application developer while attending the Vocational Baccalaureate School (BMS-W) in Switzerland. My focus lies in clean, scalable, well-structured web applications that are technically solid and pleasant to use.", p2: "I work across the full stack and enjoy the part most people skip: naming things well, keeping architecture legible, and making sure the code still makes sense six months later.", valuesTitle: "What I care about", pathTitle: "Path", cv: "Request my CV" },
     stack: { title: "Stack", sub: "Tools I use regularly, grouped by where they sit in a project." },
@@ -60,7 +61,7 @@ const T = {
       { k: "Based in", v: "Zurich, Switzerland" },
       { k: "Currently", v: "Apprenticeship + BMS-W" },
       { k: "Focus", v: "Full-stack & mobile" },
-      { k: "Available", v: "From summer 2027" }
+      { k: "Available", v: "From summer 2028" }
     ],
     values: ["Clear architecture", "Maintainable code", "Thoughtful user experience", "Real-world usability"],
     timeline: [
@@ -109,7 +110,7 @@ const T = {
   de: {
     nav: { home: "Start", work: "Projekte", about: "Über mich", stack: "Stack", karate: "Karate", contact: "Kontakt" },
     ui: { gridVariant: "Raster", demo: "Demo-Video" },
-    hero: { hi: "Hi, ich bin", eyebrow: "Applikationsentwicklerin in Ausbildung · Zürich", role: "Applikationsentwicklerin in Ausbildung", open: "Offen für Junior-Stellen ab 2027", claim: "Strukturierte Software, mit Sorgfalt gebaut.", blurb: "Ich gestalte und entwickle moderne Web- und Mobile-Produkte — von klaren, durchdachten Frontends bis zu stabilen Backends. Aktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W).", cta: "Projekte ansehen", cta2: "Kontakt aufnehmen", cta3: "Über mich" },
+    hero: { hi: "Hi, ich bin", eyebrow: "Applikationsentwicklerin in Ausbildung · Zürich", role: "Applikationsentwicklerin in Ausbildung", open: "Offen für Junior-Stellen ab 2028", claim: "Strukturierte Software, mit Sorgfalt gebaut.", blurb: "Ich gestalte und entwickle moderne Web- und Mobile-Produkte — von klaren, durchdachten Frontends bis zu stabilen Backends. Aktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W).", cta: "Projekte ansehen", cta2: "Kontakt aufnehmen", cta3: "Über mich" },
     work: { title: "Ausgewählte Projekte", sub: "Unterschiedliche Projekte, von einer native iOS-App bis zur eigenen Infrastruktur.", all: "Alle Projekte", pageTitle: "Projekte", pageSub: "Mobile Apps, Vereins-Tools und selbst gehostete Infrastruktur. Jeder Eintrag zeigt, was es macht, warum es entstand und worauf es läuft.", fanHint: "Karte zum Anheben antippen, klicken für Details.", visit: "Projekt öffnen" },
     about: { title: "Über mich", p1: "Ich absolviere meine Lehre als Applikationsentwicklerin und besuche parallel die Berufsmaturitätsschule (BMS-W). Mein Fokus liegt auf sauberen, skalierbaren und gut strukturierten Webanwendungen, die technisch solide und angenehm zu bedienen sind.", p2: "Ich arbeite über den ganzen Stack und mag genau den Teil, den viele überspringen: gute Benennungen, verständliche Architektur und Code, der auch in sechs Monaten noch Sinn ergibt.", valuesTitle: "Worauf ich achte", pathTitle: "Weg", cv: "CV anfragen" },
     stack: { title: "Stack", sub: "Werkzeuge, die ich regelmässig einsetze — nach Projektbereich gruppiert." },
@@ -130,7 +131,7 @@ const T = {
       { k: "Standort", v: "Zürich, Schweiz" },
       { k: "Aktuell", v: "Lehre + BMS-W" },
       { k: "Fokus", v: "Full-Stack & Mobile" },
-      { k: "Verfügbar", v: "Ab Sommer 2027" }
+      { k: "Verfügbar", v: "Ab Sommer 2028" }
     ],
     values: ["Klare Architektur", "Wartbarer Code", "Durchdachte User Experience", "Praxistaugliche Lösungen"],
     timeline: [
@@ -179,7 +180,7 @@ const T = {
   it: {
     nav: { home: "Home", work: "Progetti", about: "Chi sono", stack: "Stack", karate: "Karate", contact: "Contatto" },
     ui: { gridVariant: "Griglia", demo: "Video demo" },
-    hero: { hi: "Ciao, sono", eyebrow: "Sviluppatrice di applicazioni in formazione · Zurigo", role: "Sviluppatrice di applicazioni in formazione", open: "Disponibile per ruoli junior dal 2027", claim: "Software strutturato, costruito con cura.", blurb: "Progetto e realizzo prodotti web e mobile moderni — da frontend puliti e ragionati a backend solidi. Attualmente completo il mio apprendistato come sviluppatrice di applicazioni insieme alla maturità professionale (BMS-W).", cta: "Vedi i progetti", cta2: "Contattami", cta3: "Chi sono" },
+    hero: { hi: "Ciao, sono", eyebrow: "Sviluppatrice di applicazioni in formazione · Zurigo", role: "Sviluppatrice di applicazioni in formazione", open: "Disponibile per ruoli junior dal 2028", claim: "Software strutturato, costruito con cura.", blurb: "Progetto e realizzo prodotti web e mobile moderni — da frontend puliti e ragionati a backend solidi. Attualmente completo il mio apprendistato come sviluppatrice di applicazioni insieme alla maturità professionale (BMS-W).", cta: "Vedi i progetti", cta2: "Contattami", cta3: "Chi sono" },
     work: { title: "Progetti selezionati", sub: "Diversi progetti, da un'app iOS nativa alla mia infrastruttura autogestita.", all: "Tutti i progetti", pageTitle: "Progetti", pageSub: "App mobile, strumenti per il club e infrastruttura autogestita. Ogni voce spiega cosa fa, perché l'ho creata e su cosa gira.", fanHint: "Passa il mouse per sollevare una carta, clicca per i dettagli.", visit: "Apri il progetto" },
     about: { title: "Chi sono", p1: "Sto completando l'apprendistato come sviluppatrice di applicazioni, frequentando in parallelo la scuola di maturità professionale (BMS-W). Mi concentro su applicazioni web pulite, scalabili e ben strutturate, solide tecnicamente e piacevoli da usare.", p2: "Lavoro su tutto lo stack e mi piace proprio la parte che molti saltano: dare buoni nomi, mantenere l'architettura leggibile e scrivere codice che avrà senso anche fra sei mesi.", valuesTitle: "Cosa mi importa", pathTitle: "Percorso", cv: "Richiedi il CV" },
     stack: { title: "Stack", sub: "Strumenti che uso regolarmente, raggruppati per ambito di progetto." },
@@ -200,7 +201,7 @@ const T = {
       { k: "Sede", v: "Zurigo, Svizzera" },
       { k: "Attualmente", v: "Apprendistato + BMS-W" },
       { k: "Focus", v: "Full-stack e mobile" },
-      { k: "Disponibile", v: "Dall'estate 2027" }
+      { k: "Disponibile", v: "Dall'estate 2028" }
     ],
     values: ["Architettura chiara", "Codice mantenibile", "Esperienza utente curata", "Usabilità reale"],
     timeline: [
@@ -293,15 +294,21 @@ const STACK: StackGroup[] = [
 const LANGS: LangOption[] = [{ code: "EN", key: "en", name: "English" }, { code: "DE", key: "de", name: "Deutsch" }, { code: "IT", key: "it", name: "Italiano" }];
 
 const MUSIC = {
-  en: { label: "On repeat", sub: "Top 3 of the last 4 weeks on Spotify", intro: "Outside of coding, music is a big passion of mine — it accompanies pretty much everything I do, from long development sessions to training and studying." },
-  de: { label: "On repeat", sub: "Top 3 der letzten 4 Wochen auf Spotify", intro: "Neben dem Programmieren ist Musik eine grosse Leidenschaft von mir — sie begleitet fast alles, was ich tue, von langen Entwicklungs-Sessions bis zu Training und Lernen." },
-  it: { label: "On repeat", sub: "Top 3 delle ultime 4 settimane su Spotify", intro: "Oltre al codice, la musica è una grande passione — accompagna praticamente tutto ciò che faccio, dalle lunghe sessioni di sviluppo agli allenamenti e allo studio." }
+  en: { label: "On repeat", sub: "Top 3 of the last 4 weeks on Spotify", intro: "Outside of coding, music is a big passion of mine — it accompanies pretty much everything I do, from long development sessions to training and studying.", tracksLabel: "Top songs", artistsLabel: "Top artists", updatedLabel: "Updated", nextRefreshLabel: "Next refresh", refreshInLabel: "Refreshes in", unavailableLabel: "Unavailable" },
+  de: { label: "On repeat", sub: "Top 3 der letzten 4 Wochen auf Spotify", intro: "Neben dem Programmieren ist Musik eine grosse Leidenschaft von mir — sie begleitet fast alles, was ich tue, von langen Entwicklungs-Sessions bis zu Training und Lernen.", tracksLabel: "Top-Songs", artistsLabel: "Top-Artists", updatedLabel: "Aktualisiert", nextRefreshLabel: "Nächstes Update", refreshInLabel: "Aktualisiert in", unavailableLabel: "Nicht verfügbar" },
+  it: { label: "On repeat", sub: "Top 3 delle ultime 4 settimane su Spotify", intro: "Oltre al codice, la musica è una grande passione — accompagna praticamente tutto ciò che faccio, dalle lunghe sessioni di sviluppo agli allenamenti e allo studio.", tracksLabel: "Brani top", artistsLabel: "Artisti top", updatedLabel: "Aggiornato", nextRefreshLabel: "Prossimo aggiornamento", refreshInLabel: "Si aggiorna tra", unavailableLabel: "Non disponibile" }
 };
 
 const TRACKS: Track[] = [
   { n: "1", title: "سطلانة - من فيلم بعد الشر", artist: "Abd El Basset Hamouda, Mahmoud El Leithy, Hamdy Batshan, Ali Rabee, Osos, H…" },
   { n: "2", title: "Poesie Clandestine", artist: "LDA, Aka 7even" },
   { n: "3", title: "YAMA", artist: "DYSTINCT" }
+];
+
+const ARTISTS: Artist[] = [
+  { n: "1", name: "DYSTINCT" },
+  { n: "2", name: "LDA" },
+  { n: "3", name: "Aka 7even" }
 ];
 
 export type Translation = (typeof T)["en"];
@@ -313,5 +320,5 @@ export const IMPRINT: Record<Lang, ImprintBlock[]> = {
   de: T.de.imprintBlocks,
   it: T.it.imprintBlocks,
 };
-export const MUSIC_COPY: Record<Lang, { label: string; sub: string; intro: string }> = MUSIC;
-export { PROJECTS, STACK, LANGS as LANG_OPTIONS, TRACKS as FALLBACK_TRACKS };
+export const MUSIC_COPY: Record<Lang, { label: string; sub: string; intro: string; tracksLabel: string; artistsLabel: string; updatedLabel: string; nextRefreshLabel: string; refreshInLabel: string; unavailableLabel: string }> = MUSIC;
+export { PROJECTS, STACK, LANGS as LANG_OPTIONS, TRACKS as FALLBACK_TRACKS, ARTISTS as FALLBACK_ARTISTS };

@@ -20,8 +20,11 @@ header('Cache-Control: public, max-age=1800');
 require_once __DIR__ . '/lib/spotify.php';
 
 $tracks = spotify_top_tracks(3, 'short_term');
+$artists = spotify_top_artists(3, 'short_term');
+$tracksMeta = spotify_cache_meta(SPOTIFY_TRACKS_CACHE_FILE, 3, 'short_term');
+$artistsMeta = spotify_cache_meta(SPOTIFY_ARTISTS_CACHE_FILE, 3, 'short_term');
 
-$payload = array_map(
+$tracksPayload = array_map(
     static fn(array $track): array => [
         'title' => (string) ($track['name'] ?? ''),
         'artist' => (string) ($track['artists'] ?? ''),
@@ -31,4 +34,18 @@ $payload = array_map(
     $tracks
 );
 
-echo json_encode(['tracks' => $payload], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+$artistsPayload = array_map(
+    static fn(array $artist): array => [
+        'name' => (string) ($artist['name'] ?? ''),
+        'url' => (string) ($artist['url'] ?? ''),
+        'image' => (string) ($artist['image'] ?? ''),
+    ],
+    $artists
+);
+
+echo json_encode([
+    'tracks' => $tracksPayload,
+    'artists' => $artistsPayload,
+    'tracks_meta' => $tracksMeta,
+    'artists_meta' => $artistsMeta,
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
