@@ -260,7 +260,7 @@ const PROJECTS: Project[] = [
     period: { en: "Jun 2026 – present", de: "Juni 2026 – heute", it: "Giu 2026 – oggi" },
     desc: { en: "A local-first iOS app for turning photo sets into personal moments — adding the story, picking the best shots and exporting albums straight to Apple Photos.", de: "Eine local-first iOS-App, die Fotosets in persönliche Momente verwandelt — Geschichte ergänzen, beste Aufnahmen wählen, Album direkt nach Apple Fotos exportieren.", it: "Un'app iOS local-first che trasforma set di foto in momenti personali — aggiungi la storia, scegli le foto migliori, esporta album in Apple Foto." } },
   { id: "vibra", url: "https://selin.mogicato.ch/vibra", name: "Vibra", cat: "personal", shot: "vibra.svg", tags: ["Spotify", "Music Player", "Web App"],
-    period: { en: "Aug 2026 – present", de: "Aug 2026 – heute", it: "Ago 2026 – oggi" },
+    period: { en: "Aug 2026", de: "Aug 2026", it: "Ago 2026" },
     desc: { en: "My own music player powered by Spotify, built as a private project to give listening a more personal interface and flow.", de: "Mein eigener Musikplayer auf Basis von Spotify, als privates Projekt gebaut, um dem Hören eine persönlichere Oberfläche und Bedienung zu geben.", it: "Il mio music player personale basato su Spotify, creato come progetto privato per dare all'ascolto un'interfaccia e un flusso piu personali." } },
   { id: "homelab", name: "HomeLab", cat: "personal", shot: "homelab_card.png", tags: ["Linux", "Docker", "Nginx"],
     period: { en: "Feb 2026 – present", de: "Feb 2026 – heute", it: "Feb 2026 – oggi" },
