@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "fetched_at": 1787637136,
+    "time_range": "short_term",
+    "limit": 3,
+    "artists": [
+        {
+            "name": "Gaia",
+            "url": "https://open.spotify.com/artist/3AVx3OBPIk4pJQllAXoVs1",
+            "image": "https://i.scdn.co/image/ab676161000051748f2e38534f4077d48da7e041"
+        },
+        {
+            "name": "BLANCO",
+            "url": "https://open.spotify.com/artist/1MRiIeZbc0cRuxOafDUCtH",
+            "image": "https://i.scdn.co/image/ab676161000051740ada312688928b4beb6ce2dc"
+        },
+        {
+            "name": "Irama",
+            "url": "https://open.spotify.com/artist/5iot8OPcosJN9nCl7I5SdK",
+            "image": "https://i.scdn.co/image/ab676161000051743e3f5bf620d51410492b519b"
+        }
+    ]
+}

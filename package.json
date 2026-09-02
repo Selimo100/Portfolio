@@ -7,7 +7,12 @@
     "php": "php -S localhost:8001 -t server -d sendmail_path=\"$PWD/scripts/dev-mail.sh\"",
     "build": "next build && node scripts/copy-server-files.mjs",
     "preview": "php -S localhost:8000 -t out",
-    "lint": "next lint"
+    "deploy": "python3 scripts/deploy-ftp.py",
+    "deploy:dry": "python3 scripts/deploy-ftp.py --dry-run",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "deploy:verify": "python3 scripts/deploy-ftp.py --verify",
+    "deploy:prune": "python3 scripts/prune-remote.py"
   },
   "dependencies": {
     "country-flag-icons": "^1.6.20",
@@ -19,6 +24,8 @@
     "@types/node": "^22.13.5",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.2",
     "typescript": "^5.7.3"
   }
 }

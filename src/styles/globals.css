@@ -883,6 +883,27 @@ input, textarea, button { font-family: inherit; }
   background: var(--accent);
   animation: pulseDot 2.6s ease-in-out infinite;
 }
+.musicColumns {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.musicSectionLabel {
+  font: 500 10px var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.musicMeta {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 11.5px;
+  color: var(--mu);
+}
 .trackRow {
   display: grid;
   grid-template-columns: 22px 52px 1fr;
@@ -931,6 +952,12 @@ input, textarea, button { font-family: inherit; }
   height: 13px;
   color: var(--tx2);
   flex: none;
+}
+.artistNameRow {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ---------- stack ---------- */
@@ -1279,6 +1306,7 @@ input, textarea, button { font-family: inherit; }
   .cardGrid, .stackGrid, .karateCards { grid-template-columns: repeat(2, 1fr); }
   .statsInner { grid-template-columns: repeat(2, 1fr); }
   .aboutGrid, .contactGrid { grid-template-columns: 1fr; gap: 40px; }
+  .musicColumns { grid-template-columns: 1fr; }
   .aside { position: static; }
   .ctaBand { grid-template-columns: 1fr; padding: 34px 28px; }
   .ctaBand h2 { font-size: 30px; }
@@ -1318,4 +1346,535 @@ input, textarea, button { font-family: inherit; }
     scroll-behavior: auto !important;
   }
   [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   About mini game — a classic Mac OS window sitting inside the modern site.
+   Its own platinum palette, deliberately separate from the site tokens.
+--------------------------------------------------------------------------- */
+
+.miniGameTeaser,
+.miniGameStage {
+  --mac-face: #dfdfdf;
+  --mac-face2: #cfcfcf;
+  --mac-light: #ffffff;
+  --mac-shadow: #808080;
+  --mac-dark: #4a4a4a;
+  --mac-ink: #1b1b1b;
+  --mac-desk: #3b6ea5;
+  --mac-desk2: #2c5480;
+  --mac-blue: #2a5db0;
+  --mac-font: "Charcoal", "Geneva", "Lucida Grande", Verdana, system-ui, sans-serif;
+  margin-top: 56px;
+  font-family: var(--mac-font);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Teaser card ---------------------------------------------------------- */
+
+.miniGameTeaser {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(142, 202, 230, 0.05), transparent 60%),
+    var(--surface);
+  box-shadow: var(--glow);
+}
+
+.miniGameBadge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--mac-desk);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.miniGameBadge .macSpriteArt { width: 28px; height: 28px; }
+
+.miniGameHeadline {
+  margin: 2px 0 6px;
+  font-family: var(--display);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--tx);
+}
+
+.miniGameSub {
+  margin: 0 0 16px;
+  max-width: 52ch;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--tx2);
+}
+
+.miniGameActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.miniGameSkip {
+  border: 0;
+  background: none;
+  padding: 4px 2px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--mu);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.miniGameSkip:hover { color: var(--accent); }
+
+/* --- Window chrome -------------------------------------------------------- */
+
+.macWin {
+  border: 1px solid #111;
+  border-radius: 8px 8px 4px 4px;
+  background: var(--mac-face);
+  box-shadow:
+    inset 1px 1px 0 var(--mac-light),
+    inset -1px -1px 0 var(--mac-shadow),
+    0 22px 50px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  color: var(--mac-ink);
+}
+
+.macTitlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 9px;
+  background: linear-gradient(180deg, #f0f0f0, #cccccc);
+  border-bottom: 1px solid var(--mac-dark);
+}
+
+.macClose,
+.macZoom {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  border: 1px solid var(--mac-dark);
+  border-radius: 2px;
+  background: linear-gradient(160deg, #fdfdfd, #bfbfbf);
+  box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.macClose:hover { background: linear-gradient(160deg, #ffffff, #9fb6d6); }
+.macZoom { cursor: default; }
+
+.macStripes {
+  flex: 1;
+  height: 11px;
+  background: repeating-linear-gradient(
+    180deg,
+    #ffffff 0 1px,
+    #a9a9a9 1px 2px
+  );
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+.macWinTitle {
+  flex: none;
+  padding: 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.macToolbar,
+.macStatusbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  background: var(--mac-face);
+  border-bottom: 1px solid var(--mac-shadow);
+  box-shadow: inset 0 1px 0 var(--mac-light);
+}
+
+.macStatusbar {
+  border-bottom: 0;
+  border-top: 1px solid var(--mac-shadow);
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: #333;
+}
+
+.macHint { color: #5a5a5a; }
+
+.macTabs { display: flex; gap: 6px; }
+
+.macCounter {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* --- Beveled buttons ------------------------------------------------------ */
+
+.macBtn {
+  padding: 4px 12px;
+  border: 1px solid var(--mac-dark);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fbfbfb, #d2d2d2);
+  box-shadow:
+    inset 1px 1px 0 var(--mac-light),
+    inset -1px -1px 0 var(--mac-shadow);
+  font-family: var(--mac-font);
+  font-size: 12px;
+  color: var(--mac-ink);
+  cursor: pointer;
+}
+
+.macBtn:hover { background: linear-gradient(180deg, #ffffff, #dedede); }
+
+.macBtn:active,
+.macBtn.isActive {
+  background: linear-gradient(180deg, #b6b6b6, #d6d6d6);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.macBtn.macBtnDefault {
+  font-weight: 700;
+  box-shadow:
+    inset 1px 1px 0 var(--mac-light),
+    inset -1px -1px 0 var(--mac-shadow),
+    0 0 0 2px var(--mac-dark);
+  margin: 2px;
+}
+
+.macBtn:focus-visible { outline: 2px solid var(--mac-blue); outline-offset: 2px; }
+
+/* --- Window body / boot --------------------------------------------------- */
+
+.macBody { padding: 12px; background: var(--mac-face2); }
+
+.macBoot {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 48px 12px;
+  background: var(--mac-face);
+  border: 1px solid var(--mac-shadow);
+  box-shadow: inset 1px 1px 0 var(--mac-light);
+  font-size: 13px;
+}
+
+.macBoot p { margin: 0; }
+.macBootIcon { width: 46px; height: 46px; }
+
+.macBootBar {
+  width: 180px;
+  height: 10px;
+  border: 1px solid var(--mac-dark);
+  background: #fff;
+  overflow: hidden;
+}
+
+.macBootBar i {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--mac-blue) 0 4px, #6f95d8 4px 8px);
+  animation: macLoad 0.9s linear forwards;
+}
+
+@keyframes macLoad { from { width: 0; } to { width: 100%; } }
+
+/* --- Board ---------------------------------------------------------------- */
+
+.macGame { display: grid; gap: 10px; }
+
+.macBoard {
+  position: relative;
+  aspect-ratio: 100 / 64;
+  border: 1px solid var(--mac-dark);
+  background: linear-gradient(180deg, var(--mac-desk), var(--mac-desk2));
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  touch-action: none;
+}
+
+.macBoard:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+
+.macBoard.isHit { animation: macShake 0.24s ease-in-out 2; }
+
+@keyframes macShake {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+/* Faint desktop grid plus a restrained scanline wash. */
+.macBoardGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.07) 0 2px, transparent 2px 4px);
+  background-size: 8% 12.5%, 8% 12.5%, 100% 4px;
+}
+
+.macSprite {
+  position: absolute;
+  width: 8%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+
+.macSpriteArt { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+
+.macSpriteLabel {
+  font-family: var(--mono);
+  font-size: 8px;
+  font-style: normal;
+  color: #f2f6fb;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+}
+
+.macFile,
+.macSecret { animation: macBob 2.4s ease-in-out infinite; }
+
+.macFile.isTaken,
+.macSecret.isTaken { opacity: 0.18; filter: grayscale(1); animation: none; }
+
+.macSecret { animation-duration: 1.6s; }
+
+.macPlayer { width: 9%; z-index: 2; }
+.macBug { width: 7.5%; }
+
+@keyframes macBob {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 4px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macFile,
+  .macSecret,
+  .macBoard.isHit { animation: none; }
+}
+
+/* --- On-screen pad -------------------------------------------------------- */
+
+.macPad {
+  display: grid;
+  grid-template-columns: repeat(3, 38px);
+  grid-template-rows: repeat(2, 34px);
+  gap: 4px;
+  justify-content: center;
+}
+
+.macPadKey {
+  padding: 0;
+  border: 1px solid var(--mac-dark);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fbfbfb, #cfcfcf);
+  box-shadow: inset 1px 1px 0 var(--mac-light), inset -1px -1px 0 var(--mac-shadow);
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.macPadKey:active { background: linear-gradient(180deg, #b6b6b6, #d6d6d6); }
+
+.macPadUp { grid-area: 1 / 2; }
+.macPadLeft { grid-area: 2 / 1; }
+.macPadDown { grid-area: 2 / 2; }
+.macPadRight { grid-area: 2 / 3; }
+
+/* --- Alert dialog --------------------------------------------------------- */
+
+.macAlertLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(10, 14, 19, 0.5);
+  animation: fade 0.18s ease;
+}
+
+.macAlert {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px 16px;
+  max-width: 420px;
+  padding: 18px;
+  border: 1px solid #111;
+  border-radius: 6px;
+  background: var(--mac-face);
+  box-shadow: inset 1px 1px 0 var(--mac-light), 0 18px 40px rgba(0, 0, 0, 0.5);
+  color: var(--mac-ink);
+  font-family: var(--mac-font);
+}
+
+.macAlertIcon { width: 40px; }
+.macAlert .macBtn { grid-column: 2; justify-self: end; }
+
+.macAlertKicker {
+  margin: 0 0 4px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5a5a5a;
+}
+
+.macAlertTitle { margin: 0 0 6px; font-size: 15px; }
+.macAlertText { margin: 0; font-size: 13px; line-height: 1.55; }
+
+/* --- File list ------------------------------------------------------------ */
+
+.macFiles {
+  padding: 12px;
+  background: #f4f4f4;
+  border: 1px solid var(--mac-shadow);
+  box-shadow: inset 1px 1px 0 var(--mac-light);
+}
+
+.macFilesLead { margin: 0 0 12px; font-size: 12.5px; color: #333; }
+
+.macList { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+
+.macListRow {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 10px;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+}
+
+.macListRow.isOpen { background: #eef3fb; border-color: #9db4d8; }
+.macListRow > div > p { margin: 0; }
+.macListIcon { width: 24px; opacity: 0.85; }
+.macListName { font-size: 13px; font-weight: 700; }
+.macListMeta { font-size: 12px; line-height: 1.5; color: #4a4a4a; }
+
+.macFilesActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+@media (max-width: 640px) {
+  .miniGameTeaser { flex-direction: column; }
+  .macWinTitle { font-size: 12px; }
+  .macSpriteLabel { display: none; }
+  .macCounter { margin-left: 0; width: 100%; order: 3; }
+}
+
+/* Focus prompt: the arrow keys only drive the game once the board has focus. */
+.macPaused {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  padding: 8px 10px;
+  background: rgba(20, 32, 48, 0.82);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  color: #eef3fa;
+  text-align: center;
+  pointer-events: none;
+}
+
+.macPaused b { font-size: 12px; }
+.macPaused em { font-family: var(--mono); font-style: normal; font-size: 10.5px; opacity: 0.75; }
+
+/* Touch devices steer with the pad below the board, so skip the focus prompt. */
+@media (hover: none) {
+  .macPaused { display: none; }
+}
+
+/* --- Hearts and the locked disk drive ------------------------------------- */
+
+.macHearts { display: inline-flex; gap: 3px; align-items: center; }
+.macHeart { width: 15px; height: 15px; image-rendering: pixelated; }
+.macHearts.isHit { animation: macShake 0.2s ease-in-out 2; }
+
+.macBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(180deg, #e2e2e2, #cccccc);
+  color: #6a6a6a;
+}
+
+.macBtn.macBtnDefault:disabled { box-shadow: inset 1px 1px 0 var(--mac-light); }
+
+.macLock {
+  border: 1px solid var(--mac-dark);
+  background: var(--mac-face);
+  box-shadow: inset 1px 1px 0 var(--mac-light), inset -1px -1px 0 var(--mac-shadow);
+}
+
+.macLockBar {
+  padding: 4px 10px;
+  background: repeating-linear-gradient(180deg, #ffffff 0 1px, #a9a9a9 1px 2px);
+  border-bottom: 1px solid var(--mac-dark);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.macLockBody {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 26px 22px 8px;
+}
+
+.macLockIcon { width: 44px; height: 44px; image-rendering: pixelated; }
+.macLockText { margin: 0; max-width: 46ch; font-size: 13px; line-height: 1.55; }
+
+.macLockClock {
+  margin: 12px 0 0;
+  font-family: var(--mono);
+  font-size: 30px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: #2b2b2b;
+}
+
+.macLockActions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 18px 18px;
 }

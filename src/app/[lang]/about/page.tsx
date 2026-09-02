@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AboutMiniGame from "@/components/minigame/AboutMiniGame";
 import TopTracks from "@/components/TopTracks";
 import { MUSIC_COPY, TRANSLATIONS } from "@/lib/content";
 import { LANGS, href, isLang, type Lang } from "@/lib/i18n";
@@ -31,6 +32,8 @@ export default async function AboutPage({ params }: { params: Promise<{ lang: st
             {MUSIC_COPY[lang].intro}
           </p>
           <TopTracks lang={lang} />
+
+          <AboutMiniGame />
 
           <h2 className="eyebrow" style={{ display: "block", margin: "52px 0 0" }}>
             {t.about.valuesTitle}

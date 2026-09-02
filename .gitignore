@@ -22,6 +22,8 @@ __pycache__/
 # Environment files
 .env
 .env.*
+# ...but the deploy template must ship, or nobody knows what to fill in.
+!.env.deploy.example
 
 # Build output
 dist/
@@ -38,5 +40,16 @@ server/storage/spotify-top-tracks.json
 .next/
 next-env.d.ts
 
+# TypeScript incremental build info
+*.tsbuildinfo
+
 # Local mail capture (npm run php)
 server/storage/maillog
+# Stray sendmail artefact if dev-mail.sh is bypassed
+server/-f*
+
+# FTP deploy manifest (.env.deploy is covered by the .env.* rule above)
+.deploy-manifest.json
+
+# Files pulled off the server before pruning them
+.server-backup/
