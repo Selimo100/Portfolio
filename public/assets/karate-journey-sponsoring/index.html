@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Der sportliche und persönliche Weg von Selina Mogicato bei Kaisho Karate Bassersdorf – Wettkämpferin, Trainerin und Applikationsentwicklerin."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Selina Mogicato | Mein Karate-Weg</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#start" aria-label="Zum Seitenanfang">
+        <span class="wordmark-mark" aria-hidden="true">SM</span>
+        <span class="wordmark-text">Selina Mogicato</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="#weg">Weg</a>
+        <a href="#engagement">Engagement</a>
+        <a href="#projekt">Projekt</a>
+        <a href="#ziele">Ziele</a>
+      </nav>
+    </header>
+
+    <main id="inhalt">
+      <!-- ───────────────────────── HERO ───────────────────────── -->
+      <section class="hero" id="start" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow reveal">
+              <span class="dot" aria-hidden="true"></span>
+              Kata U21 &amp; Elite · Kaisho Bassersdorf · seit 2015
+            </p>
+
+            <h1 id="hero-title">
+              <span class="line"><span>Karate ist für mich</span></span>
+              <span class="line"><span>mehr als <em>Medaillen</em>.</span></span>
+            </h1>
+
+            <p class="hero-lead reveal" data-delay="1">
+              Ich bin Wettkämpferin, Trainerin und Mitgestalterin bei Kaisho Karate
+              Bassersdorf. Mein Weg verbindet sportlichen Ehrgeiz, Verantwortung für
+              die nächste Generation und meine Begeisterung für Informatik.
+            </p>
+
+            <div class="hero-actions reveal" data-delay="2">
+              <a class="button button-primary" href="#weg">
+                Meinen Weg entdecken
+                <span class="button-arrow" aria-hidden="true">↓</span>
+              </a>
+              <a
+                class="button button-ghost"
+                href="https://www.kaisho-bassersdorf.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Zum Verein <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-facts reveal" data-delay="3" aria-label="Kurzprofil">
+            <p class="facts-label">Kurzprofil</p>
+            <dl>
+              <div class="fact">
+                <dt><span class="count" data-count="11">11</span> Jahre</dt>
+                <dd>Karate-Erfahrung</dd>
+              </div>
+              <div class="fact">
+                <dt><span class="count" data-count="4">4</span>× pro Woche</dt>
+                <dd>Eigenes Training</dd>
+              </div>
+              <div class="fact">
+                <dt><span class="count" data-count="2">2</span> Abende</dt>
+                <dd>Kindertraining leiten</dd>
+              </div>
+              <div class="fact">
+                <dt>3. Kyu</dt>
+                <dd>Erster Braungurt</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true">
+          <span>scrollen</span>
+          <i></i>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── JOURNEY ───────────────────────── -->
+      <section class="journey" id="weg" aria-labelledby="weg-title">
+        <div class="journey-sticky">
+          <div class="journey-head">
+            <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Zeitleiste</p>
+            <h2 id="weg-title" class="reveal" data-delay="1">Mein Weg bis hierher</h2>
+            <p class="journey-sub reveal" data-delay="2">
+              Vom ersten Training in einer kleinen Freundesgruppe bis zur
+              internationalen Wettkampferfahrung.
+            </p>
+          </div>
+
+          <div class="journey-graphic">
+            <svg class="journey-svg" viewBox="0 0 900 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+              <defs>
+                <!-- Der Weg beginnt im Vereinsblau von Kaisho Bassersdorf
+                     und laeuft ins Sunrise Red der Gegenwart. -->
+                <linearGradient id="pathGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#044c77" />
+                  <stop offset="50%" stop-color="#83364a" />
+                  <stop offset="100%" stop-color="#da291c" />
+                </linearGradient>
+                <filter id="dotGlow" x="-200%" y="-200%" width="500%" height="500%">
+                  <feGaussianBlur stdDeviation="7" result="b" />
+                  <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <path class="journey-track" fill="none" stroke-width="1.5" />
+              <path class="journey-fill" fill="none" stroke="url(#pathGrad)" stroke-width="3.5" stroke-linecap="round" />
+              <g class="journey-nodes"></g>
+              <circle class="journey-ripple" r="0" fill="none" opacity="0" />
+              <circle class="journey-halo" r="15" opacity="0.22" />
+              <circle class="journey-dot" r="6" filter="url(#dotGlow)" />
+            </svg>
+            <div class="journey-labels"></div>
+          </div>
+        </div>
+
+        <ol class="journey-list" aria-label="Sportliche Meilensteine"></ol>
+      </section>
+
+      <!-- ───────────────────────── ENGAGEMENT ───────────────────────── -->
+      <section class="section section-dark" id="engagement" aria-labelledby="engagement-title">
+        <div class="section-heading">
+          <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Mehr als Wettkampf</p>
+          <h2 id="engagement-title" class="reveal" data-delay="1">
+            Ich gebe weiter, was Karate mir gegeben hat.
+          </h2>
+          <p class="reveal" data-delay="2">
+            An zwei Abenden pro Woche trainiere ich Kinder und Jugendliche. Dazu
+            unterstütze ich meinen Trainer beim Coaching an Turnieren und bei
+            organisatorischen Aufgaben im Verein.
+          </p>
+        </div>
+
+        <div class="engagement-grid">
+          <article class="engagement-card reveal" data-delay="1" tabindex="0">
+            <p class="card-number">01</p>
+            <h3>Training &amp; Coaching</h3>
+            <p>
+              Ich plane und leite Trainings, begleite junge Karatekas und unterstütze
+              sie an Wettkämpfen. Ihr Fortschritt und ihre Freude am Sport sind meine
+              grösste Motivation.
+            </p>
+          </article>
+
+          <article class="engagement-card reveal" data-delay="2" tabindex="0">
+            <p class="card-number">02</p>
+            <h3>Vereinsarbeit</h3>
+            <p>
+              Ich helfe bei der Turnierplanung, erarbeite Prüfungsprogramme,
+              bewirtschafte die Website und gestalte Flyer und weitere Unterlagen
+              für unseren Verein.
+            </p>
+          </article>
+
+          <article class="engagement-card reveal" data-delay="3" tabindex="0">
+            <p class="card-number">03</p>
+            <h3>Informatik</h3>
+            <p>
+              Als angehende Applikationsentwicklerin verbinde ich meine IT-Kenntnisse
+              mit meinem Engagement im Karate und entwickle digitale Lösungen für den
+              Vereinsalltag.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── PROJEKT ───────────────────────── -->
+      <section class="section project-section" id="projekt" aria-labelledby="project-title">
+        <div class="project-grid">
+          <div class="project-intro">
+            <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Eigenentwicklung</p>
+            <h2 id="project-title" class="reveal" data-delay="1">Kaisho DojoTime</h2>
+            <p class="project-tagline reveal" data-delay="2">
+              Weniger Administration. Mehr Zeit fürs Dojo.
+            </p>
+          </div>
+
+          <div class="project-copy">
+            <p class="reveal" data-delay="1">
+              Kaisho DojoTime ist ein Organisationstool, das ich für Kaisho Karate
+              Bassersdorf entwickelt habe. Es hilft uns, Trainingspläne,
+              Trainereinsätze und Vereinsanlässe effizient zu verwalten.
+            </p>
+            <p class="reveal" data-delay="2">
+              Damit vereinfacht es die Administration, verbessert die Kommunikation
+              und zeigt, wie ich meine beruflichen Fähigkeiten konkret für meinen
+              Sport und meinen Verein einsetze.
+            </p>
+            <ul class="tag-list reveal" data-delay="3" aria-label="Funktionen von Kaisho DojoTime">
+              <li>Trainingsplanung</li>
+              <li>Trainereinsätze</li>
+              <li>Vereinsanlässe</li>
+              <li>Kommunikation</li>
+            </ul>
+
+            <p class="reveal" data-delay="4">
+              <a
+                class="button button-primary"
+                href="https://kaisho-dojotime.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Kaisho DojoTime öffnen
+                <span aria-hidden="true">↗</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── ZIELE ───────────────────────── -->
+      <section class="section section-dark goals" id="ziele" aria-labelledby="goals-title">
+        <div class="section-heading">
+          <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Der nächste Schritt</p>
+          <h2 id="goals-title" class="reveal" data-delay="1">
+            Meine Ziele reichen über den nächsten Wettkampf hinaus.
+          </h2>
+          <p class="reveal" data-delay="2">
+            Am 1. Oktober 2026 steht meine Prüfung zum 2. Kyu an. 2027 möchte ich
+            mir erneut einen Podestplatz an der Zürcher Kantonalmeisterschaft
+            erkämpfen und weitere internationale Erfahrung sammeln.
+          </p>
+        </div>
+
+        <div class="goal-list">
+          <article class="goal reveal" data-delay="1">
+            <span class="goal-tag">Sportlich</span>
+            <h3>Mit 20 Jahren den Dan tragen</h3>
+          </article>
+          <article class="goal reveal" data-delay="2">
+            <span class="goal-tag">Als Trainerin</span>
+            <h3>Die reguläre J+S-Leiterausbildung absolvieren</h3>
+          </article>
+          <article class="goal reveal" data-delay="3">
+            <span class="goal-tag">Langfristig</span>
+            <h3>Kaisho Karate Bassersdorf weiterführen</h3>
+          </article>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── ZITAT ───────────────────────── -->
+      <section class="quote-section" aria-label="Persönliche Motivation">
+        <div class="quote-panel reveal">
+          <blockquote>
+            Wenn die Kinder nach meinem Training mit einem strahlenden Lächeln
+            aus der Turnhalle gehen, weiss ich, weshalb sich der gesamte
+            Einsatz lohnt.
+          </blockquote>
+          <p class="quote-author">Selina Mogicato</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div>
+          <strong>Selina Mogicato</strong>
+          <p>Karateka · Trainerin · Applikationsentwicklerin</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://kaisho.ch/" target="_blank" rel="noopener noreferrer">
+            Kaisho Karate Association <span aria-hidden="true">↗</span>
+          </a>
+          <a href="https://www.kaisho-bassersdorf.ch/" target="_blank" rel="noopener noreferrer">
+            Kaisho Karate Bassersdorf <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Persönliches Bewerbungsdossier für Sunrise Young Talents 2026.
+      </p>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

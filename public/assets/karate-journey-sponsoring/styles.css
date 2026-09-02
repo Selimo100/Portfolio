@@ -1,0 +1,800 @@
+/* ==========================================================================
+   Selina Mogicato – Karate Journey
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------
+     Zwei Quellen, klar verteilte Rollen.
+
+     Sunrise Corporate Design gibt das System vor: Figtree, Sunrise Red als
+     einzige Aktionsfarbe, Ice White als Seite, Light Black als Text,
+     Ruby Glow als einzelner Markenmoment, Radien und Tracking nach Guide.
+
+     Kaisho Karate Bassersdorf (kaisho-bassersdorf.ch) bleibt als Herkunft
+     lesbar: Vereinsblau als Startfarbe der Weg-Kurve und als leichter Stich
+     in Sekundaertext und Linien.
+     ------------------------------------------------------------------ */
+
+  /* Sunrise – Primaerpalette */
+  --sunrise-red: #da291c;
+  --sunrise-red-dark: #cc2619;   /* Kleintext, erfuellt AA auch auf Air */
+  --sunrise-red-air: #fae4e3;
+  --ruby-glow-orange: #f39200;
+  --ruby-glow: linear-gradient(180deg, #da291c 0%, #f39200 100%);
+  --light-black: #1f1f1f;
+  --light-black-soft: #d5d5d6;
+  --light-black-air: #f3f3f5;
+  --ice-white: #ffffff;
+
+  /* Kaisho */
+  --kaisho-deep: #044c77;
+  --kaisho-sky: #81bbd5;
+
+  /* Flaechen – Sunrise ist light-first */
+  --ink: var(--ice-white);        /* Seite und Karten */
+  --ink-2: var(--light-black-air);/* abgesetzte Abschnitte, Footer */
+  --ink-3: var(--ice-white);      /* Karten auf abgesetzten Abschnitten */
+
+  /* Text – Light Black, Sekundaerstufen mit leichtem Vereinsblau-Stich */
+  --text: var(--light-black);
+  --text-dim: #4a5c68;
+  --text-faint: #5f7280;
+
+  /* Linien – Light Black Soft, leicht ins Vereinsblau gezogen */
+  --line: #e3e8eb;
+  --line-strong: #cdd6db;
+  --track: #7f9099;      /* unerreichte Weg-Kurve, 3.3:1 auf Weiss */
+
+  /* Aktion */
+  --accent: var(--sunrise-red);
+  --accent-text: var(--sunrise-red-dark);
+  --accent-soft: var(--sunrise-red-air);
+
+  /* Typografie – Figtree, Tracking und Zeilenhoehe nach Sunrise 4.3/4.4 */
+  --font: "Figtree", Tahoma, sans-serif;
+  --text-display-lg: clamp(2.75rem, 6vw, 5.5rem);
+  --text-display-md: clamp(2.25rem, 4.5vw, 4rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h3: clamp(1.35rem, 2vw, 1.75rem);
+  --text-body-lg: 1.125rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  --tracking-xl: -0.03em;
+  --tracking-lg: -0.02em;
+  --tracking-sm: -0.01em;
+  --leading-display: 0.9;
+  --leading-subline: 1.15;
+
+  /* Radien – Sunrise 6.4; Pillenform nur fuer Badges */
+  --radius-control: 0.75rem;
+  --radius-card: 1rem;
+  --radius-feature: 1.5rem;
+  --radius-pill: 999px;
+
+  /* Abstaende – 4px-Raster */
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --container: 76rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+  --section-space: clamp(4rem, 8vw, 6rem);
+
+  /* Bewegung – Sunrise 11 */
+  --dur-micro: 150ms;
+  --dur-base: 220ms;
+  --dur-hero: 550ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: clamp(0.98rem, 0.35vw + 0.9rem, 1.06rem);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: var(--tracking-lg);
+  line-height: var(--leading-subline);
+  text-wrap: balance;
+}
+
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; text-decoration: none; }
+
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--accent); color: var(--ice-white); }
+
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.7rem 1rem;
+  transform: translateY(-200%);
+  border-radius: var(--radius-control);
+  background: var(--accent);
+  color: var(--ice-white);
+  font-weight: 700;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ── Scroll-Fortschritt ─────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 90;
+  height: 2px;
+  background: transparent;
+  pointer-events: none;
+}
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  background: var(--accent);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem var(--gutter);
+  background: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+.site-header.is-stuck { border-bottom-color: var(--line); }
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.wordmark-mark {
+  display: grid;
+  place-items: center;
+  width: 2.05rem;
+  height: 2.05rem;
+  border-radius: 0.6rem;
+  background: var(--accent);
+  color: var(--ice-white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.wordmark-text { font-size: 0.95rem; }
+
+.site-nav {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--ink-2);
+}
+.site-nav a {
+  position: relative;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  color: var(--text-dim);
+  font-size: var(--text-small);
+  font-weight: 700;
+  transition: color var(--dur-micro), background var(--dur-micro);
+}
+.site-nav a:hover { color: var(--text); }
+.site-nav a.is-active {
+  color: var(--ice-white);
+  background: var(--accent);
+}
+
+/* ── Bausteine ──────────────────────────────────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.1rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--ink-2);
+  color: var(--text-dim);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.eyebrow .dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-sm);
+  transition: background var(--dur-micro), border-color var(--dur-micro),
+              color var(--dur-micro);
+}
+.button-primary {
+  background: var(--accent);
+  color: var(--ice-white);
+}
+.button-primary:hover { background: #b92117; }
+.button-primary .button-arrow { transition: transform var(--dur-base) var(--ease); }
+.button-primary:hover .button-arrow { transform: translateY(3px); }
+.button-ghost {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--text);
+}
+.button-ghost:hover { background: var(--ink-2); border-color: var(--accent); }
+
+.section {
+  padding: var(--section-space) var(--gutter);
+}
+.section > * { max-width: var(--container); margin-inline: auto; }
+
+.section-heading { max-width: 46rem; margin-bottom: clamp(2.5rem, 5vw, 3.75rem); }
+.section-heading h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); margin-bottom: 1.1rem; }
+.section-heading > p:last-child { color: var(--text-dim); font-size: 1.03rem; }
+
+.section-dark {
+  background: var(--ink-2);
+  border-block: 1px solid var(--line);
+}
+
+/* ── Reveal-Animationen ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity var(--dur-hero) var(--ease), transform var(--dur-hero) var(--ease);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min(92vh, 54rem);
+  padding: clamp(3.5rem, 8vw, 6rem) var(--gutter) clamp(3rem, 6vw, 4.5rem);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  align-items: end;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.hero h1 {
+  /* Etwas unter display-lg, damit die zweite Zeile geschlossen bleibt. */
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-xl);
+  line-height: var(--leading-display);
+  margin-bottom: var(--space-8);
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: riseIn var(--dur-hero) var(--ease) forwards;
+}
+.hero h1 .line:nth-child(1) > span { animation-delay: 60ms; }
+.hero h1 .line:nth-child(2) > span { animation-delay: 160ms; }
+@keyframes riseIn { to { transform: translateY(0); } }
+
+.hero-lead {
+  max-width: 40ch;
+  color: var(--text-dim);
+  font-size: var(--text-body-lg);
+  line-height: 1.5;
+  margin-bottom: var(--space-8);
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.hero-facts {
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--ink-2);
+}
+.facts-label {
+  margin-bottom: var(--space-4);
+  color: var(--text-dim);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.hero-facts dl { display: grid; gap: 0.9rem; margin: 0; }
+.hero-facts .fact {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--line-strong);
+  transition: border-color var(--dur-micro);
+}
+.hero-facts .fact:hover { border-left-color: var(--accent); }
+.hero-facts dt {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-lg);
+}
+.hero-facts dd {
+  margin: 0.05rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.scroll-hint {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  max-width: var(--container);
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.scroll-hint i {
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ── Journey / Zeitleiste ───────────────────────────────────────────── */
+.journey {
+  position: relative;
+  background: var(--ink);
+}
+.journey-sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  padding: clamp(3.25rem, 6vw, 4.75rem) var(--gutter) clamp(1.25rem, 3vw, 2.25rem);
+}
+.journey-head {
+  flex: none;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto clamp(0.75rem, 1.8vw, 1.5rem);
+  text-align: center;
+}
+.journey-head .eyebrow { margin-bottom: 0.7rem; }
+.journey-head h2 {
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-lg);
+  margin-bottom: var(--space-3);
+}
+.journey-sub {
+  max-width: 36rem;
+  margin-inline: auto;
+  color: var(--text-dim);
+  font-size: 0.96rem;
+}
+
+.journey-graphic {
+  position: relative;
+  flex: 1 1 0;
+  width: 100%;
+  max-width: 66rem;
+  margin-inline: auto;
+  min-height: 0;
+}
+.journey-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* Die noch nicht erreichte Kurve erfuellt 3:1 nach WCAG 1.4.11; die
+   Hierarchie zum gezeichneten Weg entsteht ueber die Strichstaerke. */
+.journey-track { stroke: var(--track); }
+.journey-node { stroke: var(--ink); stroke-width: 3; transition: fill 0.45s var(--ease), r 0.45s var(--ease); }
+.journey-ripple { stroke: var(--accent); stroke-width: 2; }
+.journey-halo { fill: var(--accent); }
+.journey-dot { fill: var(--accent); }
+
+.journey-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.journey-checkpoint {
+  position: absolute;
+  top: 0;
+  width: clamp(11rem, 20vw, 18.5rem);
+  transform: translateY(-50%);
+  transition: opacity 0.45s var(--ease), transform 0.55s var(--ease);
+  will-change: opacity, transform;
+}
+.journey-checkpoint .cp-tag {
+  display: block;
+  margin-bottom: 0.28rem;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: color 0.4s;
+}
+.journey-checkpoint .cp-title {
+  font-size: clamp(0.98rem, 1.25vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.journey-checkpoint .cp-note {
+  margin-top: 0.25rem;
+  color: var(--text-dim);
+  font-size: 0.87rem;
+  line-height: 1.45;
+}
+.journey-checkpoint.is-lit .cp-tag { color: var(--accent-text); }
+
+/* Listenansicht der Zeitleiste – genutzt auf schmalen Bildschirmen,
+   bei reduzierter Bewegung und im Druck. */
+.journey-list {
+  display: none;
+  gap: 0;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--section-space);
+  list-style: none;
+}
+.journey-list li {
+  position: relative;
+  padding: 0 0 1.9rem 1.9rem;
+  border-left: 2px solid var(--line);
+}
+.journey-list li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.journey-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: -0.44rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--line-strong);
+  transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.journey-list li.is-in::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 0.28rem var(--accent-soft);
+}
+.journey-list .cp-tag {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--accent-text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.journey-list .cp-title { font-size: 1.08rem; font-weight: 700; letter-spacing: -0.02em; }
+.journey-list .cp-note { margin-top: 0.2rem; color: var(--text-dim); font-size: 0.9rem; }
+
+/* ── Engagement ─────────────────────────────────────────────────────── */
+.engagement-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+.engagement-card {
+  position: relative;
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--ink-3);
+  border-color: var(--line-strong);
+  transition: border-color var(--dur-base);
+}
+.engagement-card:hover,
+.engagement-card:focus-visible { border-color: var(--accent); }
+.card-number {
+  margin-bottom: var(--space-6);
+  color: var(--accent-text);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.engagement-card h3 {
+  font-size: var(--text-h3);
+  letter-spacing: var(--tracking-lg);
+  margin-bottom: var(--space-3);
+}
+.engagement-card p:last-child {
+  color: var(--text-dim);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+/* ── Projekt ────────────────────────────────────────────────────────── */
+.project-section { background: var(--ink); }
+.project-grid {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  padding: clamp(2rem, 4vw, 3.25rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-feature);
+  background: var(--ink-2);
+}
+.project-intro h2 {
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-lg);
+  margin-bottom: var(--space-3);
+}
+.project-tagline {
+  color: var(--accent-text);
+  font-size: var(--text-body-lg);
+  font-weight: 700;
+}
+.project-copy {
+  display: grid;
+  gap: var(--space-4);
+  align-content: center;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tag-list li {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--text-dim);
+  font-size: var(--text-small);
+  font-weight: 400;
+}
+
+/* ── Ziele ──────────────────────────────────────────────────────────── */
+.goals { background: var(--ink); }
+.goal-list { display: grid; gap: 0.75rem; }
+.goal {
+  display: grid;
+  gap: 0.35rem 2rem;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  align-items: baseline;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--line);
+  transition: padding-left var(--dur-base) var(--ease), border-color var(--dur-base);
+}
+.goal:last-child { border-bottom: 1px solid var(--line); }
+.goal:hover { padding-left: var(--space-3); border-color: var(--accent); }
+.goal-tag {
+  color: var(--accent-text);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.goal h3 { font-size: var(--text-h3); letter-spacing: var(--tracking-lg); }
+
+/* ── Zitat ──────────────────────────────────────────────────────────── */
+.quote-section {
+  padding: var(--section-space) var(--gutter);
+  background: var(--ink);
+}
+
+/* Der einzige Ruby-Glow-Moment der Seite. Der Verlauf laeuft von Sunrise
+   Red nach Orange; Ice White traegt oben genug Kontrast (4.9:1 bis 3.5:1
+   bei Displaygroesse), die Signatur unten steht deshalb in Light Black. */
+.quote-panel {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: clamp(2.5rem, 5vw, 4rem) var(--space-8) clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: var(--radius-feature);
+  background: var(--ruby-glow);
+  text-align: center;
+}
+.quote-panel blockquote {
+  max-width: 48rem;
+  margin: 0 auto clamp(3rem, 8vw, 7rem);
+  color: var(--ice-white);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: var(--tracking-lg);
+  line-height: var(--leading-subline);
+  quotes: "«" "»";
+}
+.quote-panel blockquote::before { content: open-quote; }
+.quote-panel blockquote::after { content: close-quote; }
+.quote-author {
+  color: var(--light-black);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+.site-footer {
+  padding: clamp(2.5rem, 5vw, 3.5rem) var(--gutter);
+  border-top: 1px solid var(--line);
+  background: var(--ink-2);
+}
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+.footer-main strong { font-size: 1.05rem; }
+.footer-main p { color: var(--text-dim); font-size: 0.9rem; }
+.footer-links { display: grid; gap: 0.4rem; align-content: start; }
+.footer-links a {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color var(--dur-micro);
+}
+.footer-links a:hover { color: var(--accent-text); }
+.disclaimer {
+  max-width: var(--container);
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-size: 0.78rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 62rem) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
+  .goal { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 52rem) {
+  .wordmark-text { display: none; }
+  .site-nav { padding: 0.2rem; }
+  .site-nav a { padding: 0.35rem 0.65rem; font-size: 0.8rem; }
+  .hero-facts dl { grid-template-columns: 1fr 1fr; }
+
+  /* Grafik ausblenden, klassische Zeitleiste zeigen */
+  .journey { min-height: 0 !important; }
+  .journey-sticky {
+    position: static;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 0;
+  }
+  .journey-head { text-align: left; margin-bottom: 2.25rem; }
+  .journey-sub { margin-inline: 0; }
+  .journey-graphic { display: none; }
+
+  .journey-list { display: grid; }
+
+  /* Auf schmalen Schirmen braucht das Ruby-Glow-Panel mehr Fussraum, damit
+     die letzte weisse Zeile nicht in den orangen Verlaufsteil rutscht. */
+  .quote-panel { padding-bottom: 3.25rem; }
+  .quote-panel blockquote { margin-bottom: 4rem; }
+}
+
+@media (max-width: 30rem) {
+  .hero-facts dl { grid-template-columns: 1fr; }
+  .site-header { gap: 0.6rem; }
+  .site-nav {
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a { flex: none; padding: 0.35rem 0.6rem; font-size: 0.76rem; }
+}
+
+/* ── Reduzierte Bewegung ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .hero h1 .line > span { transform: none; }
+  .journey { min-height: 0 !important; }
+  .journey-sticky {
+    position: static;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 0;
+  }
+  .journey-head { text-align: left; }
+  .journey-sub { margin-inline: 0; }
+  .journey-graphic { display: none; }
+  .journey-list { display: grid; }
+}
+
+/* ── Druck ──────────────────────────────────────────────────────────── */
+@media print {
+  body { background: #fff; color: #000; }
+  .site-header, .scroll-progress, .scroll-hint, .journey-graphic { display: none; }
+  .journey { min-height: 0 !important; }
+  .journey-sticky { position: static; height: auto; padding: 0; }
+  .journey-list { display: grid; padding: 0; list-style: none; }
+  .journey-list li { padding: 0 0 1rem 0; border: 0; }
+  .reveal { opacity: 1; transform: none; }
+}
