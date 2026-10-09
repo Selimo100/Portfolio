@@ -53,3 +53,8 @@ server/-f*
 
 # Files pulled off the server before pruning them
 .server-backup/
+
+
+CLAUDE.md
+AGENTS.md
+README_github.md

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhoneSimulator from "@/components/PhoneSimulator";
 import ProjectCard from "@/components/ProjectCard";
 import { PROJECTS, TRANSLATIONS } from "@/lib/content";
 import { LANGS, href, isLang, type Lang } from "@/lib/i18n";
@@ -105,6 +106,15 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             {t.cta.button}
           </Link>
         </div>
+      </section>
+
+      <section className="shell phoneSection">
+        <div className="phoneCopy">
+          <span className="eyebrow">{t.phone.eyebrow}</span>
+          <h2>{t.phone.title}</h2>
+          <p>{t.phone.blurb}</p>
+        </div>
+        <PhoneSimulator lang={lang} t={{ phone: t.phone, filters: t.filters, nav: t.nav, ui: t.ui }} />
       </section>
     </main>
   );
