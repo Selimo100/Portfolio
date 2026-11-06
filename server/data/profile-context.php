@@ -36,6 +36,7 @@ $projectEntries = array_map(static function (array $project): array {
         'description' => $project['summary'],
         'technologies' => $project['technologies'],
         'link' => $project['liveUrl'] ?? null,
+        'appStore' => $project['appStoreUrl'] ?? null,
     ];
 }, $projects);
 

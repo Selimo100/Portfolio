@@ -19,6 +19,8 @@ export type Project = {
   tags: string[];
   /** Live deployment, where one exists. */
   url?: string;
+  /** App Store listing, for apps published on iOS. */
+  appStore?: string;
   /** Demo clip shown in the detail modal, where one exists. */
   video?: string;
   period: Record<Lang, string>;
@@ -39,7 +41,7 @@ export type Artist = { n: string; name: string; url?: string; image?: string };
 const T = {
   en: {
     nav: { home: "Home", work: "Projects", about: "About", stack: "Stack", karate: "Karate", contact: "Contact" },
-    ui: { gridVariant: "Grid", demo: "Demo video" },
+    ui: { gridVariant: "Grid", demo: "Demo video", appStore: "App Store", appStoreLabel: "Download on the App Store" },
     hero: { hi: "Hi, I'm", eyebrow: "Apprentice Application Developer · Zurich", role: "Apprentice Application Developer", open: "Open to junior roles from 2028", claim: "Structured software, built with care.", blurb: "I design and build modern web and mobile products — from clean, considered frontends to solid backends. Currently completing my apprenticeship as an application developer alongside the Vocational Baccalaureate (BMS-W).", cta: "View my work", cta2: "Get in touch", cta3: "About me" },
     work: { title: "Selected work", sub: "Different projects, from a native iOS app to my own self-hosted infrastructure.", all: "All projects", pageTitle: "Projects", pageSub: "Mobile apps, club tooling and self-hosted infrastructure. Each entry says what it does, why I built it and what it runs on.", fanHint: "Hover to lift a card, click to open its details.", visit: "Visit project" },
     phone: { eyebrow: "Pocket portfolio", title: "My projects, as apps.", blurb: "Unlock the phone and open any project like an app. Swipe up from the bottom bar — or press Esc — to go back to the home screen.", label: "Interactive phone with my projects", unlock: "Swipe up to unlock", home: "Go to home screen", lock: "Lock", visit: "Open live", widget: "Apps on this phone" },
@@ -110,7 +112,7 @@ const T = {
   },
   de: {
     nav: { home: "Start", work: "Projekte", about: "Über mich", stack: "Stack", karate: "Karate", contact: "Kontakt" },
-    ui: { gridVariant: "Raster", demo: "Demo-Video" },
+    ui: { gridVariant: "Raster", demo: "Demo-Video", appStore: "App Store", appStoreLabel: "Im App Store laden" },
     hero: { hi: "Hi, ich bin", eyebrow: "Applikationsentwicklerin in Ausbildung · Zürich", role: "Applikationsentwicklerin in Ausbildung", open: "Offen für Junior-Stellen ab 2028", claim: "Strukturierte Software, mit Sorgfalt gebaut.", blurb: "Ich gestalte und entwickle moderne Web- und Mobile-Produkte — von klaren, durchdachten Frontends bis zu stabilen Backends. Aktuell absolviere ich meine Lehre als Applikationsentwicklerin parallel zur Berufsmaturitätsschule (BMS-W).", cta: "Projekte ansehen", cta2: "Kontakt aufnehmen", cta3: "Über mich" },
     work: { title: "Ausgewählte Projekte", sub: "Unterschiedliche Projekte, von einer native iOS-App bis zur eigenen Infrastruktur.", all: "Alle Projekte", pageTitle: "Projekte", pageSub: "Mobile Apps, Vereins-Tools und selbst gehostete Infrastruktur. Jeder Eintrag zeigt, was es macht, warum es entstand und worauf es läuft.", fanHint: "Karte zum Anheben antippen, klicken für Details.", visit: "Projekt öffnen" },
     phone: { eyebrow: "Portfolio für die Hosentasche", title: "Meine Projekte als Apps.", blurb: "Entsperre das Handy und öffne jedes Projekt wie eine App. Vom unteren Balken nach oben wischen — oder Esc drücken —, um zum Home-Bildschirm zurückzukehren.", label: "Interaktives Handy mit meinen Projekten", unlock: "Zum Entsperren nach oben wischen", home: "Zum Home-Bildschirm", lock: "Sperren", visit: "Live öffnen", widget: "Apps auf dem Handy" },
@@ -181,7 +183,7 @@ const T = {
   },
   it: {
     nav: { home: "Home", work: "Progetti", about: "Chi sono", stack: "Stack", karate: "Karate", contact: "Contatto" },
-    ui: { gridVariant: "Griglia", demo: "Video demo" },
+    ui: { gridVariant: "Griglia", demo: "Video demo", appStore: "App Store", appStoreLabel: "Scarica su App Store" },
     hero: { hi: "Ciao, sono", eyebrow: "Sviluppatrice di applicazioni in formazione · Zurigo", role: "Sviluppatrice di applicazioni in formazione", open: "Disponibile per ruoli junior dal 2028", claim: "Software strutturato, costruito con cura.", blurb: "Progetto e realizzo prodotti web e mobile moderni — da frontend puliti e ragionati a backend solidi. Attualmente completo il mio apprendistato come sviluppatrice di applicazioni insieme alla maturità professionale (BMS-W).", cta: "Vedi i progetti", cta2: "Contattami", cta3: "Chi sono" },
     work: { title: "Progetti selezionati", sub: "Diversi progetti, da un'app iOS nativa alla mia infrastruttura autogestita.", all: "Tutti i progetti", pageTitle: "Progetti", pageSub: "App mobile, strumenti per il club e infrastruttura autogestita. Ogni voce spiega cosa fa, perché l'ho creata e su cosa gira.", fanHint: "Passa il mouse per sollevare una carta, clicca per i dettagli.", visit: "Apri il progetto" },
     phone: { eyebrow: "Portfolio tascabile", title: "I miei progetti, come app.", blurb: "Sblocca il telefono e apri ogni progetto come un'app. Scorri in su dalla barra in basso — o premi Esc — per tornare alla schermata Home.", label: "Telefono interattivo con i miei progetti", unlock: "Scorri in su per sbloccare", home: "Torna alla schermata Home", lock: "Blocca", visit: "Apri live", widget: "App sul telefono" },
@@ -259,7 +261,7 @@ const MOMO_Q = {
 };
 
 const PROJECTS: Project[] = [
-  { id: "momento", url: "https://momento.mogicato.ch/", name: "Momento App", cat: "personal", shot: "momento_app_card.png", tags: ["Swift"],
+  { id: "momento", url: "https://momento.mogicato.ch/", appStore: "https://apps.apple.com/ch/app/momento-moments/id6797451975?l=en-GB", name: "Momento App", cat: "personal", shot: "momento_app_card.png", tags: ["Swift"],
     period: { en: "Jun 2026 – present", de: "Juni 2026 – heute", it: "Giu 2026 – oggi" },
     desc: { en: "A local-first iOS app for turning photo sets into personal moments — adding the story, picking the best shots and exporting albums straight to Apple Photos.", de: "Eine local-first iOS-App, die Fotosets in persönliche Momente verwandelt — Geschichte ergänzen, beste Aufnahmen wählen, Album direkt nach Apple Fotos exportieren.", it: "Un'app iOS local-first che trasforma set di foto in momenti personali — aggiungi la storia, scegli le foto migliori, esporta album in Apple Foto." } },
   { id: "vibra", url: "https://selina.mogicato.ch/vibra", name: "Vibra", cat: "personal", shot: "vibra.svg", tags: ["Spotify Developer API", 'TypeScript'],

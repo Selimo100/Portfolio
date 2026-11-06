@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import { PROJECTS, type Project, type Translation } from "@/lib/content";
 import { href, type Lang } from "@/lib/i18n";
+import { AppleLogo } from "./AppleLogo";
 
 type Copy = Pick<Translation, "phone" | "filters" | "nav" | "ui">;
 
@@ -282,6 +283,18 @@ function AppView({
           {project.url && (
             <a className="phoneAppBtn" href={project.url} target="_blank" rel="noreferrer">
               {t.phone.visit}
+            </a>
+          )}
+          {project.appStore && (
+            <a
+              className="phoneAppBtn phoneAppBtnGhost phoneAppStore"
+              href={project.appStore}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={t.ui.appStoreLabel}
+            >
+              <AppleLogo className="appStoreLogo" />
+              {t.ui.appStore}
             </a>
           )}
           {project.video && !playing && (

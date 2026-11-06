@@ -752,6 +752,8 @@ input, textarea, button { font-family: inherit; }
 }
 .modalActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .modalVisit { padding: 13px 22px; font-size: 13.5px; }
+.appStoreBtn { gap: 8px; }
+.appStoreLogo { width: 1em; height: 1.15em; flex-shrink: 0; margin-top: -0.12em; }
 .modalShot video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
 /* The demo clip is a portrait screen recording, so a 16:9 frame would be
    mostly black bars — give the video its own taller frame instead. */
@@ -1573,6 +1575,7 @@ input, textarea, button { font-family: inherit; }
 .phoneAppBtn:hover { color: #fff; filter: brightness(1.1); }
 .phoneAppBtnGhost { background: rgba(28, 111, 146, 0.12); color: #1c6f92; }
 .phoneAppBtnGhost:hover { color: #1c6f92; }
+.phoneAppStore { display: inline-flex; align-items: center; gap: 1.6cqw; }
 .phoneAppDesc { margin: 5cqw 0 0; font-size: 4.1cqw; line-height: 1.55; color: #33475a; }
 .phoneAppTags { display: flex; flex-wrap: wrap; gap: 1.8cqw; margin: 4.5cqw 0 0; padding: 0; list-style: none; }
 .phoneAppTags li { padding: 1.2cqw 2.8cqw; border-radius: 99px; background: #e3ebf0; font-size: 3.3cqw; color: #33475a; }

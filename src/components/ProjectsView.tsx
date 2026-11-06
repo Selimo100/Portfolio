@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PROJECTS, type Category, type Project, type Translation } from "@/lib/content";
 import type { Lang } from "@/lib/i18n";
+import { AppleLogo } from "./AppleLogo";
 
 const FILTERS = ["all", "personal", "professional"] as const;
 const LAYOUTS = ["a", "b", "c", "d"] as const;
@@ -348,6 +349,18 @@ function ProjectModal({
             {project.url && (
               <a className="btn btnPrimary modalVisit" href={project.url} target="_blank" rel="noreferrer">
                 {t.work.visit}
+              </a>
+            )}
+            {project.appStore && (
+              <a
+                className="btn btnGhost modalVisit appStoreBtn"
+                href={project.appStore}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={t.ui.appStoreLabel}
+              >
+                <AppleLogo className="appStoreLogo" />
+                {t.ui.appStore}
               </a>
             )}
             {project.video && !playing && (
