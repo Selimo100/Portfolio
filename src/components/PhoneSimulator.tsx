@@ -23,12 +23,14 @@ const CLOSE_MS = 260;
 const ICONS: Record<string, { src: string; bg: string; pad?: boolean }> = {
   momento: { src: "momento.png", bg: "#e6f0ee" },
   vibra: { src: "vibra.svg", bg: "#101011" },
-  homelab: { src: "homelab.png", bg: "#1a222b" },
   yumigo: { src: "yumigo.png", bg: "#ffffff" },
   work: { src: "work.png", bg: "linear-gradient(145deg, #16283a, #0a0e13)", pad: true },
   kaisho: { src: "kaisho.png", bg: "#ffffff", pad: true },
   rummy: { src: "rummy.png", bg: "#4fa587" },
 };
+
+/** Projects that don't make sense as a phone app stay off the home screen. */
+const APPS = PROJECTS.filter((p) => p.id !== "homelab");
 
 const DOCK = ["about", "stack", "karate", "contact"] as const;
 
@@ -127,7 +129,7 @@ export default function PhoneSimulator({ lang, t }: { lang: Lang; t: Copy }) {
   }
 
   const swipe = useSwipeUp(screen === "lock" ? () => setScreen("home") : goHome);
-  const open = openId ? (PROJECTS.find((p) => p.id === openId) ?? null) : null;
+  const open = openId ? (APPS.find((p) => p.id === openId) ?? null) : null;
 
   const time = now
     ? new Intl.DateTimeFormat(locale(lang), { hour: "2-digit", minute: "2-digit", hour12: false }).format(now)
@@ -178,12 +180,12 @@ export default function PhoneSimulator({ lang, t }: { lang: Lang; t: Copy }) {
               <span className="phoneWidgetDay">{date}</span>
               <span className="phoneWidgetTime">{time}</span>
               <span className="phoneWidgetSub">
-                {PROJECTS.length} · {t.phone.widget}
+                {APPS.length} · {t.phone.widget}
               </span>
             </div>
 
             <ul className="phoneGrid">
-              {PROJECTS.map((p) => (
+              {APPS.map((p) => (
                 <li key={p.id}>
                   <button type="button" className="phoneApp" onClick={(e) => openApp(p, e.currentTarget)}>
                     <AppIcon id={p.id} name={p.name} />
