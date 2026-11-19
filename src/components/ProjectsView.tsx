@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PROJECTS, type Category, type Project, type Translation } from "@/lib/content";
 import type { Lang } from "@/lib/i18n";
-import { AppleLogo } from "./AppleLogo";
+import AppStoreBadge from "@/components/AppStoreBadge";
+import { StorePill } from "@/components/ProjectCard";
 
 const FILTERS = ["all", "personal", "professional"] as const;
 const LAYOUTS = ["a", "b", "c", "d"] as const;
@@ -17,7 +18,7 @@ const ARC_PX_PER_DEG = 2.2;
 
 const LAYOUT_KEY = "projects-layout";
 
-type Copy = Pick<Translation, "filters" | "work" | "ui">;
+type Copy = Pick<Translation, "filters" | "work" | "ui" | "launch">;
 
 /**
  * The Projects page: four layouts the visitor picks between (cards, list,
@@ -130,6 +131,7 @@ function GridA({ projects, lang, t, onOpen }: LayoutProps) {
         <button className="card cardButton" key={p.id} onClick={() => onOpen(p.id)}>
           <span className="cardShot">
             <img src={`/assets/images/${p.shot}`} alt="" loading="lazy" />
+            {p.appStore && <StorePill label={t.launch.pill} />}
           </span>
           <span className="cardBody">
             <span className="cardMeta">
@@ -163,6 +165,7 @@ function GridB({ projects, lang, t, onOpen }: LayoutProps) {
             <span className="listHead">
               <span className="listName">{p.name}</span>
               <span className="cardCat">{t.filters[p.cat]}</span>
+              {p.appStore && <StorePill label={t.launch.pill} />}
             </span>
             <span className="listDesc">{p.desc[lang]}</span>
           </span>
@@ -195,6 +198,7 @@ function GridC({ projects, lang, t, onOpen }: LayoutProps) {
         >
           <span className="altShot">
             <img src={`/assets/images/${p.shot}`} alt="" loading="lazy" />
+            {p.appStore && <StorePill label={t.launch.pill} />}
           </span>
           <span className="altBody">
             <span className="cardMeta">
@@ -258,6 +262,7 @@ function GridD({ projects, lang, t, onOpen }: LayoutProps) {
                 <span className="fanCardInner">
                   <span className="fanShot">
                     <img src={`/assets/images/${p.shot}`} alt="" loading="lazy" />
+                    {p.appStore && <StorePill label={t.launch.pill} />}
                   </span>
                   <span className="fanBody">
                     <span className="fanCat">{t.filters[p.cat]}</span>
@@ -346,21 +351,14 @@ function ProjectModal({
             ))}
           </div>
           <div className="modalActions">
-            {project.url && (
-              <a className="btn btnPrimary modalVisit" href={project.url} target="_blank" rel="noreferrer">
-                {t.work.visit}
-              </a>
-            )}
             {project.appStore && (
+              <AppStoreBadge href={project.appStore} top={t.launch.badgeTop} label={t.launch.badge} />
+            )}
+            {project.url && (
               <a
-                className="btn btnGhost modalVisit appStoreBtn"
-                href={project.appStore}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={t.ui.appStoreLabel}
-              >
-                <AppleLogo className="appStoreLogo" />
-                {t.ui.appStore}
+                className={`btn ${project.appStore ? "btnGhost" : "btnPrimary"} modalVisit`}
+                href={project.url} target="_blank" rel="noreferrer">
+                {t.work.visit}
               </a>
             )}
             {project.video && !playing && (

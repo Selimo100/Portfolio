@@ -1,5 +1,6 @@
 import type { Lang } from "@/lib/i18n";
 import type { Project, Translation } from "@/lib/content";
+import { AppleLogo } from "@/components/AppleLogo";
 
 /**
  * A project tile. Links out to the live deployment when the project has one,
@@ -9,17 +10,21 @@ export default function ProjectCard({
   project,
   lang,
   filters,
+  pill,
   reveal = false,
 }: {
   project: Project;
   lang: Lang;
   filters: Translation["filters"];
+  /** Label of the "on the App Store" pill shown on shipped apps. */
+  pill?: string;
   reveal?: boolean;
 }) {
   const inner = (
     <>
       <div className="cardShot">
         <img src={`/assets/images/${project.shot}`} alt="" loading="lazy" />
+        {project.appStore && pill && <StorePill label={pill} />}
       </div>
       <div className="cardBody">
         <div className="cardMeta">
@@ -43,11 +48,23 @@ export default function ProjectCard({
 
   const props = { className: "card", ...(reveal ? { "data-reveal": "1" } : {}) };
 
-  return project.url ? (
-    <a {...props} href={project.url} target="_blank" rel="noreferrer">
+  const link = project.appStore ?? project.url;
+
+  return link ? (
+    <a {...props} href={link} target="_blank" rel="noreferrer">
       {inner}
     </a>
   ) : (
     <article {...props}>{inner}</article>
+  );
+}
+
+/** The small "On the App Store" marker laid over a card's screenshot. */
+export function StorePill({ label }: { label: string }) {
+  return (
+    <span className="storePill">
+      <AppleLogo className="storePillLogo" />
+      {label}
+    </span>
   );
 }

@@ -6,7 +6,7 @@ import { PROJECTS, type Project, type Translation } from "@/lib/content";
 import { href, type Lang } from "@/lib/i18n";
 import { AppleLogo } from "./AppleLogo";
 
-type Copy = Pick<Translation, "phone" | "filters" | "nav" | "ui">;
+type Copy = Pick<Translation, "phone" | "filters" | "nav" | "ui" | "launch">;
 
 type Screen = "lock" | "home";
 
@@ -280,21 +280,15 @@ function AppView({
         </div>
 
         <div className="phoneAppActions">
-          {project.url && (
-            <a className="phoneAppBtn" href={project.url} target="_blank" rel="noreferrer">
-              {t.phone.visit}
+          {project.appStore && (
+            <a className="phoneAppBtn phoneAppBtnStore" href={project.appStore} target="_blank" rel="noreferrer">
+              <AppleLogo className="phoneAppBtnLogo" />
+              {t.launch.badge}
             </a>
           )}
-          {project.appStore && (
-            <a
-              className="phoneAppBtn phoneAppBtnGhost phoneAppStore"
-              href={project.appStore}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={t.ui.appStoreLabel}
-            >
-              <AppleLogo className="appStoreLogo" />
-              {t.ui.appStore}
+          {project.url && (
+            <a className={project.appStore ? "phoneAppBtn phoneAppBtnGhost" : "phoneAppBtn"} href={project.url} target="_blank" rel="noreferrer">
+              {t.phone.visit}
             </a>
           )}
           {project.video && !playing && (

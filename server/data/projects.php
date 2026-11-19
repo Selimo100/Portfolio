@@ -25,10 +25,10 @@ return [
     'category' => 'personal',
     'year' => 'June 2026 – present',
     'image' => 'assets/images/momento_app_card.png',
-    'summary' => 'A local-first iOS app for creating personal photo moments — adding stories, choosing the best shots, and exporting beautiful albums directly to Apple Photos.',
+    'summary' => 'A local-first iOS app for creating personal photo moments — adding stories, choosing the best shots, and exporting beautiful albums directly to Apple Photos. Now available on the App Store.',
     'technologies' => ['Swift'],
     'liveUrl' => 'https://momento.mogicato.ch',
-    'appStoreUrl' => 'https://apps.apple.com/ch/app/momento-moments/id6797451975?l=en-GB',
+    'appStoreUrl' => 'https://apps.apple.com/ch/app/momento-moments/id6797451975',
   ],
   [
     'slug' => 'homelab',

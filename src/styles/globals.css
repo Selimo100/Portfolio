@@ -2220,3 +2220,138 @@ input, textarea, button { font-family: inherit; }
   justify-content: flex-end;
   padding: 10px 18px 18px;
 }
+
+/* ---------- App Store launch ---------- */
+.appStoreBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px 9px 16px;
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #000;
+  color: #fff;
+  line-height: 1;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.appStoreBadge:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); }
+.appStoreBadgeLogo { width: 24px; height: 28px; flex: none; }
+.appStoreBadgeText { display: flex; flex-direction: column; gap: 3px; text-align: left; }
+.appStoreBadgeTop { font-size: 11px; font-weight: 500; letter-spacing: 0.01em; }
+.appStoreBadgeLabel { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--display); font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+
+.launchSection { padding: 0 var(--pad) 72px; }
+.launchBand {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0 48px 48px;
+  border: 1px solid var(--line2);
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    var(--surface);
+  box-shadow: var(--glow);
+}
+.launchBand::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: sweep 4.5s linear infinite;
+}
+.launchHead { display: flex; align-items: center; gap: 14px; }
+.launchIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #e6f0ee;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.launchEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--line2);
+  border-radius: 99px;
+  font: 500 10.5px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.launchDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.6);
+  animation: launchPulse 2s ease-out infinite;
+}
+@keyframes launchPulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 9px rgba(52, 199, 89, 0); }
+}
+.launchCopy h2 {
+  margin: 22px 0 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--tx);
+  max-width: 18ch;
+}
+.launchCopy p { margin: 16px 0 0; max-width: 52ch; font-size: 15.5px; line-height: 1.65; color: var(--mu); }
+.launchActions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+.launchActions .btn { min-height: 52px; }
+.launchShot {
+  display: block;
+  align-self: stretch;
+  margin-right: -2px;
+  border-radius: 16px 0 0 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-right: 0;
+  transform: rotate(-2deg) translateX(14px);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.launchShot:hover { transform: rotate(0deg) translateX(6px); }
+.launchShot img { display: block; width: 100%; height: 100%; min-height: 280px; object-fit: cover; }
+
+@media (max-width: 980px) {
+  .launchBand { grid-template-columns: 1fr; gap: 30px; padding: 34px 28px 0; }
+  .launchCopy h2 { font-size: 30px; }
+  .launchShot { border-radius: 16px 16px 0 0; border-right: 1px solid var(--line); border-bottom: 0; transform: none; margin: 0; }
+  .launchShot:hover { transform: none; }
+  .launchShot img { min-height: 0; aspect-ratio: 16 / 10; }
+}
+
+/* "On the App Store" marker on project cards */
+.fanShot, .altShot { position: relative; }
+.storePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font: 600 10.5px/1 -apple-system, BlinkMacSystemFont, var(--display);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.cardShot .storePill, .fanShot .storePill, .altShot .storePill { position: absolute; top: 12px; left: 12px; }
+.storePillLogo { width: 10px; height: 12px; flex: none; }
+
+.phoneAppBtnStore { display: inline-flex; align-items: center; gap: 1.6cqw; background: #000; }
+.phoneAppBtnLogo { width: 3.4cqw; height: 4cqw; }

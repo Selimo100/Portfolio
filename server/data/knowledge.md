@@ -140,8 +140,9 @@ features.
 keywords: mobile, ios, swift, app, apple, iphone
 Selina is exploring mobile development with Swift and iOS.
 
-One of her personal app concepts is Momento, a local-first iOS application for
-collecting and preserving meaningful memories.
+Her first native iOS app, Momento, is available on the App Store:
+https://apps.apple.com/ch/app/momento-moments/id6797451975
+It is a local-first app for collecting and preserving meaningful memories.
 
 
 ## Which frontend technologies does Selina use?
@@ -389,12 +390,13 @@ She also helped document its use cases, data flow and release behaviour.
 
 
 ## What is Momento?
-keywords: momento, ios, swift, memories, app, mobile
-Momento is Selina's concept for a local-first iOS application that helps people
-collect and preserve meaningful memories.
+keywords: momento, ios, swift, memories, app, mobile, app store, download
+Momento is Selina's local-first iOS app that helps people collect and preserve
+meaningful memories. It is live on the App Store and can be downloaded here:
+https://apps.apple.com/ch/app/momento-moments/id6797451975
 
-The concept includes moments, cover images, descriptions, favourites and export
-to an Apple Photos album, with ideas for future storytelling features.
+It turns photo sets into moments with cover images, descriptions, favourites and
+export to an Apple Photos album. More info: https://momento.mogicato.ch
 
 
 ## Does Selina build personal projects?

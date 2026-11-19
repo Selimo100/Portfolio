@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AppStoreBadge from "@/components/AppStoreBadge";
 import PhoneSimulator from "@/components/PhoneSimulator";
 import ProjectCard from "@/components/ProjectCard";
 import { PROJECTS, TRANSLATIONS } from "@/lib/content";
@@ -25,6 +26,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   const t = TRANSLATIONS[lang as Lang];
+  const momento = PROJECTS.find((p) => p.id === "momento");
 
   return (
     <main className="page">
@@ -68,6 +70,35 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {momento?.appStore && (
+        <section className="shell launchSection" aria-labelledby="launch-title">
+          <div className="launchBand" data-reveal="1">
+            <div className="launchCopy">
+              <div className="launchHead">
+                <img className="launchIcon" src="/assets/images/icons/momento.png" alt="" />
+                <span className="launchEyebrow">
+                  <span className="launchDot" aria-hidden="true" />
+                  {t.launch.eyebrow}
+                </span>
+              </div>
+              <h2 id="launch-title">{t.launch.title}</h2>
+              <p>{t.launch.blurb}</p>
+              <div className="launchActions">
+                <AppStoreBadge href={momento.appStore} top={t.launch.badgeTop} label={t.launch.badge} />
+                {momento.url && (
+                  <a className="btn btnGhost" href={momento.url} target="_blank" rel="noreferrer">
+                    {t.launch.more} →
+                  </a>
+                )}
+              </div>
+            </div>
+            <a className="launchShot" href={momento.appStore} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">
+              <img src={`/assets/images/${momento.shot}`} alt="" loading="lazy" />
+            </a>
+          </div>
+        </section>
+      )}
+
       <section className="stats">
         <div className="statsInner">
           {t.stats.map((s) => (
@@ -91,7 +122,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
         <div className="cardGrid">
           {PROJECTS.slice(0, 3).map((p) => (
-            <ProjectCard key={p.id} project={p} lang={lang} filters={t.filters} reveal />
+            <ProjectCard key={p.id} project={p} lang={lang} filters={t.filters} pill={t.launch.pill} reveal />
           ))}
         </div>
       </section>
@@ -114,7 +145,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <h2>{t.phone.title}</h2>
           <p>{t.phone.blurb}</p>
         </div>
-        <PhoneSimulator lang={lang} t={{ phone: t.phone, filters: t.filters, nav: t.nav, ui: t.ui }} />
+        <PhoneSimulator lang={lang} t={{ phone: t.phone, filters: t.filters, nav: t.nav, ui: t.ui, launch: t.launch }} />
       </section>
     </main>
   );
